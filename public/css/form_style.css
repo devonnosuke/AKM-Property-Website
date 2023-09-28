@@ -1,0 +1,126 @@
+    [type="radio"]:checked + label::after, [type="radio"].with-gap:checked + label::after {
+        background-color: #ab47bc  !important;
+    }
+    [type="radio"]:checked + label::after, [type="radio"].with-gap:checked + label::before, [type="radio"].with-gap:checked + label::after {
+        border: 2px solid #ab47bc  !important;
+    }
+    /* label focus color */
+    input[type="radio"]:focus + label {
+      color: #ab47bc  !important;
+    }
+    /* label focus color */
+    .input-field input[type=text]:focus + label {
+      color: #ab47bc  !important;
+    }
+    .input-field input[type=password]:focus + label {
+      color: #ab47bc  !important;
+    }
+    .input-field input[type=number]:focus + label {
+      color: #ab47bc  !important;
+    }
+    /* label focus color */
+    .input-field #email:focus + label {
+      color: #ab47bc  !important;
+    }
+    /* label underline focus color */
+    .input-field input[type=text]:focus {
+      border-bottom: 1px solid #ab47bc  !important;
+      box-shadow: 0 1px 0 0 #ab47bc  !important;
+    }
+    /* label underline focus color */
+    .input-field input[type=password]:focus {
+      border-bottom: 1px solid #ab47bc  !important;
+      box-shadow: 0 1px 0 0 #ab47bc  !important;
+    }
+    /* label underline focus color */
+    .input-field input[type=number]:focus {
+      border-bottom: 1px solid #ab47bc  !important;
+      box-shadow: 0 1px 0 0 #ab47bc  !important;
+    }
+    /* label underline focus color */
+    .input-field #email:focus {
+      border-bottom: 1px solid #ab47bc  !important;
+      box-shadow: 0 1px 0 0 #ab47bc  !important;
+    }
+    /* label focus color */
+    .input-field textarea:focus + label {
+      color: #ab47bc  !important;
+    }
+    /* label underline focus color */
+    .input-field textarea:focus {
+      border-bottom: 1px solid #ab47bc  !important;
+      box-shadow: 0 1px 0 0 #ab47bc  !important;
+    }
+    /* for range input */
+input[type=range]+.thumb {
+	background-color: #ab47bc;
+}
+
+/* for slider thumb range input */
+input[type=range]::-webkit-slider-thumb{background-color:#ab47bc;}
+
+/* Label icon for prefix on active */
+.input-field .prefix.active {
+	color: #ab47bc;
+}
+
+.err-validation, textarea.materialize-textarea.validate+label::after, label.active::after{
+  display: block;
+  font-weight: bold !important;
+  color: #F44336;
+}
+.err-validation, textarea.materialize-textarea.validate+label{
+  height: 45%;
+  font-weight: bold !important;
+}
+
+.input-field label.active {
+  height: 100%;
+}
+.input-field label {
+  height: 45%;
+  width: 100%;
+  font-weight: bold !important;
+}
+
+
+i.bi.bi-x.right {
+	cursor: pointer;
+	margin-left: 5px;
+}
+.chips.invalid {
+    border-bottom: 1px solid #F44336;
+    -webkit-box-shadow: 0 1px 0 0 #F44336;
+    box-shadow: 0 1px 0 0 #F44336;
+}
+.chips.valid {
+    border-bottom: 1px solid #4CAF50;
+    -webkit-box-shadow: 0 1px 0 0 #4CAF50;
+    box-shadow: 0 1px 0 0 #4CAF50;
+}
+.input-field label.chips-label{
+  transition: .3s;
+  opacity: 0;
+}
+
+.input-field label.chips-label.active{
+  opacity: 1;
+  font-size: 1.3rem;
+  top: -12px;
+}
+
+@media only screen and (max-width: 600px){
+  
+  .input-field label.chips-label.active{
+    top: -30px;
+  }
+	
+}
+
+label.txtarea-label.active::after {
+  top: calc(100% - -27px) !important;
+}
+
+.input-field label i {
+  font-weight: 300;
+}

@@ -1,0 +1,711 @@
+/* ============ Base Color Dark Mode ============= */
+
+/* title nav : #050505 */
+/* bg nav : #202020 */
+/* Hover nav : #191919 */
+/* Card Header : #363636 */
+/* Card content : #363636 */
+/* Card Footer : #575757 */
+
+/* =================== Form style section  */
+[type="radio"]:checked + label::after, [type="radio"].with-gap:checked + label::after {
+	background-color: #ab47bc  !important;
+}
+[type="radio"]:checked + label::after, [type="radio"].with-gap:checked + label::before, [type="radio"].with-gap:checked + label::after {
+	border: 2px solid #ab47bc  !important;
+}
+/* label focus color */
+input[type="radio"]:focus + label {
+  color: #ab47bc  !important;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #ab47bc  !important;
+}
+.input-field input[type=password]:focus + label {
+  color: #ab47bc  !important;
+}
+.input-field input[type=number]:focus + label {
+  color: #ab47bc  !important;
+}
+/* label focus color */
+.input-field #email:focus + label {
+  color: #ab47bc  !important;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #ab47bc  !important;
+  box-shadow: 0 1px 0 0 #ab47bc  !important;
+}
+/* label underline focus color */
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid #ab47bc  !important;
+  box-shadow: 0 1px 0 0 #ab47bc  !important;
+}
+/* label underline focus color */
+.input-field input[type=number]:focus {
+  border-bottom: 1px solid #ab47bc  !important;
+  box-shadow: 0 1px 0 0 #ab47bc  !important;
+}
+/* label underline focus color */
+.input-field #email:focus {
+  border-bottom: 1px solid #ab47bc  !important;
+  box-shadow: 0 1px 0 0 #ab47bc  !important;
+}
+/* label focus color */
+.input-field textarea:focus + label {
+  color: #ab47bc  !important;
+}
+/* label underline focus color */
+.input-field textarea:focus {
+  border-bottom: 1px solid #ab47bc  !important;
+  box-shadow: 0 1px 0 0 #ab47bc  !important;
+}
+
+/* for range input */
+input[type=range]+.thumb {
+	background-color: #ab47bc;
+}
+
+/* for slider thumb range input */
+input[type=range]::-webkit-slider-thumb{background-color:#ab47bc;}
+
+/* Label icon for prefix on active */
+.input-field .prefix.active {
+	color: #ab47bc;
+}
+
+/* ===================================== */
+.first-color {
+	background-color: #080808 !important;
+}
+.sub-nav-color {
+	background-color: #242424 !important;
+	/* background-color: #37474f !important; */
+}
+.sub-nav-color:hover {
+	background-color: #1d1d1d !important;
+	/* background-color: #37474f !important; */
+}
+.second-color {
+	background-color: #202020 !important;
+}
+.thrid-color {
+	background-color: #202020 !important;
+}
+.fourth-color {
+	background-color: #202020 !important;
+}
+.sixth-color {
+	background-color: #ab47bc !important;
+}
+
+.swal2-popup {
+	background-color: #202020 !important;
+}
+.swal2-title {
+	color: #fff !important;
+}
+
+.swal2-html-container {
+	color: rgb(179, 179, 179) !important;
+}
+.swal2-title {
+	color: #fff !important;
+}
+
+.text-color {
+	color: #fff;
+}
+
+tr.skill-wrapper:hover{
+	/* color: black; */
+	background-color: rgb(63, 63, 63) !important;
+}
+
+
+/* modal Dark */
+.card-content-color, .card-panel, .card{
+	background-color: #313131;
+	color: #fff;
+}
+
+.card-content .exp-title {
+	color: white !important;
+}
+
+div.modal-content {
+	background-color: #202020;
+	color: #fff;
+}
+div.modal-footer {
+	background-color: #202020 !important;
+	color: #fff !important;
+}
+
+.modal-button .btn-flat {
+	color: #fff;
+	box-shadow: 2px 3px 3px rgb(31, 31, 31);
+}
+.input-field .btn {
+	color: black;
+	font-weight: bold;
+}
+
+.file-field span, .modal-trigger {
+	color: black;
+	font-weight: bold;
+}
+
+.collection {
+	color: #fff;
+	border: none;
+	background-color: #363636 ;
+}
+
+.collection.with-header .collection-header, .collection-item{
+	background-color: #363636 !important;
+	border-bottom: none !important;
+}
+
+
+
+/* ===================================== */
+/* =================== END Form style section  */
+
+/* =================== Other Section */
+body {
+	font-family: "Roboto-Light";
+
+	/* Dark Mode Style */
+	background-image: url('http://localhost:8080/img/bg/Dark_background.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+  @font-face {
+	  font-family: 'Roboto-Bold';
+	  src: url('../fonts/roboto/Roboto-Bold.woff2') format('woff2'),
+		   url('../fonts/roboto/Roboto-Bold.woff') format('woff');
+	  font-weight: normal;
+	  font-style: normal;
+  }
+  
+  @font-face {
+	  font-family: 'Roboto-Light';
+	  src: url('../fonts/roboto/Roboto-Light.woff2') format('woff2'),
+		   url('../fonts/roboto/Roboto-Light.woff') format('woff');
+	  font-weight: normal;
+	  font-style: normal;
+  }
+  
+  @font-face {
+	  font-family: 'Roboto-Medium';
+	  src: url('../fonts/roboto/Roboto-Medium.woff2') format('woff2'),
+		   url('../fonts/roboto/Roboto-Medium.woff') format('woff');
+	  font-weight: normal;
+	  font-style: normal;
+  }
+  
+  @font-face {
+	  font-family: 'Roboto-Regular';
+	  src: url('../fonts/roboto/Roboto-Regular.woff2') format('woff2'),
+		   url('../fonts/roboto/Roboto-Regular.woff') format('woff');
+	  font-weight: normal;
+	  font-style: normal;
+  }
+  
+  @font-face {
+	  font-family: 'Roboto-Thin';
+	  src: url('../fonts/roboto/Roboto-Thin.woff2') format('woff2'),
+		   url('../fonts/roboto/Roboto-Thin.woff') format('woff');
+	  font-weight: normal;
+	  font-style: normal;
+  }
+/* =================== END Other Section */
+
+
+
+/* =================== Navbar, Heading and Preloader Section */
+li.title {
+	padding: 15px 0;
+}
+
+h6.sub-header {
+	font-size: 19px;
+}
+
+.active-list:hover {
+	border-left: 3px solid #ffffff !important;
+	background-color: #181818;
+}
+
+
+.divider {
+	margin: 0 !important;
+    background-color: #181818;
+}
+i.bi {
+	font-size: 20px;
+}
+.collapsible-header {
+	padding: 8px 20px !important;
+}
+.collapsible-header i{
+	margin: 0 32px 0 0;
+}
+.collapsible-body ul li a i{
+	font-size: 12px;
+	margin-right: 5px;
+}
+.bi-chevron-right {
+	font-size: 12px !important;
+}
+.page-footer {
+	position: fixed;
+    bottom: 0;
+    width: 100%;
+	margin-bottom: 0;
+    padding: 10px 0px;
+    font-size: 14px;
+	z-index: 999;
+}
+#nav-mobile {
+	z-index: 1000;
+	width: 236px;
+}
+
+.side-nav {
+	width: auto;
+}
+.menu-wraper ul li{
+	padding: 0 30px;
+}
+hr {
+	border: 1px solid #bd13a6;
+	width: 90%;
+}
+.content {
+	padding: 20px 0;	
+}
+.page-footer p{
+	display: inline;
+}
+
+.header {
+	margin-bottom: 0;
+}
+
+.preloader {
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #fff;
+}
+
+.preloader .loading {
+	position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 50%;
+    width: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+}
+
+.menu-item a {
+	padding: 8px 20px !important;
+	height: 60px !important;
+}
+/* =================== END Navbar, Heading and Preloader Section */
+
+/*================= For Mobile Devices */
+@media only screen and (max-width: 600px){
+	.header {
+		margin: 2px 0;
+		font-size: 35px;
+	}
+
+	h1, h2, h3, h4, h5, h6, p{
+		text-align: left !important;
+	}
+
+	hr {
+		float: left;
+		width: 60%;
+		margin: 0;
+	}
+
+	.card-panel {
+		padding:13px;
+	}
+
+	nav .button-collapse {
+		margin: 0 7px;
+	}
+
+	.title h5 {
+		text-align: center !important;
+	}
+	.page-footer p{
+		display: none;
+	}
+	
+	.page-footer a {
+		display: block;
+		text-align: center;
+		float: none !important;
+	}
+
+
+	/* form section Mobile */
+	.header-icon {
+		display: none;
+	}
+	.btn {
+		width: 100%;
+	}
+	.file-path-wrapper {
+		padding-left: 1pt !important;
+	}
+
+	h4 {
+		font-size: 16pt;
+		margin-bottom: 10px;
+	}
+	h5 {
+		font-size: 16pt;
+	}
+
+	.flow-text {
+		margin: 6px 0;
+		line-height: 20px;
+	}
+
+	/* modal section Mobile */
+
+	.modal-content h4 {
+		margin-bottom: 30px;
+		margin-top: 15px;
+	}
+
+	.modal-content {
+		padding: 13px !important;
+	}
+
+	.modal {
+		width: 93%;
+	}
+
+	.modal-label {
+		font-size: 12pt !important;
+	}
+	.modal-button a, .modal-button button {
+		width: 100%;
+	}
+
+	/* Modal Contact mobile*/
+	.card-panel.contact-panel {
+		padding: 6px !important;	
+	}
+	.modal-content.contact-content {
+		padding: 7px !important;
+	}
+	.collection-header h4 {
+		margin-top: 0px !important;
+	}
+	.collection-item {
+		padding: 10px 0 !important;
+		padding-left: 20px !important;
+	}
+
+	.form-icon-modal {
+		font-size: 19px !important;
+	}
+
+	/*========== Gallery Mobile */
+	.del-gal {
+		opacity: .9 !important;
+		bottom: 38px !important;
+	}
+	.title-gal {
+		margin: 17px;
+		text-align: center !important;
+	}
+	div .gal-panel {
+		padding: 24px 0;
+	}
+
+	/*======== Mobile Slider section */
+	.btn-card {
+		margin-bottom: 15px;
+	}
+	
+	.card-image {
+		max-height: 50% !important;
+	}
+	
+	.card-action {
+		padding: 15px 15px !important;
+	}
+
+	/* ====== Project experience section*/
+	.exp-title {
+		font-size: 16px !important;
+	}
+
+	h6.sub-header {
+		font-size: 16px;
+		line-height: 23px;
+	}
+
+	/* Skils Mobile section */
+	table.skill-table {
+		width: 100% !important;
+		padding: 10px;
+		height: 200px !important;
+		margin: 5px auto !important;
+		border: 1px solid #ab47bc;
+	}
+
+	.skill-table thead {
+		width: 47%;
+	}
+	.skill-table tbody {
+		width: 53%;
+	}
+
+	.skill-wrapper {
+		height: 180px;
+	}
+
+	p.range-field {
+		margin: 0;
+	}
+
+	.skill-icon {
+		width: auto !important;
+	}
+}
+/*================= END For Mobile Devices */
+
+
+/* ========================= Form Element style section */
+.help-pic {
+	width: 100%;
+}
+.row-input .col{
+	padding-left: 0;
+}
+.header-icon {
+	font-size: 3.56rem !important;
+}
+
+/* For Pc/Laptop Devices */
+@media only screen and (min-width: 1366px){
+	li.title {
+		padding: 18px 0;
+	}
+
+	.salam {
+		margin-right: 450px;
+	}
+
+	#nav-mobile {
+		overflow-y: hidden;
+	}
+
+	.main-wrapper {
+		width: 82% !important;
+	}
+	
+	.menu-wraper {
+		padding: 0 30px;
+	}
+
+	/* ===================== Info Section */
+	.parallax-container h3 {
+		margin-top: 70px;
+	}
+	
+	/* ============== Gallery Section */
+	.del-gal {
+		left: 75% !important;
+	}
+	
+}
+
+/* ================== for desktop */
+@media only screen and (min-width:1600px) {
+	.main-wrapper {
+		width: 85% !important;
+	}
+	.content {
+		padding: 55px 0;	
+	}
+
+	.salam {
+		margin-right: 690px;
+	}
+
+	.content-slider {
+		width: 85%;	
+	}
+
+	td.btn-wrapper {
+		padding: 0 30px !important;
+	}
+}
+
+/* =================== Form Section */
+
+/* Clear fix */
+.cf:before,
+.cf:after {
+	content: " ";
+    display: table;
+}
+
+.cf:after {
+	clear: both;
+}
+
+.cf {
+	*zoom: 1;
+}
+/* =================== END Form Section */
+
+
+/* ===================== END Gallery Section */
+.del-gal {
+	position: relative;
+    bottom: 45px;
+    left: 80%;
+    opacity: 0;
+    margin: -10px 0;
+}
+
+.pic:hover .del-gal {
+	opacity: 1;
+}
+
+.gal-panel {
+	padding: 24px 85px;
+}
+
+div .card-footer{
+	padding: 0 .75rem;
+}
+
+.add {
+	height: 150px;
+    background-color: #202020;
+    width: 100%;
+    line-height: 140px;
+    color: #9e9e9e;
+	font-size: 40px;
+	border: 2px dashed gray;
+}
+.add:hover {
+	background-color: #181818;
+}
+/* ===================== END Gallery Section */
+
+/* ========= Slider Section */
+.card-image, .card-image img {
+	height: 100%;
+}
+
+/* .img-pkg {
+	filter: contrast(35%);
+} */
+
+div.content-slider .card-content {
+	overflow-y:auto !important;
+	height: 100px;
+}
+/* ========= END Slider Section */
+
+/* ====== Project experience section*/
+.menu-item span {
+	line-height: 27px;
+}
+.card-experience {
+	padding: 13px;
+}
+.exp-title {
+	font-size: 20px;
+}
+.exp-title span{
+	padding-left: 5px;
+	display: inline-block;
+	font-size: 1.2rem !important;
+}
+/* ====== END Project experience section*/
+
+/* ========== Skills Section */
+.btn-skill {
+	opacity: 0;
+}
+.skill-wrapper:hover .btn-skill, .skill-wrapper:hover .btn-skill {
+	opacity: 1;
+}
+.skill-icon i {
+	font-size: 2rem;
+}
+.skill-icon p.icon {
+	margin: 16px 13px 0 0;
+    font-size: 2rem;
+}
+
+table.skill-table {
+	margin: 0 auto;
+	width: 85%;
+}
+
+td.btn-wrapper {
+	width: 15%;
+	padding: 0 19px;
+}
+
+.card-skill div.col{
+	padding: 10px 0;
+}
+/* ========== END Skills Section */
+
+/* ==================== SweetAlert2 */
+.swal2-popup {
+	border-radius: 0 !important;
+}
+
+.swal2-styled.swal2-cancel {
+	border-radius: 0 !important;
+}
+
+.swal2-styled.swal2-confirm {
+	border-radius: 0 !important;
+}
+
+.alert-icon {
+	font-size: 1em !important;
+}
+/* ==================== END SweetAlert2 */
+/* Style Switch */
+.switch label {
+	color: white;	
+}
+
+.switch label input[type=checkbox]:checked+.lever:after{
+	background-color: #4e4e4e !important;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+	background-color: #666666;
+}
+.switch {
+	padding: 3px;
+	background-color: rgb(44, 44, 44);
+}
+/* End Style Switch */
