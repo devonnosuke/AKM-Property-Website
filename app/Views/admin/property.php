@@ -88,11 +88,6 @@
                             <label for="description" <?= errorMsgCheck($validation->getError('description')) ?>>Deskripsi Properti</label>
                         </div>
                     </div>
-                    <div class="input-field col s12">
-                        <div class="card-panel card-thumb z-depth-2">
-                            <img src="<?= base_url() ?>/assets/img/coming-soon.jpg" class="thumb-pic img-preview materialboxed">
-                        </div>
-                    </div>
                     <div class="upload__box">
                         <div class="file-field input-field col s12 upload__btn-box">
                             <div class="btn waves-effect waves-light deep-purple lighten-1 upload__btn">

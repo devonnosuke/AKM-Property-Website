@@ -139,7 +139,7 @@ class Validation
 		],
 		'address' => 'required',
 		'description' => 'required',
-		'img' => 'uploaded[img]|max_size[img,10240]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
+		// 'img' => 'uploaded[img]|max_size[img,10240]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 	];
 
 	public $propertyEdit = [

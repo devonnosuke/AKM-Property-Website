@@ -465,7 +465,7 @@ function ImgUpload() {
                 $(".upload__img-close").length +
                 "' data-file='" +
                 f.name +
-                "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                "' class='img-bg'></div></div>";
               imgWrap.append(html);
               iterator++;
             };
@@ -476,14 +476,14 @@ function ImgUpload() {
     });
   });
 
-  $("body").on("click", ".upload__img-close", function (e) {
-    var file = $(this).parent().data("file");
-    for (var i = 0; i < imgArray.length; i++) {
-      if (imgArray[i].name === file) {
-        imgArray.splice(i, 1);
-        break;
-      }
-    }
-    $(this).parent().parent().remove();
-  });
+  // $("body").on("click", ".upload__img-close", function (e) {
+  //   var file = $(this).parent().data("file");
+  //   for (var i = 0; i < imgArray.length; i++) {
+  //     if (imgArray[i].name === file) {
+  //       imgArray.splice(i, 1);
+  //       break;
+  //     }
+  //   }
+  //   $(this).parent().parent().remove();
+  // });
 }

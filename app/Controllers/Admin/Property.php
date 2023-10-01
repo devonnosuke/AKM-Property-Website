@@ -63,6 +63,8 @@ class Property extends BaseController
         $id = $this->request->getVar('id');
         // Get file data POST with ci4 : getFile(name)
         $img_files = $this->request->getFiles();
+        
+        $img = $this->request->getFile('image');
         // Get Old image name if set
         $old_img = $this->request->getVar('old_img');
 
@@ -99,46 +101,49 @@ class Property extends BaseController
             }
         } else {
 
-           $hasil = imgUploadBatch($img_files, $img_ext);
-           dd($hasil['img']);
-            // dd($test);
+           $images = imgUploadBatch($img_files, $img_ext);
+
             // Set the validation rules to be used (Rules to add form)
             $validation_rules = 'property';
 
             // Get all data POST with ci4 : getPost()
             $data = $this->request->getPost();
-
+            // dd($img_files);
             // the name of pictue can be assign to $data
-            $data['img'] = $img['nameWithNewExt'];
+            $data['img'] = $images[0]['nameWithNewExt'];
         }
 
         // Run validation with the rules set in App/Config/Validation.php
         if ($this->validation->run($data, $validation_rules)) {
-
+            
+            foreach ($images as $imageName) {
+                $i = 0;
             // Move the image to server and delete old image
-            if ($img_file->isValid() && !$img_file->hasMoved()) {
+                if ($img_files['img'][$i++]->isValid()) {
 
-                // Move file to server
-                $img_file->move('assets/img/property/', $img['nameWithOldExt']);
+                    // Move file to server
+                    // $img_file->move('assets/img/property/', $img['nameWithOldExt']);
 
-                // Convert Image to $img_ext value
-                $convert = imgConvert($img['nameWithOldExt'], $img['nameOnly'], 'assets/img/property', $img_ext);
+                    // Convert Image to $img_ext value
+                    $convert = imgConvert($imageName['nameWithOldExt'],$imageName['nameOnly'] , 'assets/img/property', $img_ext, 78);
 
-                // Crop and Resize image
-                $fit = imgFit($img['nameWithNewExt'], 'assets/img/property');
+                    // Crop and Resize image
+                    $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
 
-                // Check if the upload and image manipulation process is success
-                if ($img_file && $convert && $fit) {
+                    // Check if the upload and image manipulation process is success
+                    if ($img_file && $convert && $fit) {
 
-                    if ($id) {
-                        unlink('assets/img/property/' . $old_img);
+                        if ($id) {
+                            unlink('assets/img/property/' . $old_img);
+                        }
+                    } else {
+                        return new \CodeIgniter\Exceptions\PageNotFoundException('File Failed to save');
                     }
-                } else {
-                    return new \CodeIgniter\Exceptions\PageNotFoundException('File Failed to save');
                 }
             }
 
             // htmlspecialchars is used to prevent special characters from being executed by the browser
+            // dd($data);
             $data = array_map('htmlspecialchars', $data);
 
             // Insert or change records to table with functions provided by codeigniter Model : save($data)

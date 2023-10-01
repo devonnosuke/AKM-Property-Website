@@ -158,8 +158,6 @@ function cutString($string) {
  */
 function imgUploadBatch($img_file, $imgExt)
 {
-    
-    // dd($img_file);
     $i=0;
     $listnames= [];
     if ($img_file) {
@@ -171,10 +169,9 @@ function imgUploadBatch($img_file, $imgExt)
                 
                 
                 $img->move('assets/img/property/',$newName);
-                array_push($listnames, $newName);
+                array_push($listnames, $imgNewNames);
             }
         }
-        dd($listnames);
     }
    return $listnames;
 }
@@ -231,7 +228,62 @@ function imgGenerateBatchName($img_file, $forWhat = 'Website', $img_newExt = 'jp
     ];
 }
 
-function imgInsertBatch($id_property,$listnames)
+
+/**
+ * Helper method to convert image to another extension
+ * 
+ * Examples:
+ *    imgConvert('picture01.png', 'picture01', 'assets/img/', 'jpg', 65);
+ *
+ * @param string $imgNameWithOldExt
+ * @param string $imgNameOnly
+ * @param string $path
+ * @param string $ext
+ * @param string $target_extension
+ * @param int $quality Percent of image quality | It will only be used if the img extension source is jpeg or jpg, otherwise it will be ignored.
+ *
+ * @return imgConvert|bool
+ */
+function imgConvertBatch($imageNames, $path, $target_extension, $quality = 100)
+{
+    $imgManipulator = \Config\Services::image('gd');
+
+    foreach ($imageNames as $imageName) {
+        dd($imageName);
+        
+        switch ($target_extension) {
+            case 'webp':
+                $extension = IMAGETYPE_WEBP;
+                break;
+            case 'jpg':
+                $extension = IMAGETYPE_JPEG;
+                break;
+            case 'png':
+                $extension = IMAGETYPE_PNG;
+                break;
+            case 'psd':
+                $extension = IMAGETYPE_PSD;
+                break;
+            default:
+                $extension = IMAGETYPE_WEBP;
+                break;
+        }
+
+        $imgManipulator->withFile($path . '/' . $imgNameWithOldExt)
+            ->withResource()
+            ->convert($extension)
+            ->save($path . '/' . $imgNameOnly . '.' . $target_extension, $quality);
+
+        if ($imgManipulator) {
+            unlink($path . '/' . $imgNameWithOldExt);
+            return $imgManipulator;
+        }
+
+    }
+    return $imgManipulator;
+}
+
+function imgInsertBatch($id_property, $listnames)
 {
     foreach ($listnames as $names) {
         # code...
