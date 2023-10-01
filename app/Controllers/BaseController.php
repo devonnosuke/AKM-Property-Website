@@ -66,6 +66,11 @@ class BaseController extends Controller
 		$this->addressContactModels = new \App\Models\AddressContactModel();
 		$this->validation = \Config\Services::validation();
 		$this->NotFoundMsg = "Page not Found";
+		
+		// AKM-Property Specifik
+		$this->propertyModels = new \App\Models\PropertyModel();
+		$this->propertyImgModels = new \App\Models\PropertyImgModel();
+		
 		helper('auth');
 	}
 }

@@ -2,12 +2,18 @@
     <!-- Menu Bar -->
     <ul id="nav-mobile" class="side-nav fixed fourth-color white-text">
         <li class="title first-color white-text z-depth-2">
-            <h5 class="container center">Admin Panel</h5>
+            <h5 class="container center">AKM App</h5>
         </li>
         <li class="divider"></li>
         <li class="menu-item <?= (isset($dashboard_active) ? $dashboard_active : '') ?>">
             <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/dashboard">
-                <i class="white-text bi bi-house-fill"></i>Dashboard
+                <i class="white-text bi bi-speedometer"></i>Dashboard
+            </a>
+        </li>
+        <li class="divider"></li>
+        <li class="menu-item <?= (isset($property_active) ? $property_active : '') ?>">
+            <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/property">
+                <i class="white-text bi bi-house-fill"></i>Properti
             </a>
         </li>
         <li class="divider"></li>
@@ -76,7 +82,7 @@
                     </a>
                 </div>
                 <a href="#" class=" brand-logo">
-                    Subaru<sub>Admin</sub>
+                    AKM<sub>Admin</sub>
                 </a>
                 <div class="menu-wraper">
                     <ul class="right hide-on-med-and-down">

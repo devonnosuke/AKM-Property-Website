@@ -3,7 +3,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-    <title>Subaru Admin Panel | <?= $title ?></title>
+    <title>AKM Admin App | <?= $title ?></title>
     <!-- CSS Materialize -->
     <link href="<?= base_url() ?>/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
@@ -22,7 +22,7 @@
 
 <body>
     <div class="preloader center">
-        <div class="loading card-panel" style="height: 5em">
+        <div class="loading card-panel">
             <div class="preloader-wrapper small active">
                 <div class="spinner-layer spinner-red-only center">
                     <div class="circle-clipper left">
@@ -36,7 +36,6 @@
                     </div>
                 </div>
             </div>
-            <p class="load-info" style="margin: 0;">Please wait ...</p>
         </div>
     </div>
     <div class="mini-preloader">

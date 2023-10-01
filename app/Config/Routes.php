@@ -69,6 +69,14 @@ $routes->delete('/admin/sliders/(:any)/(:any)', 'Admin\Sliders::drop/$1/$2', ['f
 $routes->post('/admin/sliders/save', 'Admin\Sliders::save', ['filter' => 'role:admin']);
 $routes->get('/admin/add_slider', 'Admin\Slider::add', ['filter' => 'role:admin']);
 
+// ==== Property Routes
+$routes->get('/admin/property', 'Admin\Property::index', ['filter' => 'role:admin']);
+$routes->get('/admin/property/(:any)', 'Admin\Property::edit/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/property/drop/(:any)', 'Admin\Property::index', ['filter' => 'role:admin']);
+$routes->delete('/admin/property/(:any)/(:any)', 'Admin\Property::drop/$1/$2', ['filter' => 'role:admin']);
+$routes->post('/admin/property/save', 'Admin\Property::save', ['filter' => 'role:admin']);
+$routes->get('/admin/add_property', 'Admin\Property::add', ['filter' => 'role:admin']);
+
 $routes->post('/admin/cta_save', 'Admin\Services::cta_save', ['filter' => 'role:admin']);
 $routes->get('/admin/services', 'Admin\Services::index', ['filter' => 'role:admin']);
 $routes->get('/admin/services/(:any)', 'Admin\Services::edit/$1', ['filter' => 'role:admin']);

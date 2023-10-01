@@ -17,7 +17,7 @@
  */
 function imgResize($imageName, $path, $width, $height, $maintainRatio = false, $quality = 100)
 {
-    $imgManipulator = \Config\Services::image();
+    $imgManipulator = \Config\Services::image('gd');
 
     $imgManipulator->withFile($path . '/' . $imageName)
         ->resize($width, $height, $maintainRatio)
@@ -138,4 +138,112 @@ function imgGenerateName($randomName, $forWhat = 'Website', $img_newExt = 'jpg')
         'nameWithOldExt' => $img_nameWithOldExt,
         'nameWithNewExt' => $img_nameWithNewExt,
     ];
+}
+
+function cutString($string) {
+    return substr($string,0,70).'...';
+}
+
+
+/**
+ * Helper method to uplaod batch of image
+ * 
+ * Examples:
+ *    imgGenerateName($file->getRandomName(), 'Slider', 'webp');
+ *
+
+ * @param array $img_file
+ * @param string $newname
+ * @return boolean
+ */
+function imgUploadBatch($img_file, $imgExt)
+{
+    
+    // dd($img_file);
+    $i=0;
+    $listnames= [];
+    if ($img_file) {
+        foreach ($img_file['img'] as $img) {
+            if ($img->isValid() && ! $img->hasMoved()) {
+
+                $imgNewNames = imgGenerateBatchName($img->getRandomName(), 'Properti');
+                $newName = $imgNewNames['nameOnly'].$i++.'.'.$imgExt;
+                
+                
+                $img->move('assets/img/property/',$newName);
+                array_push($listnames, $newName);
+            }
+        }
+        dd($listnames);
+    }
+   return $listnames;
+}
+
+/**
+ * Helper method to generate new all images name with new extension to be converted
+ * 
+ * Examples:
+ *    imgGenerateName($file->getRandomName(), 'Slider', 'webp');
+ *
+ * @param string $randomName
+ * @param string $forWhat
+ * @param int $img_newExt
+ * @return imgGenerateName|array
+ */
+function imgGenerateBatchName($img_file, $forWhat = 'Website', $img_newExt = 'jpg')
+{
+    // dd($img_files['img'][0]->getRandomName());
+    // $imageNames = [];
+    // foreach ($img_files['img'] as $img_file) {
+        // Get name Img without extension
+        $img_arr = explode('.', $img_file);
+
+        // Generate New name
+        $date = date('_M_d_Y-A-h-i_');
+        $img_nameOnly =  $img_arr[0];
+        $img_nameOnly = explode('_', $img_nameOnly);
+        $img_nameOnly = $forWhat . $date . $img_nameOnly[0];
+
+        $img_oldExt = end($img_arr);
+
+        $img_nameWithOldExt = $img_nameOnly . '.' . $img_oldExt;
+        $img_nameWithNewExt = $img_nameOnly . '.' . $img_newExt;
+
+        if (!$img_nameOnly && !$img_nameWithOldExt && !$img_nameWithNewExt) {
+            return false;
+        }
+
+            // ini lagi
+        // array_push($imageNames,[
+        //     'nameOnly' => $img_nameOnly,
+        //     'oldExtOnly' => $img_oldExt,
+        //     'nameWithOldExt' => $img_nameWithOldExt,
+        //     'nameWithNewExt' => $img_nameWithNewExt,
+        // ]);
+    // }
+
+    return [
+        'nameOnly' => $img_nameOnly,
+        'oldExtOnly' => $img_oldExt,
+        'oldExtOnly' => $img_oldExt,
+        'nameWithOldExt' => $img_nameWithOldExt,
+        'nameWithNewExt' => $img_nameWithNewExt,
+    ];
+}
+
+function imgInsertBatch($id_property,$listnames)
+{
+    foreach ($listnames as $names) {
+        # code...
+    }
+}
+
+function imgDropBatch($img_file)
+{
+    # code...
+}
+
+function imgUnlikBatch($img_file)
+{
+    # code...
 }

@@ -42,6 +42,15 @@ class Validation
 	// Rules
 	//--------------------------------------------------------------------
 
+	public $errors = [   // Errors
+        'username' => [
+            'required' => 'All accounts must have usernames provided',
+        ],
+        'password' => [
+            'min_length' => 'Your password is too short. You want to get hacked?',
+        ],
+    ];
+
 	public $personal = [
 		'fullname' => 'required|min_length[6]',
 		'born' => 'required',
@@ -120,4 +129,24 @@ class Validation
 		'questions' => 'required',
 		'answer' => 'required'
 	];
+
+	// === AKM Property
+
+	public $property = [
+		'type_name' => [
+			'label' => 'type',
+			'rules' =>'required|min_length[7]',
+		],
+		'address' => 'required',
+		'description' => 'required',
+		'img' => 'uploaded[img]|max_size[img,10240]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
+	];
+
+	public $propertyEdit = [
+		'type_name' => 'required|min_length[7]',
+		'address' => 'required',
+		'description' => 'required',
+		'img' => 'max_size[img,10240]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]'
+	];
+
 }
