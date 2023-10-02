@@ -68,7 +68,7 @@ function imgConvert($imgNameWithOldExt, $imgNameOnly, $path, $target_extension, 
         ->convert($extension)
         ->save($path . '/' . $imgNameOnly . '.' . $target_extension, $quality);
 
-    if ($imgManipulator) {
+    if ($imgManipulator && $imgNameWithOldExt != $imgNameOnly. '.' .$target_extension) {
         unlink($path . '/' . $imgNameWithOldExt);
         return $imgManipulator;
     }
@@ -118,7 +118,7 @@ function imgGenerateName($randomName, $forWhat = 'Website', $img_newExt = 'jpg')
     $img_arr = explode('.', $randomName);
 
     // Generate New name
-    $date = date('_M_d_Y-A-h-i_');
+    $date = date(' d M Y [h.i-A] ');
     $img_nameOnly =  $img_arr[0];
     $img_nameOnly = explode('_', $img_nameOnly);
     $img_nameOnly = $forWhat . $date . $img_nameOnly[0];

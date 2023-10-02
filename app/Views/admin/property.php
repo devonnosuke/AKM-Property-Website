@@ -22,7 +22,7 @@
                         </div>
                         <div class="col s3 m4 right">
                             <h2 class="header center-on-small-only">
-                                <a href="#add-slider-modal" class="modal-trigger btn btn-large blue waves-effect waves-dark hoverable"><i class="bi bi-plus left"></i> Tambah Properti</a>
+                                <a href="#add-property-modal" class="modal-trigger btn btn-large blue waves-effect waves-dark hoverable"><i class="bi bi-plus left"></i> Tambah Properti</a>
                             </h2>
                         </div>
                     </div>
@@ -63,8 +63,8 @@
         </div>
     </div>
 </main>
-<!-- Modal Structure -->
-<div class="modal" id="add-slider-modal">
+<!-- Add Property Structure -->
+<div class="modal" id="add-property-modal">
     <div class="modal-content contact-content">
         <form action="<?= base_url() ?>/admin/property/save/true" enctype="multipart/form-data" method="post" class="modal-form">
             <?= csrf_field() ?>
@@ -87,6 +87,16 @@
                             <textarea name="description" id="description" class="materialize-textarea validate <?= validCheck($validation->getError('description')) ?>" data-length="56" maxlength="56"><?= old('description') ?></textarea>
                             <label for="description" <?= errorMsgCheck($validation->getError('description')) ?>>Deskripsi Properti</label>
                         </div>
+                    </div>
+                    <div class="file-field input-field col m9 s12">
+                        <div class="btn waves-effect waves-light deep-purple lighten-1">
+                            <span>Pilih Gambar Utama</span>
+                            <input type="file" name="image" accept="image/*" id="image" onchange="previewImg()">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input type="text" class="file-path img-path validate">
+                        </div>
+                        <span class="err-validation"><?= $validation->getError('image') ?></span>
                     </div>
                     <div class="upload__box">
                         <div class="file-field input-field col s12 upload__btn-box">

@@ -135,11 +135,11 @@ class Validation
 	public $property = [
 		'type_name' => [
 			'label' => 'type',
-			'rules' =>'required|min_length[7]',
+			'rules' =>'required',
 		],
 		'address' => 'required',
 		'description' => 'required',
-		// 'img' => 'uploaded[img]|max_size[img,10240]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
+		'image' => 'uploaded[image]|max_size[image,61440]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 	];
 
 	public $propertyEdit = [

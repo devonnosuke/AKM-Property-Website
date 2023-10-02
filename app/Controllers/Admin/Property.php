@@ -61,21 +61,19 @@ class Property extends BaseController
     {
         // Get id data POST with ci4 : getVar(name)
         $id = $this->request->getVar('id');
-        // Get file data POST with ci4 : getFile(name)
+
+        // Get images[] data POST with ci4 : getFile(name)
         $img_files = $this->request->getFiles();
         
-        $img = $this->request->getFile('image');
         // Get Old image name if set
         $old_img = $this->request->getVar('old_img');
 
+        // Get image data POST with ci4 : getFile(name)
+        $img_file = $this->request->getFile('image');
         // Set image convert extension
         $img_ext = 'jpg';
-        
-
         // Generate New Img Name
-        // $imgNewNames = imgGenerateBatchName($img_files, 'Properti', $img_ext);
-        // dd($imgNewNames);
-        // $img = imgGenerateName($img_file->getRandomName(), 'Properti', $img_ext);
+        $newImageName = imgGenerateName($img_file->getRandomName(), 'properti', $img_ext);
 
         // Check whether to insert or edit
         if (!$insert) {
@@ -94,7 +92,7 @@ class Property extends BaseController
             // If the file has been uploaded then set the name image
             // With new type and assign to $data
             if ($img_file->getError() !== 4) {
-                $data['img'] = $img['nameWithNewExt'];
+                $data['img'] = $newImageName['nameWithNewExt'];
             } else {
                 // if else the old image name can be saved
                 $data['img'] = $old_img;
@@ -110,11 +108,13 @@ class Property extends BaseController
             $data = $this->request->getPost();
             // dd($img_files);
             // the name of pictue can be assign to $data
-            $data['img'] = $images[0]['nameWithNewExt'];
+            $data['img'] = $newImageName['nameWithNewExt'];
+
         }
 
         // Run validation with the rules set in App/Config/Validation.php
         if ($this->validation->run($data, $validation_rules)) {
+            
             
             foreach ($images as $imageName) {
                 $i = 0;
@@ -142,8 +142,29 @@ class Property extends BaseController
                 }
             }
 
+            if ($img_file->isValid() && !$img_file->hasMoved()) {
+
+                // Move file to server
+                $img_file->move('assets/img/property/', $newImageName['nameWithOldExt']);
+
+                
+                // Convert Image to $img_ext value
+                $convert = imgConvert($newImageName['nameWithOldExt'], $newImageName['nameOnly'], 'assets/img/property', $img_ext);
+
+                // Crop and Resize image
+                $fit = imgFit($newImageName['nameWithNewExt'], 'assets/img/property/');
+
+                // Check if the upload and image manipulation process is success
+                if ($img_file && $convert && $fit) {
+                    if ($id) {
+                        unlink('assets/img/property/' . $old_img);
+                    }
+                } else {
+                    return new \CodeIgniter\Exceptions\PageNotFoundException('Gambar Gagal Disimpan!');
+                }
+            }
+
             // htmlspecialchars is used to prevent special characters from being executed by the browser
-            // dd($data);
             $data = array_map('htmlspecialchars', $data);
 
             // Insert or change records to table with functions provided by codeigniter Model : save($data)
@@ -161,7 +182,7 @@ class Property extends BaseController
 
             // Set show modal session to shown up modal form if validation is wrong
             // Initialization of this function can be seen in App/Helper/ValidationSet_helper.php
-            setModalValidation(false, '#add-slider-modal', false);
+            setModalValidation(false, '#add-property-modal', false);
 
             // Back to previous controller and send the old() data input form
             return redirect()->back()->withInput();
