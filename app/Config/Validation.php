@@ -143,10 +143,10 @@ class Validation
 	];
 
 	public $propertyEdit = [
-		'type_name' => 'required|min_length[7]',
+		'type_name' => 'required',
 		'address' => 'required',
 		'description' => 'required',
-		'img' => 'max_size[img,10240]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]'
+		// 'image' => 'max_size[image,10240]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]'
 	];
 
 }

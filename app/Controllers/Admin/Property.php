@@ -29,7 +29,6 @@ class Property extends BaseController
         $data['title'] = $this->title;
         $data['property_active'] = 'curr-active';
 
-
         // Return the view with data
         return view('admin/property', $data);
     }
@@ -68,10 +67,12 @@ class Property extends BaseController
         // Get Old image name if set
         $old_img = $this->request->getVar('old_img');
 
-        // Get image data POST with ci4 : getFile(name)
-        $img_file = $this->request->getFile('image');
         // Set image convert extension
         $img_ext = 'jpg';
+
+        // Get image data POST with ci4 : getFile(name)
+        $img_file = $this->request->getFile('image');
+
         // Generate New Img Name
         $newImageName = imgGenerateName($img_file->getRandomName(), 'properti', $img_ext);
 
@@ -87,60 +88,30 @@ class Property extends BaseController
                 'type_name' => $this->request->getVar('type_name'),
                 'address' => $this->request->getVar('address'),
                 'description' => $this->request->getVar('description'),
+                'image' => $newImageName['nameWithNewExt'],
             ];
 
             // If the file has been uploaded then set the name image
             // With new type and assign to $data
             if ($img_file->getError() !== 4) {
-                $data['img'] = $newImageName['nameWithNewExt'];
+                $data['image'] = $newImageName['nameWithNewExt'];
             } else {
                 // if else the old image name can be saved
-                $data['img'] = $old_img;
+                $data['image'] = $old_img;
             }
         } else {
-
-           $images = imgUploadBatch($img_files, $img_ext);
 
             // Set the validation rules to be used (Rules to add form)
             $validation_rules = 'property';
 
             // Get all data POST with ci4 : getPost()
             $data = $this->request->getPost();
-            // dd($img_files);
             // the name of pictue can be assign to $data
-            $data['img'] = $newImageName['nameWithNewExt'];
-
+            $data['image'] = $img_file;
         }
-
         // Run validation with the rules set in App/Config/Validation.php
         if ($this->validation->run($data, $validation_rules)) {
-            
-            
-            foreach ($images as $imageName) {
-                $i = 0;
-            // Move the image to server and delete old image
-                if ($img_files['img'][$i++]->isValid()) {
-
-                    // Move file to server
-                    // $img_file->move('assets/img/property/', $img['nameWithOldExt']);
-
-                    // Convert Image to $img_ext value
-                    $convert = imgConvert($imageName['nameWithOldExt'],$imageName['nameOnly'] , 'assets/img/property', $img_ext, 78);
-
-                    // Crop and Resize image
-                    $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
-
-                    // Check if the upload and image manipulation process is success
-                    if ($img_file && $convert && $fit) {
-
-                        if ($id) {
-                            unlink('assets/img/property/' . $old_img);
-                        }
-                    } else {
-                        return new \CodeIgniter\Exceptions\PageNotFoundException('File Failed to save');
-                    }
-                }
-            }
+            // dd($this->validation->run($data, $validation_rules));
 
             if ($img_file->isValid() && !$img_file->hasMoved()) {
 
@@ -164,12 +135,49 @@ class Property extends BaseController
                 }
             }
 
+            $data['image'] = $newImageName['nameWithNewExt'];
+
             // htmlspecialchars is used to prevent special characters from being executed by the browser
             $data = array_map('htmlspecialchars', $data);
 
             // Insert or change records to table with functions provided by codeigniter Model : save($data)
             if (!$this->propertyModels->save($data)) {
                 return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
+            }
+
+            $id_property = $this->propertyModels->getLastid();
+            $id_property = $id_property[0]['id'];
+            
+            // Move file to server
+            $images = imgUploadBatch($img_files, $img_ext);
+            
+            // Convert and crop images
+            if ($images) {
+                $i = 0;
+                foreach ($images as $imageName) {
+      
+                    // Convert Image to $img_ext value
+                    $convert = imgConvert( $imageName['nameWithOldExt'], $imageName['nameOnly'], 'assets/img/property', $img_ext, 78);
+
+                    // Crop and Resize image
+                    $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
+
+                    // Check if the upload and image manipulation process is success
+                    if ($img_file && $convert && $fit) {
+
+                        $dataImages = [
+                            'image_name'=>$imageName['nameWithNewExt'],
+                            'id_property'=>$id_property,
+                        ];
+                        // Insert or change records to table with functions provided by codeigniter Model : save($data)
+                        $this->propertyImgModels->simpan($dataImages);
+                    } else {
+                        return new \CodeIgniter\Exceptions\PageNotFoundException('File Failed to save');
+                    }
+
+
+                }
+            
             }
 
             // Set alert session to show notification flashdata
@@ -195,9 +203,9 @@ class Property extends BaseController
         $data = [
             'validation' => $this->validation,
             'title' => $this->title,
-            'slider' => $this->findAll($id),
+            'property' => $this->findAll($id),
         ];
-        $data['sliders_active'] = 'curr-active';
+        $data['property_active'] = 'curr-active';
 
         return view('admin/property_edit', $data);
     }

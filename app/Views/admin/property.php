@@ -33,7 +33,7 @@
                                 <div class="card medium hoverable card-slider">
 
                                     <div class="card-image">
-                                        <img src="<?= base_url() ?>/assets/img/property/<?= $prop->img ?>" class="img-slider">
+                                        <img src="<?= base_url() ?>/assets/img/property/<?= $prop->image ?>" class="img-slider">
                                         <span class="card-title center-align flow-text"><?= $prop->type_name ?></span>
                                     </div>
 
@@ -44,7 +44,7 @@
                                     <div class="card-action center z-depth-1">
                                         <a href="<?= base_url() ?>/admin/property/<?= $prop->id ?>" class="btn orange darken-2 waves-effect waves-dark tooltipped btn-card" data-position="bottom" data-delay="150" data-tooltip="Change"><i class="bi bi-pencil-fill"></i></a>
 
-                                        <button data-href="<?= base_url() ?>/admin/property/<?= $prop->id ?>/<?= $prop->img ?>" class="btn red darken-2 waves-effect waves-dark delete-btn tooltipped" data-tooltip="Delete" data-delay="150" data-position="bottom">
+                                        <button data-href="<?= base_url() ?>/admin/property/<?= $prop->id ?>/<?= $prop->image ?>" class="btn red darken-2 waves-effect waves-dark delete-btn tooltipped" data-tooltip="Delete" data-delay="150" data-position="bottom">
                                             <i class="bi bi-trash-fill"></i>
                                         </button>
                                     </div>

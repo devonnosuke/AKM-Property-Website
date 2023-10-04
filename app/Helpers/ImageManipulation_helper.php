@@ -165,15 +165,23 @@ function imgUploadBatch($img_file, $imgExt)
             if ($img->isValid() && ! $img->hasMoved()) {
 
                 $imgNewNames = imgGenerateBatchName($img->getRandomName(), 'Properti');
-                $newName = $imgNewNames['nameOnly'].$i++.'.'.$imgExt;
-                
+                $newName = $imgNewNames['nameOnly'].++$i.'.'.$imgExt;
                 
                 $img->move('assets/img/property/',$newName);
-                array_push($listnames, $imgNewNames);
+                
+                $names = [
+                    'nameOnly' => $imgNewNames['nameOnly'].$i,
+                    'oldExtOnly' => $imgNewNames['oldExtOnly'],
+                    'nameWithOldExt' => $imgNewNames['nameOnly'].$i.'.'.$imgNewNames['oldExtOnly'],
+                    'nameWithNewExt' => $imgNewNames['nameOnly'].$i.'.'.$imgExt,
+                ];
+                array_push($listnames, $names);
+            } else {
+                throw new \RuntimeException($file->getErrorString() . '(' . $img->getError() . ')');
             }
         }
     }
-   return $listnames;
+    return $listnames;
 }
 
 /**
@@ -221,7 +229,6 @@ function imgGenerateBatchName($img_file, $forWhat = 'Website', $img_newExt = 'jp
 
     return [
         'nameOnly' => $img_nameOnly,
-        'oldExtOnly' => $img_oldExt,
         'oldExtOnly' => $img_oldExt,
         'nameWithOldExt' => $img_nameWithOldExt,
         'nameWithNewExt' => $img_nameWithNewExt,
