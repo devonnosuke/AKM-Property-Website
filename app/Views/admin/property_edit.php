@@ -56,7 +56,7 @@
                                                 <input type="text" class="file-path img-path validate">
                                             </div>
                                             <?= $validation->getError('image') ?>
-                                        </div>
+                                        </div>                                        
                                     </div>
 
                                     <div class="modal-footer edit">

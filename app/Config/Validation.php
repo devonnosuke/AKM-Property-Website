@@ -140,13 +140,18 @@ class Validation
 		'address' => 'required',
 		'description' => 'required',
 		'image' => 'uploaded[image]|max_size[image,61440]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
+		'img' => 'uploaded[img]|max_size[img,61440]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 	];
-
+	
 	public $propertyEdit = [
 		'type_name' => 'required',
 		'address' => 'required',
 		'description' => 'required',
 		// 'image' => 'max_size[image,10240]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]'
+	];
+	
+	public $property_images = [
+		'img' => 'uploaded[img]|max_size[img,61440]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 	];
 
 }

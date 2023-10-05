@@ -77,6 +77,12 @@ $routes->delete('/admin/property/(:any)/(:any)', 'Admin\Property::drop/$1/$2', [
 $routes->post('/admin/property/save', 'Admin\Property::save', ['filter' => 'role:admin']);
 $routes->get('/admin/add_property', 'Admin\Property::add', ['filter' => 'role:admin']);
 
+// ==== PropertyImages Routes
+$routes->delete('/admin/propertyimage/(:any)', 'Admin\PropertyImage::drop/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/property-image/(:any)', 'Admin\PropertyImage::index/$1', ['filter' => 'role:admin']);
+$routes->post('/admin/propertyimage/save', 'Admin\PropertyImage::save', ['filter' => 'role:admin']);
+
+
 $routes->post('/admin/cta_save', 'Admin\Services::cta_save', ['filter' => 'role:admin']);
 $routes->get('/admin/services', 'Admin\Services::index', ['filter' => 'role:admin']);
 $routes->get('/admin/services/(:any)', 'Admin\Services::edit/$1', ['filter' => 'role:admin']);

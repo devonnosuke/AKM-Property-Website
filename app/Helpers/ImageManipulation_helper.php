@@ -165,7 +165,7 @@ function imgUploadBatch($img_file, $imgExt)
             if ($img->isValid() && ! $img->hasMoved()) {
 
                 $imgNewNames = imgGenerateBatchName($img->getRandomName(), 'Properti');
-                $newName = $imgNewNames['nameOnly'].++$i.'.'.$imgExt;
+                $newName = $imgNewNames['nameOnly'].++$i.'.'.$imgNewNames['oldExtOnly'];
                 
                 $img->move('assets/img/property/',$newName);
                 
@@ -242,8 +242,7 @@ function imgGenerateBatchName($img_file, $forWhat = 'Website', $img_newExt = 'jp
  * Examples:
  *    imgConvert('picture01.png', 'picture01', 'assets/img/', 'jpg', 65);
  *
- * @param string $imgNameWithOldExt
- * @param string $imgNameOnly
+ * @param string $imageNames
  * @param string $path
  * @param string $ext
  * @param string $target_extension
@@ -290,19 +289,46 @@ function imgConvertBatch($imageNames, $path, $target_extension, $quality = 100)
     return $imgManipulator;
 }
 
-function imgInsertBatch($id_property, $listnames)
+// function imgDeleteBatch($listnames, $path)
+// {
+//     foreach ($listnames as $names) {
+//         unlink('assets/img/property/' . $names);
+//     }
+// }
+
+function getImgList($model)
 {
-    foreach ($listnames as $names) {
-        # code...
+    $imagesData= $model->findAll();
+
+    $listnames = "";
+
+    $listnamesArray = [];
+
+    $i = 1;
+    // dd(count($imagesData));
+    foreach ($imagesData as $image ) {
+        
+        if (count($imagesData) == $i ) {
+            $listnames = $listnames.$image['image_name'];
+        } else {
+            $listnames = $image['image_name'].",".$listnames;
+        } 
+        $i++;
+        
+        array_push($listnamesArray,$image );
     }
+
+    // dd($listnamesArray);
+    return  $listnamesArray;
 }
 
-function imgDropBatch($img_file)
+function imgCheck($model)
 {
-    # code...
-}
+    $imagesData = $model->findAll();
+    foreach ($imagesData as $image ) {
+        dd($image['image_name']);
+    }
 
-function imgUnlikBatch($img_file)
-{
-    # code...
+
+    return  $img_status;
 }

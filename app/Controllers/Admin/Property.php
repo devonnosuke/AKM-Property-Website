@@ -109,6 +109,8 @@ class Property extends BaseController
             // the name of pictue can be assign to $data
             $data['image'] = $img_file;
         }
+
+        
         // Run validation with the rules set in App/Config/Validation.php
         if ($this->validation->run($data, $validation_rules)) {
             // dd($this->validation->run($data, $validation_rules));
@@ -116,14 +118,13 @@ class Property extends BaseController
             if ($img_file->isValid() && !$img_file->hasMoved()) {
 
                 // Move file to server
-                $img_file->move('assets/img/property/', $newImageName['nameWithOldExt']);
-
-                
-                // Convert Image to $img_ext value
-                $convert = imgConvert($newImageName['nameWithOldExt'], $newImageName['nameOnly'], 'assets/img/property', $img_ext);
-
-                // Crop and Resize image
-                $fit = imgFit($newImageName['nameWithNewExt'], 'assets/img/property/');
+                if ( $img_file->move('assets/img/property/', $newImageName['nameWithOldExt'])) {
+                    // Convert Image to $img_ext value
+                    $convert = imgConvert($newImageName['nameWithOldExt'], $newImageName['nameOnly'], 'assets/img/property', $img_ext);
+     
+                    // Crop and Resize image
+                    $fit = imgFit($newImageName['nameWithNewExt'], 'assets/img/property/');
+                }
 
                 // Check if the upload and image manipulation process is success
                 if ($img_file && $convert && $fit) {
@@ -144,18 +145,20 @@ class Property extends BaseController
             if (!$this->propertyModels->save($data)) {
                 return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
             }
-
+            
             $id_property = $this->propertyModels->getLastid();
             $id_property = $id_property[0]['id'];
             
-            // Move file to server
-            $images = imgUploadBatch($img_files, $img_ext);
+            // Uplaod images
+            if (!$images = imgUploadBatch($img_files, $img_ext)) {
+                return new \CodeIgniter\Exceptions\PageNotFoundException('imgUploadBatch() Error');
+            }
             
             // Convert and crop images
             if ($images) {
                 $i = 0;
                 foreach ($images as $imageName) {
-      
+                    // dd($imageName);
                     // Convert Image to $img_ext value
                     $convert = imgConvert( $imageName['nameWithOldExt'], $imageName['nameOnly'], 'assets/img/property', $img_ext, 78);
 
@@ -200,10 +203,12 @@ class Property extends BaseController
     // This Method to show the edit page
     public function edit($id)
     {
+        // getImgList($this->propertyImgModels);
         $data = [
             'validation' => $this->validation,
             'title' => $this->title,
             'property' => $this->findAll($id),
+            'images' =>getImgList($this->propertyImgModels),
         ];
         $data['property_active'] = 'curr-active';
 

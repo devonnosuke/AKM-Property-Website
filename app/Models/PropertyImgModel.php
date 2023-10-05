@@ -8,7 +8,7 @@ class PropertyImgModel extends Model
 {
     protected $table      = 'property_img';
     protected $primaryKey = 'image_name';
-    protected $returnType     = 'object';
+    protected $returnType     = 'array';
     protected $allowedFields = ['id_property'];
 
         // Dates
@@ -33,6 +33,15 @@ class PropertyImgModel extends Model
 
         $dataImages['created_at'] = date("Y-m-d H:i:s");
         return $builder->insert($dataImages);
+    }
+
+    public function getPropertyById($id_property) {
+        $db      = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('*');
+        $builder->where('id_property', $id_property);
+
+        return $builder->get()->getResultObject();
     }
 
 }

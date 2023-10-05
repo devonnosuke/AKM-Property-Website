@@ -42,11 +42,22 @@
                                     </div>
 
                                     <div class="card-action center z-depth-1">
-                                        <a href="<?= base_url() ?>/admin/property/<?= $prop->id ?>" class="btn orange darken-2 waves-effect waves-dark tooltipped btn-card" data-position="bottom" data-delay="150" data-tooltip="Change"><i class="bi bi-pencil-fill"></i></a>
+                                        
+                                        <a href="<?= base_url() ?>/admin/property/<?= $prop->id ?>" class="btn orange darken-2 waves-effect waves-dark tooltipped btn-card" data-position="bottom" data-delay="150" data-tooltip="Change">Salin Link <i class="bi bi-link-45deg"></i></a>
+                                        <!-- Dropdown Trigger -->
+                                        <button class='dropdown-button btn purple darken-1 btn-card-more' data-activates='dropdown<?= $prop->id ?>'><i class="bi bi-list"></i></button>
+                                        <!-- Dropdown Structure -->
+                                        <ul id='dropdown<?= $prop->id ?>' class='dropdown-content'>
+                                        <li><a href="<?= base_url() ?>/admin/property-image/<?= $prop->id ?>"><i class="bi bi-images"></i>Lihat Gallery Foto</a></li>
+                                        <li><a href="<?= base_url() ?>/admin/property/<?= $prop->id ?>" class="waves-effect waves-dark"><i class="bi bi-pencil-fill"></i>Edit</a></li>
+                                        <li class="divider"></li>
+                                        <li class="divider"></li>
+                                        <li><a data-href="<?= base_url() ?>/admin/property/<?= $prop->id ?>/<?= $prop->image ?>" class="waves-effect waves-dark delete-btn"><i class="bi bi-trash-fill"></i>Hapus</a></li>
+                                        </ul>
 
-                                        <button data-href="<?= base_url() ?>/admin/property/<?= $prop->id ?>/<?= $prop->image ?>" class="btn red darken-2 waves-effect waves-dark delete-btn tooltipped" data-tooltip="Delete" data-delay="150" data-position="bottom">
+                                        <!-- <button data-href="<?= base_url() ?>/admin/property/<?= $prop->id ?>/<?= $prop->image ?>" class="btn red darken-2 waves-effect waves-dark delete-btn tooltipped btn-card-more" data-tooltip="Delete" data-delay="150" data-position="bottom">
                                             <i class="bi bi-trash-fill"></i>
-                                        </button>
+                                        </button> -->
                                     </div>
 
                                 </div>
@@ -102,7 +113,7 @@
                         <div class="file-field input-field col s12 upload__btn-box">
                             <div class="btn waves-effect waves-light deep-purple lighten-1 upload__btn">
                                 <span>Select Picture</span>
-                                <input type="file" multiple data-max_length="20" name="img[]" class="upload__inputfile">
+                                <input type="file" multiple data-max_length="20" name="img[]" class="upload__inputfileonly">
                             </div>
                             <div class="file-path-wrapper">
                                 <input type="text" class="file-path img-path validate <?= validCheck($validation->getError('img')) ?>">

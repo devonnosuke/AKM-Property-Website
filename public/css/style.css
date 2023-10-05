@@ -337,6 +337,10 @@ hr {
     margin-bottom: 15px;
   }
 
+  .btn-card-more {
+    margin-bottom: 15px;
+  }
+
   .card-gal {
     max-height: 100% !important;
   }
@@ -1203,4 +1207,8 @@ input[type="text"]:not(.browser-default).invalid.file-path {
   background-size: cover;
   position: relative;
   padding-bottom: 100%;
+}
+
+.hidee {
+  display: none;
 }
