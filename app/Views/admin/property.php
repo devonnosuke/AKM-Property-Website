@@ -38,12 +38,13 @@
                                     </div>
 
                                     <div class="card-content desc">
+                                        <p id="<?= $prop->id ?>">https://akmproperti.com/properti/<?= $prop->slug ?></p>
                                         <?= cutString($prop->description) ?>
                                     </div>
 
                                     <div class="card-action center z-depth-1">
                                         
-                                        <a href="<?= base_url() ?>/admin/property/<?= $prop->id ?>" class="btn orange darken-2 waves-effect waves-dark tooltipped btn-card" data-position="bottom" data-delay="150" data-tooltip="Change">Salin Link <i class="bi bi-link-45deg"></i></a>
+                                        <button class="btn orange darken-2 waves-effect waves-light btn-card-more btn-link" onclick="copyToClipboard('#<?= $prop->id ?>')">Salin Link <i class="bi bi-link-45deg"></i></button>
                                         <!-- Dropdown Trigger -->
                                         <button class='dropdown-button btn purple darken-1 btn-card-more' data-activates='dropdown<?= $prop->id ?>'><i class="bi bi-list"></i></button>
                                         <!-- Dropdown Structure -->

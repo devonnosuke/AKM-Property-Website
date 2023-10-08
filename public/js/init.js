@@ -357,6 +357,10 @@ $(document).ready(function () {
   if ($(window).width() < 767) {
     $(".tooltipped").tooltip("remove");
   }
+
+  $(".btn-link").on("click", () => {
+    Materialize.toast("Link Telah Dicopy!", 3000);
+  });
 });
 
 function resetValidate() {
@@ -540,3 +544,18 @@ function ImgUpload() {
     $(this).parent().parent().remove();
   });
 }
+
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+
+// $(window).on("scroll", function () {
+//   if ($(this).scrollTop() > 50) {
+//     return headingWrapper.addClass("scroll");
+//   }
+//   return headingWrapper.removeClass("scroll");
+// });

@@ -40,6 +40,7 @@ $routes->get('/dashboard', 'Admin\Dashboard::index', ['filter' => 'role:admin'])
 $routes->get('/admin', 'Admin\Dashboard::index', ['filter' => 'role:admin']);
 $routes->get('/download/(:any)', 'LandingPages::download/$1');
 $routes->post('/sendMail', 'LandingPages::sendMail');
+$routes->get('/properti/(:any)', 'LandingPages::download/$1');
 
 $routes->get('/admin/personal', 'Admin\Personal::index', ['filter' => 'role:admin']);
 $routes->post('/admin/personal/save', 'Admin\Personal::save', ['filter' => 'role:admin']);
