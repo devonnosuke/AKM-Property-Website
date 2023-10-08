@@ -39,6 +39,14 @@
                                                 <textarea name="description" id="description" class="materialize-textarea validate <?= validCheck($validation->getError('description')) ?>" data-length="56" maxlength="56"><?= oldCheck('description', $property->description) ?></textarea>
                                                 <label for="description" class="txtarea-label" <?= errorMsgCheck($validation->getError('description')) ?>>Deskripsi Properti</label>
                                             </div>
+                                            <div class="input-field swatch">
+                                                <div id="swatch">
+                                                    <input type="color" id="color" name="color" value="<?= $property->color ?>">
+                                                    <div class="info">
+                                                        <span>Edit Warna Properti</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="col s12 m4 img-input">

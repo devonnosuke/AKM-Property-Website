@@ -89,10 +89,12 @@ class Property extends BaseController
                 'address' => $this->request->getVar('address'),
                 'description' => $this->request->getVar('description'),
                 'image' => $newImageName['nameWithNewExt'],
+                'color' => strtoupper($this->request->getVar('color')),
             ];
 
             // If the file has been uploaded then set the name image
             // With new type and assign to $data
+            // dd($old_img);
             if ($img_file->getError() !== 4) {
                 $data['image'] = $newImageName['nameWithNewExt'];
             } else {
@@ -106,6 +108,7 @@ class Property extends BaseController
 
             // Get all data POST with ci4 : getPost()
             $data = $this->request->getPost();
+            $data['color'] = strtoupper($this->request->getVar('color'));
             // the name of pictue can be assign to $data
             $data['image'] = $img_file;
         }
@@ -114,7 +117,6 @@ class Property extends BaseController
         // Run validation with the rules set in App/Config/Validation.php
         if ($this->validation->run($data, $validation_rules)) {
             // dd($this->validation->run($data, $validation_rules));
-
             if ($img_file->isValid() && !$img_file->hasMoved()) {
 
                 // Move file to server
@@ -134,9 +136,10 @@ class Property extends BaseController
                 } else {
                     return new \CodeIgniter\Exceptions\PageNotFoundException('Gambar Gagal Disimpan!');
                 }
+                
+                $data['image'] = $newImageName['nameWithNewExt'];
             }
 
-            $data['image'] = $newImageName['nameWithNewExt'];
 
             // htmlspecialchars is used to prevent special characters from being executed by the browser
             $data = array_map('htmlspecialchars', $data);
@@ -146,16 +149,17 @@ class Property extends BaseController
                 return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
             }
             
-            $id_property = $this->propertyModels->getLastid();
-            $id_property = $id_property[0]['id'];
-            
-            // Uplaod images
-            if (!$images = imgUploadBatch($img_files, $img_ext)) {
-                return new \CodeIgniter\Exceptions\PageNotFoundException('imgUploadBatch() Error');
-            }
-            
             // Convert and crop images
-            if ($images) {
+            if ($insert) {
+                
+                $id_property = $this->propertyModels->getLastid();
+                $id_property = $id_property[0]['id'];
+                
+                // Uplaod images
+                if (!$images = imgUploadBatch($img_files, $img_ext)) {
+                    return new \CodeIgniter\Exceptions\PageNotFoundException('imgUploadBatch() Error');
+                }
+
                 $i = 0;
                 foreach ($images as $imageName) {
                     // dd($imageName);

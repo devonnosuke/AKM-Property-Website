@@ -98,10 +98,18 @@
                             <textarea name="description" id="description" class="materialize-textarea validate <?= validCheck($validation->getError('description')) ?>" data-length="56" maxlength="56"><?= old('description') ?></textarea>
                             <label for="description" <?= errorMsgCheck($validation->getError('description')) ?>>Deskripsi Properti</label>
                         </div>
+                        <div class="input-field swatch">
+                            <div id="swatch">
+                                <input type="color" id="color" name="color" value="#D80E0E">
+                                <div class="info">
+                                    <span>Pilih Warna Properti</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="file-field input-field col m9 s12">
                         <div class="btn waves-effect waves-light deep-purple lighten-1">
-                            <span>Pilih Gambar Utama</span>
+                            <span>Pilih 1 Gambar Utama</span>
                             <input type="file" name="image" accept="image/*" id="image" onchange="previewImg()">
                         </div>
                         <div class="file-path-wrapper">
@@ -112,7 +120,7 @@
                     <div class="upload__box">
                         <div class="file-field input-field col s12 upload__btn-box">
                             <div class="btn waves-effect waves-light deep-purple lighten-1 upload__btn">
-                                <span>Select Picture</span>
+                                <span>Pilih Banyak gambar</span>
                                 <input type="file" multiple data-max_length="20" name="img[]" class="upload__inputfileonly">
                             </div>
                             <div class="file-path-wrapper">
