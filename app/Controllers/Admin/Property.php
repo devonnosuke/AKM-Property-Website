@@ -78,10 +78,9 @@ class Property extends BaseController
 
         // Check whether to insert or edit
         if (!$insert) {
-
             // Set the validation rules to be used (Rules to edit form)
             $validation_rules = 'propertyEdit';
-
+            
             // Get POST id data with ci4 : getVar(name) and save to $data
             $data = [
                 'id' => $id,
@@ -90,6 +89,7 @@ class Property extends BaseController
                 'description' => $this->request->getVar('description'),
                 'image' => $newImageName['nameWithNewExt'],
                 'color' => strtoupper($this->request->getVar('color')),
+                'slug' => $this->request->getVar('slug'),
             ];
 
             // If the file has been uploaded then set the name image
@@ -102,17 +102,16 @@ class Property extends BaseController
                 $data['image'] = $old_img;
             }
         } else {
-
+            
             // Set the validation rules to be used (Rules to add form)
             $validation_rules = 'property';
-
+            
             // Get all data POST with ci4 : getPost()
             $data = $this->request->getPost();
             $data['color'] = strtoupper($this->request->getVar('color'));
             // the name of pictue can be assign to $data
             $data['image'] = $img_file;
         }
-
         
         // Run validation with the rules set in App/Config/Validation.php
         if ($this->validation->run($data, $validation_rules)) {
@@ -136,11 +135,12 @@ class Property extends BaseController
                 } else {
                     return new \CodeIgniter\Exceptions\PageNotFoundException('Gambar Gagal Disimpan!');
                 }
-                
+
                 $data['image'] = $newImageName['nameWithNewExt'];
             }
 
 
+            $data['slug'] = url_title($this->request->getVar('type_name'), '-', true);
             // htmlspecialchars is used to prevent special characters from being executed by the browser
             $data = array_map('htmlspecialchars', $data);
 

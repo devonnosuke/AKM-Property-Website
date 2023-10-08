@@ -24,6 +24,7 @@
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="id" value="<?= $property->id ?>">
                                     <input type="hidden" name="old_img" value="<?= $property->image ?>">
+                                    <input type="hidden" name="slug" value="<?= $property->slug ?>">
                                     <h4>Edit Properti</h4>
                                     <div class="row row-input">
                                         <div class="col s12">

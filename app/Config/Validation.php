@@ -135,19 +135,25 @@ class Validation
 	public $property = [
 		'type_name' => [
 			'label' => 'type',
-			'rules' =>'required',
+			'rules' =>'required|is_unique[property.type_name]',
 		],
 		'address' => 'required',
 		'description' => 'required',
 		'image' => 'uploaded[image]|max_size[image,61440]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 		'img' => 'uploaded[img]|max_size[img,61440]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
+		'color' => 'required',
 	];
 	
 	public $propertyEdit = [
-		'type_name' => 'required',
+		'type_name' => [
+			'label' => 'type',
+			'rules' =>'required|is_unique[property.type_name,id,{id}]',
+		],
 		'address' => 'required',
 		'description' => 'required',
-		// 'image' => 'max_size[image,10240]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]'
+		// 'image' => 'max_size[image,10240]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
+		'color' => 'required',
+
 	];
 	
 	public $property_images = [
