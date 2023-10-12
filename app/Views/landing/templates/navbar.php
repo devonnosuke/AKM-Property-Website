@@ -14,8 +14,7 @@
                     <a href="#" data-activates="slide-out" class="button-collapse nav-link"><i class="bi bi-list"></i></a>
                     <!-- The Logo Brand -->
                     <a href="<?= $base ?>#home" class="brand-logo nav-link">
-                        <span class="hide-on-small-only">Subaru Projects</span>
-                        <span class="hide-on-med-and-up">SB</span>
+                        <img src="<?= base_url() ?>/assets/img/logo.svg" class="responsive-img" alt="Yura Company Logo">
                     </a>
                     <!-- %%% Dekstop Nav %%% -->
                     <ul class="right hide-on-med-and-down">
@@ -42,16 +41,6 @@
                     </ul> -->
                     <!-- %%% Mobile Nav %%% -->
                     <ul id="slide-out" class="side-nav">
-                        <li>
-                            <div class="userView">
-                                <div class="background">
-                                    <img class="responsive-img sampul" src="<?= base_url() ?>/assets/img/Thumbnail.jpg" alt="Thumbnail">
-                                </div>
-                                <a href="#!user"><img class="circle responsive-img" src="<?= base_url() ?>/assets/img/channel.png" alt="Channel Logo"></a>
-                                <a href="#!name"><span class="name">Akasaka Devonosuke</span></a>
-                                <a href="#!email"><span class="email">rnidevon@gmail.com</span></a>
-                            </div>
-                        </li>
                         <ul class="collapsible" data-collapsible="accordion">
                             <li class="daftar-menu">
                                 <div class="collapsible-header waves-effect waves-light black-text grey-text text-darken-4">

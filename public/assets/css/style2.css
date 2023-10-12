@@ -1,0 +1,424 @@
+/* ====== Bagian Other */
+body {
+  font-family: "Open Sans", sans-serif;
+  font-family: "Oswald", sans-serif;
+}
+section,
+footer {
+  padding: 20px 0;
+}
+
+/* ====================================Back to top */
+.btn-to-top {
+  display: none;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  padding: 0 8px;
+}
+ul.right li a:hover {
+  transition: 0.3s;
+  color: #ffffff;
+}
+ul.right {
+  opacity: 0.9;
+}
+h3 {
+  padding-bottom: 5px;
+}
+h4 {
+  padding-bottom: 5px;
+}
+
+/* fallback */
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/MaterialIcons-Regular.woff2) format("woff2");
+}
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ====== Bagian Carousel */
+.caption h1 {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.parallax img {
+  filter: grayscale(1);
+  filter: opacity(0.8);
+}
+
+.slides li img {
+  padding-top: 650px;
+}
+
+/* ====== Bagian Navbar */
+.navbar-fixed {
+  z-index: 999;
+}
+
+@media screen and (max-width: 600px) {
+  .caption h1 {
+    font-size: 44px;
+    line-height: 55px;
+    letter-spacing: 2.5px;
+    margin: 5px 0;
+  }
+
+  .slider-promo h1 {
+    font-size: 37px;
+    line-height: 40px;
+    letter-spacing: 1.5px;
+    margin: 10px 0;
+  }
+
+  .slider-promo h1 span {
+    font-size: 3.7rem;
+  }
+
+  .slider-promo h2 {
+    font-size: 2.5rem;
+    background-color: darkred;
+    padding: 10px;
+    padding-bottom: 15px;
+  }
+
+  .slider-promo h1,
+  .slider-promo h3,
+  .slider-promo h2 {
+    margin: 5px 0;
+    margin-top: 8px;
+  }
+
+  .slider-promo h3 {
+    font-size: 1.9rem;
+    margin-top: 1.2rem;
+  }
+
+  .slider-promo .modal-trigger {
+    margin-top: 1rem;
+    width: 100%;
+    font-size: 1.5rem;
+    border-right: 3px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+  }
+
+  .slider-promo .modal-trigger:active {
+    position: relative;
+    left: 3px;
+    top: 3px;
+    border: none;
+    transition: 0.3s;
+  }
+
+  .col.services .card {
+    width: 260px;
+    margin: 25px 5px;
+  }
+
+  .heading-text .left {
+    background-color: red;
+    width: 250px;
+    height: 4px;
+  }
+
+  .heading-text {
+    margin-bottom: 10px;
+  }
+  .heading-text h2 {
+    margin-bottom: 5px;
+  }
+}
+
+/* nav .brand-logo img {
+  width: 67%;
+  filter: hue-rotate(90deg);
+} */
+
+@media screen and (max-width: 400px) {
+  /* nav .brand-logo img {
+    width: 135%;
+    max-width: none;
+  } */
+  /* nav .brand-logo {
+    left: 45%;
+  } */
+}
+
+/*=============================================== Navbar */
+.border {
+  top: -200px;
+  position: relative;
+  margin: 0 auto;
+  width: 600px;
+  height: 15px;
+  background-image: linear-gradient(
+    to right,
+    #ff708d,
+    #79bdff 25% 75%,
+    #73f373
+  );
+  z-index: -1;
+}
+#menu-dropdown li a {
+  line-height: 34px;
+  color: #00acc1;
+}
+#menu-dropdown li {
+  border-bottom: 3px solid white;
+  box-sizing: border-box;
+}
+#menu-dropdown li:hover {
+  border-bottom: 3px solid #212121;
+  transition: 0.5s;
+}
+#menu-dropdown li a {
+  color: #212121;
+}
+a.dropdown-button {
+  width: 150px;
+}
+.sampul {
+  filter: blur(2px);
+  filter: brightness(30%);
+}
+.navbar-fixed {
+  z-index: 999;
+  font-weight: bold;
+  /*opacity: .9;*/
+}
+
+.brand-logo span {
+  margin-left: 1rem;
+  font-size: 24px;
+  /* font-weight: bold; */
+}
+
+.div-collapse {
+  margin: 0 !important;
+}
+
+/* .collapsible-header {
+  padding-top: 8px !important;
+} */
+.small-icon {
+  font-size: 12px;
+  margin: 0 !important;
+}
+.nav-chev {
+  float: right;
+  font-size: 12px !important;
+  padding-left: 50%;
+}
+.icon-nav-menu {
+  float: left;
+}
+.userView {
+  margin: 0 !important;
+}
+.nav-index {
+  background-color: rgba(255, 255, 255, 0.85);
+  transition: 0.3s;
+}
+/* ================== Bagian Intoduction */
+
+/* foto resmi */
+#image-profile {
+  width: 250px;
+  height: 250px;
+  opacity: 0;
+}
+/* ====== Bagian Skills */
+/* =================================== skills */
+#staggered-test li,
+#staggered-test1 li {
+  opacity: 0;
+}
+
+.parallax img {
+  filter: grayscale(1);
+  filter: opacity(0.8);
+}
+
+.parallax-container h3 {
+  margin-top: 70px;
+}
+.person {
+  height: 500px;
+  width: auto;
+}
+
+.parallax-container {
+  height: auto !important;
+}
+
+.php-bar {
+  width: 80%;
+}
+.css-bar {
+  width: 65%;
+}
+.js-bar {
+  width: 35%;
+}
+.bootstrap-bar {
+  width: 60%;
+}
+.jquery-bar {
+  width: 25%;
+}
+.material-bar {
+  width: 90%;
+}
+.ci-bar {
+  width: 75%;
+}
+.sql-bar {
+  width: 85%;
+}
+.html-bar {
+  width: 95%;
+}
+.filmora-bar {
+  width: 90%;
+}
+.inkscape-bar {
+  width: 46%;
+}
+.gimp-bar {
+  width: 65%;
+}
+
+/* ====== Bagian Experience */
+/* ====== Bagian Contact */
+/* =============================== Contact */
+i.contact-icons {
+  font-size: 80px;
+  color: #00838f;
+}
+a.contact-link {
+  color: #00838f;
+}
+a.contact-link:hover {
+  transition: 0.4s;
+  text-decoration: underline;
+}
+div.card-contact:hover a.contact-link {
+  transition: 0.4s;
+  color: snow;
+}
+div.card-contact:hover i.contact-icons {
+  transition: 0.4s;
+  color: snow;
+}
+div.card-contact:hover {
+  transition: 0.4s;
+  background-color: #00838f;
+}
+div.card-blog:hover {
+  transition: 0.4s;
+  background-color: #f57c00;
+}
+a.contact-link-blog {
+  color: #f57c00;
+}
+i.contact-icons-blog {
+  font-size: 80px;
+  color: #f57c00;
+}
+div.card-blog:hover a.contact-link-blog {
+  transition: 0.4s;
+  color: snow;
+  text-decoration: underline;
+}
+div.card-blog:hover i.contact-icons-blog {
+  transition: 0.4s;
+  color: snow;
+}
+.card-panel {
+  padding: 20px;
+  margin: 15px 0;
+  width: 100%;
+}
+/* ====== Bagian Portfolio */
+.card-image {
+  height: 100%;
+  padding: 13px;
+}
+.card-image img {
+  height: 100%;
+}
+.div-portfolio {
+  padding: 12px !important;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+/* ====== Bagian Footer */
+/* ==================================== Bagian isi footer */
+
+.sosmed {
+  padding-left: 210px !important;
+}
+.sosmed a i {
+  font-size: 25px;
+  color: #fafafa;
+  padding-right: 12px;
+  text-align: right;
+}
+.sos-foot {
+  margin-top: 5%;
+}
+.sosmed-footer li a i {
+  font-size: 40px;
+  color: #fafafa;
+  padding-right: 12px;
+  text-align: right;
+}
+.sosmed-footer li a i:hover {
+  transition: 0.3s;
+  color: #424242;
+}
+.sosmed a i:hover {
+  transition: 0.3s;
+  color: #424242;
+}
+.page-footer {
+  padding-bottom: 0;
+}
+.footer-h5 {
+  margin-top: 20px;
+}
+
+/* AKM Property */
+nav .button-collapse {
+  margin: 0 10px;
+}
+
+.slider-promo .slides li .caption {
+  color: #fff;
+  position: absolute;
+  top: 6%;
+  left: 10%;
+  width: 80%;
+  opacity: 0;
+}
+
+.contact input[type="text"],
+.contact textarea {
+  font-size: 1.5rem;
+}

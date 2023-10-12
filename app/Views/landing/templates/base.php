@@ -16,12 +16,16 @@
   <!-- Load Form Style -->
   <!-- <link href="/assets/css/form_style.css" type="text/css" rel="stylesheet" media="screen,projection" /> -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet"> -->
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&family=Oswald:wght@200;300;400;500;600;700&display=swap');
+</style>
 
   <!-- Load Style -->
   <link href="<?= base_url() ?>/assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="<?= base_url() ?>/assets/css/style2.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
   <!-- Bootsrap icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
