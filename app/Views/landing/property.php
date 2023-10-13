@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="heading-text">    
-            <h2 class="grey-text text-darken-3 left-align">Temukan Kami</h2>
+            <h2 class="grey-text text-darken-3 left-align">Proyek Kami</h2>
             <div class="left"></div>
         </div>
 

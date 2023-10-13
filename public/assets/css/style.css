@@ -129,8 +129,9 @@ a.dropdown-button {
   margin: 0 !important;
 }
 .collapsible-header {
-  /* padding-top: 8px !important; */
+  border-bottom: 6px solid var(--color) !important;
   font-size: 1.3rem;
+  justify-content: center;
 }
 .small-icon {
   font-size: 12px;
@@ -288,9 +289,8 @@ div.card-contact:hover {
 }
 .sosmed-footer li a i {
   display: inline-block;
-  font-size: 33px;
+  font-size: 20px;
   color: #fafafa;
-  padding: 9px;
   text-align: right;
 }
 .sosmed-footer li a i:hover {
@@ -472,8 +472,8 @@ div.card-contact:hover {
 }
 
 .slider .indicators .indicator-item.active {
-  background-color: #00acc1;
-  border: 3px solid #00acc1;
+  background-color: var(--color);
+  /* border: 3px solid var(--color); */
   width: 28px;
   transform: scale(1.5);
 }
@@ -481,11 +481,11 @@ div.card-contact:hover {
 .slider .indicators .indicator-item {
   border-radius: 0;
   height: 10px;
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .slider .indicators .indicator-item {
-  background-color: rgba(224, 224, 224, 0.4);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .slider .indicators {
   bottom: 60px;

@@ -28,10 +28,10 @@
   <link href="<?= base_url() ?>/assets/css/style2.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
   <!-- Bootsrap icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
-<body id="home" class="scrollspy" data-info="<?= session()->getFlashdata('info') ?>">
+<body id="home" class="scrollspy" data-info="<?= session()->getFlashdata('info') ?>" style="--color: darkred;">
 
   <?= $this->include('landing/templates/navbar') ?>
   <?= $this->renderSection('content') ?>

@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'LandingPages::index');
+$routes->get('/properti', 'LandingPages::property');
 $routes->get('/portfolio', 'LandingPages::portfolio');
 $routes->get('/contact', 'LandingPages::contact');
 $routes->get('/faq', 'LandingPages::faq');

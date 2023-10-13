@@ -8,8 +8,8 @@
         </div>
    
         <div class="row services">
-        <?php foreach ($services as $service) : ?>
-            <div class="col m4 s12 services">
+            <?php foreach ($services as $service) : ?>
+                <div class="col m4 s12 services">
                 <div class="card medium hoverable">
                     <div class="card-image waves-effect waves-light waves-block">
                     <img src="assets/img/exp/exp_20200325-204.jpg" class="activator">
@@ -28,6 +28,11 @@
                 </div>
             </div>
         <?php endforeach; ?>
+        <div class="col m4 s12 services">
+        <div class="card-panel teal" height="100%">
+            <i>I</i>
+          <span class="white-text">Lainya...</span>
+        </div>
         </div>
     </div>
 </section>

@@ -98,4 +98,17 @@ class LandingPages extends BaseController
 			return redirect()->back();
 		}
 	}
+
+	public function property()
+	{
+		$data = [
+			'portfolio' => $this->portfolioModels->findAll(),
+			'personal' => $this->personalModels->find('1'),
+			'social' => $this->socialcontactModels->findAll(),
+			'contact' => $this->addressContactModels->find(1),
+			'title' => 'Contact us'
+		];
+
+		return view('landing/property', $data);
+	}
 }

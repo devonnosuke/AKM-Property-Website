@@ -80,18 +80,18 @@ h4 {
   }
 
   .slider-promo h1 {
-    font-size: 37px;
+    font-size: 29px;
     line-height: 40px;
     letter-spacing: 1.5px;
     margin: 10px 0;
   }
 
   .slider-promo h1 span {
-    font-size: 3.7rem;
+    font-size: 3.3rem;
   }
 
   .slider-promo h2 {
-    font-size: 2.5rem;
+    font-size: 2.1rem;
     background-color: darkred;
     padding: 10px;
     padding-bottom: 15px;
@@ -106,7 +106,7 @@ h4 {
 
   .slider-promo h3 {
     font-size: 1.9rem;
-    margin-top: 1.2rem;
+    margin-top: 1rem;
   }
 
   .slider-promo .modal-trigger {
@@ -131,16 +131,17 @@ h4 {
   }
 
   .heading-text .left {
-    background-color: red;
-    width: 250px;
+    background-color: var(--color);
+    width: 300px;
     height: 4px;
   }
 
   .heading-text {
-    margin-bottom: 10px;
+    margin-bottom: 23px;
   }
   .heading-text h2 {
     margin-bottom: 5px;
+    font-size: 2.6rem;
   }
 }
 
@@ -421,4 +422,97 @@ nav .button-collapse {
 .contact input[type="text"],
 .contact textarea {
   font-size: 1.5rem;
+}
+
+.bg-nav {
+  background-color: var(--color);
+}
+
+.bg-btn {
+  background-color: var(--color);
+}
+
+.color-base {
+  color: var(--color);
+}
+
+.brand-logo.bg-base svg {
+  fill: var(--color);
+  stroke: var(--color);
+  width: 15rem;
+}
+
+.brand-logo svg {
+  fill: white;
+  stroke: white;
+  width: 15rem;
+}
+
+.collapsible-header .icon-nav-menu span {
+  color: white;
+  font-size: 28px;
+  margin-left: 10px;
+}
+
+.side-nav .collapsible-header {
+  background-color: #161616;
+}
+
+.collapsible-header img {
+  margin-top: 5px;
+}
+.collapsible-header .icon-nav-menu {
+  margin-top: 5px;
+}
+
+@media only screen and (min-width: 0) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.collection.with-header .collection-item {
+  padding: 10px 20px;
+}
+
+.side-nav .subheader {
+  font-size: 16px;
+  font-weight: 500;
+  color: #f7f7f7;
+}
+.side-nav li > a > i {
+  color: #f7f7f7;
+}
+.side-nav li > a {
+  color: #f7f7f7;
+  font-weight: 300;
+  font-size: 22px;
+  padding-bottom: 15px;
+  padding-top: 3px;
+}
+.divider {
+  height: 2px;
+  background-color: var(--color);
+}
+.card-contact h6 {
+  font-size: 1.3rem;
+}
+
+.card-contact .bi-whatsapp {
+  font-size: 2.3rem;
+  color: var(--color);
+}
+
+.card-contact .btn {
+  width: 100%;
+}
+
+.bordering {
+  background-color: var(--color);
+  width: 190px;
+  height: 4px;
+}
+
+.footer-copyright {
+  filter: brightness(1.3);
 }
