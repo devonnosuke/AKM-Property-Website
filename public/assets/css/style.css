@@ -1,6 +1,6 @@
 /* ==================================== Other Section*/
 ::selection {
-  background: #07cce6;
+  /* background: #07cce6; */
 }
 
 body {
@@ -133,6 +133,13 @@ a.dropdown-button {
   font-size: 1.3rem;
   justify-content: center;
 }
+
+.collapsible-property .collapsible-header {
+  border-bottom: 4px solid var(--color) !important;
+  font-size: 1.3rem;
+  justify-content: left;
+}
+
 .small-icon {
   font-size: 12px;
   margin: 0 !important;
@@ -228,6 +235,9 @@ div.card-contact:hover {
   .card-image {
     max-height: 167px !important;
   }
+  iframe.hoverable {
+    height: 28rem;
+  }
 }
 @media only screen and (max-width: 992px) {
   .modal {
@@ -252,21 +262,10 @@ div.card-contact:hover {
   opacity: 0;
 }
 
-.parallax img {
-  filter: brightness(0.8);
-}
-
-.parallax-container h3 {
-  margin-top: 70px;
-}
 .person {
   margin: 0 auto;
   height: 100%;
   width: auto;
-}
-
-.parallax-container {
-  height: auto !important;
 }
 
 #skills .row {
@@ -536,15 +535,6 @@ div.card-contact:hover {
   height: 26px;
 }
 
-.row.services {
-  align-items: stretch;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-
 .col-service {
   flex-basis: 31.333%;
   flex-grow: 0;
@@ -585,4 +575,12 @@ div.card-contact:hover {
 
 .contact-col form {
   margin-top: 2rem;
+}
+
+.parallax img {
+  filter: brightness(0.8);
+}
+
+.parallax-container h3 {
+  margin-top: 70px;
 }

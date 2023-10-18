@@ -123,3 +123,14 @@ $(document).ready(function () {
   $(".materialboxed").materialbox();
 });
 $(".materialboxed12").materialbox();
+
+lightGallery(document.getElementById("property-gallery"), {
+  download: false,
+});
+
+lightGallery(document.getElementById("property-img"), {
+  download: false,
+});
+lightGallery(document.getElementById("property-denah"), {
+  download: false,
+});

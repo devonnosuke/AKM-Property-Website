@@ -331,7 +331,7 @@ $(document).ready(function () {
 
   function generateChips() {
     let dataFeature = $(".feature-field").data("feature").split(",");
-    // console.log(dataFeature);
+    console.log(dataFeature);
     // if (dataFeature.length != 0) {
 
     let dataFeatureReady = [];
@@ -340,7 +340,7 @@ $(document).ready(function () {
     });
 
     let dataChips = {
-      placeholder: "Enter a Features",
+      placeholder: "Masukkan Fitur",
       secondaryPlaceholder: "+ Features",
     };
 

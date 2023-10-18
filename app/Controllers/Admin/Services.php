@@ -60,6 +60,8 @@ class Services extends BaseController
     // and the query will automatically add record if not found $POST_[id];
     public function save($insert = false)
     {
+        dd($this->request->getVar('features'));
+
         // Get id data POST with ci4 : getVar(name)
         $id = $this->request->getVar('id');
         // Get file data POST with ci4 : getFile(name)

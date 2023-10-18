@@ -99,7 +99,7 @@ class LandingPages extends BaseController
 		}
 	}
 
-	public function property()
+	public function property($slug = false)
 	{
 		$data = [
 			'portfolio' => $this->portfolioModels->findAll(),
@@ -108,7 +108,33 @@ class LandingPages extends BaseController
 			'contact' => $this->addressContactModels->find(1),
 			'title' => 'Contact us'
 		];
-
+		
+		if ($slug) {
+			$proprety = $this->propertyModels->getBySlug($slug);
+			$data = [
+				'portfolio' => $this->portfolioModels->findAll(),
+				'property' => $proprety[0],
+				'personal' => $this->personalModels->find('1'),
+				'social' => $this->socialcontactModels->findAll(),
+				'contact' => $this->addressContactModels->find(1),
+				'title' => 'Detail Properti',
+				'services' => $this->servicesModels->findAll(),
+				'cta' => $this->ctaModels->findAll(),
+			];
+			return view('landing/property-single', $data);
+		}
+		
 		return view('landing/property', $data);
 	}
+
+	public function sendWA() {
+		$name = $this->request->getVar('name');
+		$message = $this->request->getVar('message');
+
+		$link = "https://wa.me/+6284646322123?text=Hallo saya $name, saya telah melihat info di akmproperti.com dan ingin bertanya tentang $message";
+
+		return redirect()->to($link);
+	}
+
+
 }

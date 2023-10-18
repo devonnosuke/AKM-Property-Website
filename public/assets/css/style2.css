@@ -71,6 +71,10 @@ h4 {
   z-index: 999;
 }
 
+section.contact .row .col {
+  padding: 1.5rem;
+}
+
 @media screen and (max-width: 600px) {
   .caption h1 {
     font-size: 44px;
@@ -142,6 +146,14 @@ h4 {
   .heading-text h2 {
     margin-bottom: 5px;
     font-size: 2.6rem;
+  }
+
+  .contact .row {
+    margin-bottom: 50px;
+  }
+
+  section.contact .row .col {
+    padding: 0 1.5rem;
   }
 }
 
@@ -263,9 +275,9 @@ a.dropdown-button {
   width: auto;
 }
 
-.parallax-container {
+/* .parallax-container {
   height: auto !important;
-}
+} */
 
 .php-bar {
   width: 80%;
@@ -515,4 +527,161 @@ nav .button-collapse {
 
 .footer-copyright {
   filter: brightness(1.3);
+}
+
+.card-property .card-image {
+  padding: 0;
+}
+
+.card-property img {
+  filter: brightness(0.3);
+}
+
+.btn:focus {
+  background-color: var(--color);
+}
+
+.btn:hover {
+  background-color: var(--color);
+}
+
+.property .card-panel {
+  width: 260px;
+  margin: 25px 5px;
+  height: 400px;
+}
+.property .card-panel i {
+  font-size: 6rem;
+}
+
+.property .card-panel .wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.property .card-panel span {
+  font-size: 1.8rem;
+}
+
+.wa-btn {
+  position: fixed;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding-top: 5px;
+  left: 20px;
+  bottom: 20px;
+  z-index: 3;
+}
+
+.wa-btn i {
+  font-size: 1.7rem;
+}
+
+.row.services {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.tabs .tab a {
+  font-size: 1.1rem;
+  color: var(--color);
+}
+
+.tabs .tab a.active {
+  color: var(--color);
+  font-size: 1.2rem;
+}
+
+.tabs .indicator {
+  background-color: var(--color);
+  /* font-size: 1.2rem; */
+}
+
+.tabs-property {
+  padding-top: 2rem !important;
+}
+
+.tabs-property .row img {
+  padding: 5px;
+  margin: 10px 0;
+  border: 3px solid var(--color);
+}
+
+.tabs-property .collapsible span {
+  font-weight: 500;
+}
+
+.property-single-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* height: 200px; */
+}
+.property-single-image img {
+  filter: brightness(0.7);
+}
+
+.property-single-image .container {
+  position: absolute;
+  padding-left: 10px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.property-single-image h3 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.property-single-image p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+iframe.hoverable {
+  height: 350px;
+}
+
+@media only screen and (min-width: 601px) {
+  iframe.hoverable {
+    height: 28rem;
+  }
+}
+
+.collapsible-body .chip {
+  font-size: 1.2rem;
+  background-color: var(--color);
+  color: white;
+  height: 35px;
+  font-weight: 400;
+}
+.collapsible-body .chip i {
+  margin-right: 8px;
+}
+
+.collapsible-header i {
+  color: var(--color);
+}
+
+.hide-img {
+  display: none;
+}
+
+.collapsible-body a.btn {
+  width: 100%;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.collapsible-body p {
+  font-size: 0.8rem;
 }

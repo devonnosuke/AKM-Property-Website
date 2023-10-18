@@ -33,7 +33,9 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'LandingPages::index');
+$routes->get('/properti/(:any)', 'LandingPages::property/$1');
 $routes->get('/properti', 'LandingPages::property');
+$routes->get('/promo/(:any)', 'LandingPages::promo/$1');
 $routes->get('/portfolio', 'LandingPages::portfolio');
 $routes->get('/contact', 'LandingPages::contact');
 $routes->get('/faq', 'LandingPages::faq');
@@ -41,7 +43,8 @@ $routes->get('/dashboard', 'Admin\Dashboard::index', ['filter' => 'role:admin'])
 $routes->get('/admin', 'Admin\Dashboard::index', ['filter' => 'role:admin']);
 $routes->get('/download/(:any)', 'LandingPages::download/$1');
 $routes->post('/sendMail', 'LandingPages::sendMail');
-$routes->get('/properti/(:any)', 'LandingPages::download/$1');
+$routes->post('/sendWA', 'LandingPages::sendWA');
+// $routes->get('/properti/(:any)', 'LandingPages::download/$1');
 
 $routes->get('/admin/personal', 'Admin\Personal::index', ['filter' => 'role:admin']);
 $routes->post('/admin/personal/save', 'Admin\Personal::save', ['filter' => 'role:admin']);

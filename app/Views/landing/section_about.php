@@ -1,5 +1,5 @@
 <!-- *** About Us Section *** -->
-<section id="about" class="about scrollspy">
+<section id="about" class="about property scrollspy">
     <div class="container">
         
         <div class="heading-text">    
@@ -8,8 +8,8 @@
         </div>
    
         <div class="row services">
-            <?php foreach ($services as $service) : ?>
-                <div class="col m4 s12 services">
+        <?php foreach ($services as $service) : ?>
+            <div class="col m4 s12 services">
                 <div class="card medium hoverable">
                     <div class="card-image waves-effect waves-light waves-block">
                     <img src="assets/img/exp/exp_20200325-204.jpg" class="activator">
@@ -29,10 +29,14 @@
             </div>
         <?php endforeach; ?>
         <div class="col m4 s12 services">
-        <div class="card-panel teal" height="100%">
-            <i>I</i>
-          <span class="white-text">Lainya...</span>
-        </div>
+            <div class="card-panel bg-nav waves-effect waves-light">
+                <a href="<?= base_url() ?>/properti">
+                    <div class="wrapper">
+                        <i class="bi bi-arrow-right-square-fill white-text"></i>
+                        <span class="white-text">Lainya...</span>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </section>

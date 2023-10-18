@@ -139,9 +139,23 @@ class Validation
 		],
 		'address' => 'required',
 		'description' => 'required',
+		'features' => 'required',
 		'image' => 'uploaded[image]|max_size[image,61440]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 		'img' => 'uploaded[img]|max_size[img,61440]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 		'color' => 'required',
+		'luas_tanah' => 'required',
+		'luas_bangunan' => 'required',
+		'pondasi' => 'required',
+		'dinding' => 'required',
+		'atap' => 'required',
+		'plafon' => 'required',
+		'listrik' => 'required',
+		'lantai' => 'required',
+		'kusen' => 'required',
+		'kloset' => 'required',
+		'lantai_kmwc' => 'required',
+		'dinding_kmwc' => 'required',
+		'denah' => 'uploaded[image]|max_size[image,61440]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 	];
 	
 	public $propertyEdit = [
@@ -151,9 +165,20 @@ class Validation
 		],
 		'address' => 'required',
 		'description' => 'required',
-		// 'image' => 'max_size[image,10240]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
+		'features' => 'required',
 		'color' => 'required',
-
+		'luas_tanah' => 'required',
+		'luas_bangunan' => 'required',
+		'pondasi' => 'required',
+		'dinding' => 'required',
+		'atap' => 'required',
+		'plafon' => 'required',
+		'listrik' => 'required',
+		'lantai' => 'required',
+		'kusen' => 'required',
+		'kloset' => 'required',
+		'lantai_kmwc' => 'required',
+		'dinding_kmwc' => 'required',
 	];
 	
 	public $property_images = [

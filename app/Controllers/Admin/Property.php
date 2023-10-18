@@ -58,6 +58,8 @@ class Property extends BaseController
     // and the query will automatically add record if not found $POST_[id];
     public function save($insert = false)
     {
+        // dd($this->request->getVar('features'));
+        // dd($this->request->getVar());
         // Get id data POST with ci4 : getVar(name)
         $id = $this->request->getVar('id');
 
@@ -66,15 +68,20 @@ class Property extends BaseController
         
         // Get Old image name if set
         $old_img = $this->request->getVar('old_img');
+        $old_denah = $this->request->getVar('old_denah');
 
         // Set image convert extension
         $img_ext = 'jpg';
 
         // Get image data POST with ci4 : getFile(name)
         $img_file = $this->request->getFile('image');
+        $denah_file = $this->request->getFile('denah');
+        $type_name = $this->request->getVar('type_name');
 
         // Generate New Img Name
         $newImageName = imgGenerateName($img_file->getRandomName(), 'properti', $img_ext);
+        // Generate New Denah Img Name
+        $newDenahImageName = imgGenerateName($denah_file->getRandomName(), 'properti '.$type_name.' ', $img_ext);
 
         // Check whether to insert or edit
         if (!$insert) {
@@ -87,9 +94,22 @@ class Property extends BaseController
                 'type_name' => $this->request->getVar('type_name'),
                 'address' => $this->request->getVar('address'),
                 'description' => $this->request->getVar('description'),
+                'features' => $this->request->getVar('features'),
                 'image' => $newImageName['nameWithNewExt'],
                 'color' => strtoupper($this->request->getVar('color')),
-                'slug' => $this->request->getVar('slug'),
+                'luas_tanah' => $this->request->getVar('luas_tanah'),
+                'luas_bangunan' => $this->request->getVar('luas_bangunan'),
+                'pondasi' => $this->request->getVar('pondasi'),
+                'dinding' => $this->request->getVar('dinding'),
+                'atap' => $this->request->getVar('atap'),
+                'plafon' => $this->request->getVar('plafon'),
+                'listrik' => $this->request->getVar('listrik'),
+                'lantai' => $this->request->getVar('lantai'),
+                'kusen' => $this->request->getVar('kusen'),
+                'kloset' => $this->request->getVar('kloset'),
+                'lantai_kmwc' => $this->request->getVar('lantai_kmwc'),
+                'dinding_kmwc' => $this->request->getVar('dinding_kmwc'),
+                'denah' => $newDenahImageName['nameWithNewExt'],
             ];
 
             // If the file has been uploaded then set the name image
@@ -101,6 +121,18 @@ class Property extends BaseController
                 // if else the old image name can be saved
                 $data['image'] = $old_img;
             }
+
+            // If the file has been uploaded then set the name image
+            // With new type and assign to $data
+            // dd($old_img);
+            if ($denah_file->getError() !== 4) {
+                $data['denah'] = $newDenahImageName['nameWithNewExt'];
+            } else {
+                // if else the old image name can be saved
+                $data['denah'] = $old_denah;
+            }
+
+
         } else {
             
             // Set the validation rules to be used (Rules to add form)
@@ -111,6 +143,7 @@ class Property extends BaseController
             $data['color'] = strtoupper($this->request->getVar('color'));
             // the name of pictue can be assign to $data
             $data['image'] = $img_file;
+            $data['denah'] = $denah_file;
         }
         
         // Run validation with the rules set in App/Config/Validation.php
@@ -137,6 +170,29 @@ class Property extends BaseController
                 }
 
                 $data['image'] = $newImageName['nameWithNewExt'];
+            }
+
+            if ($denah_file->isValid() && !$denah_file->hasMoved()) {
+
+                // Move file to server
+                if ( $denah_file->move('assets/img/property/', $newDenahImageName['nameWithOldExt'])) {
+                    // Convert Image to $img_ext value
+                    $convert = imgConvert($newDenahImageName['nameWithOldExt'], $newDenahImageName['nameOnly'], 'assets/img/property', $img_ext);
+     
+                    // Crop and Resize image
+                    $fit = imgFit($newDenahImageName['nameWithNewExt'], 'assets/img/property/');
+                }
+
+                // Check if the upload and image manipulation process is success
+                if ($denah_file && $convert && $fit) {
+                    if ($id) {
+                        unlink('assets/img/property/' . $old_denah);
+                    }
+                } else {
+                    return new \CodeIgniter\Exceptions\PageNotFoundException('Gambar Gagal Disimpan!');
+                }
+
+                $data['denah'] = $newDenahImageName['nameWithNewExt'];
             }
 
 

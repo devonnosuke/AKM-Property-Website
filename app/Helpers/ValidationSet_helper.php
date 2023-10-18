@@ -145,7 +145,19 @@ function showModalValidation($sessionData)
     }
 }
 
-// function special_chars($d)
-// {
-//     return htmlspecialchars($d);
-// }
+
+/**
+ * Helper method to split string into an base a separator
+ * 
+ * Examples:
+ *    splitString("one, two, three",',');
+ *
+ * @param string $string
+ * @param string $separator
+ *
+ * @return splitString|null
+ */
+function splitString($string, $separator)
+{
+    return(explode($separator,$string));
+}
