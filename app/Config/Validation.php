@@ -119,7 +119,6 @@ class Validation
 
 	public $address_contact = [
 		'address' => 'required',
-		'country' => 'required',
 		'telephone' => 'required',
 		'phone' => 'required',
 		'email' => 'required',
@@ -185,4 +184,22 @@ class Validation
 		'img' => 'uploaded[img]|max_size[img,61440]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 	];
 
+	public $promo = [
+		'nama_promo' => 'required|is_unique[promo.nama_promo,id,{id}]',
+		'id_property' => 'required',
+		'deskripsi' => 'required',
+		'promo' => 'required',
+		'brosur' => 'uploaded[brosur]|max_size[brosur,61440]|mime_in[brosur,image/img,image/jpg,image/png,image/jpeg]|ext_in[brosur,jpg,png,jpeg]',
+		'bonus' => 'required',
+		'bebas' => 'required',
+	];
+
+	public $promoEdit = [
+		'nama_promo' => 'required|is_unique[promo.nama_promo,id,{id}]',
+		'id_property' => 'required',
+		'deskripsi' => 'required',
+		'promo' => 'required',
+		'bonus' => 'required',
+		'bebas' => 'required',
+	];
 }

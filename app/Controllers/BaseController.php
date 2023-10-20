@@ -36,7 +36,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = ['auth', 'ValidationSet_helper', 'ImageManipulation_helper'];
+	protected $helpers = ['auth', 'ValidationSet_helper', 'ImageManipulation_helper', 'form'];
 
 	/**
 	 * Constructor.
@@ -70,6 +70,7 @@ class BaseController extends Controller
 		// AKM-Property Specifik
 		$this->propertyModels = new \App\Models\PropertyModel();
 		$this->propertyImgModels = new \App\Models\PropertyImgModel();
+		$this->promoModels = new \App\Models\PromoModel();
 		
 		helper('auth');
 	}

@@ -80,7 +80,8 @@
     <div class="modal-content contact-content">
         <form action="<?= base_url() ?>/admin/property/save/true" enctype="multipart/form-data" method="post" class="modal-form">
             <?= csrf_field() ?>
-            <input type="hidden" class="feature-field" name="features" data-feature="<?= old('features') ?>" data-status="true">
+            <input type="hidden" class="feature-field input-feature" name="features" data-value="<?= old('features') ?>" data-placeholder="Masukkan Fasilitas" data-secondary-placeholder="+ Fasilitas" data-status="true">
+
             <div class="row card-panel card-form-modal">
                 <h4>Input Informasi Properti</h4>
                 <ul class="collapsible collapsible-property input popout" data-collapsible="expandable">
@@ -210,7 +211,7 @@
                         <div class="collapsible-body facility">
                             <div class="input-field">
                                 <label for="features" class="active chips-label">Fasilitas <i>Tekan [Enter]/[&#9166;] Untuk menambah </i> </label>
-                                <div class="chips chips-placeholder focus <?= validCheck($validation->getError('features')) ?>">
+                                <div class="chips chips-placeholder chips-features focus <?= validCheck($validation->getError('features')) ?>">
                                 </div>
                                 <span class="err-validation"><?= $validation->getError('features') ?></span>
                             </div>

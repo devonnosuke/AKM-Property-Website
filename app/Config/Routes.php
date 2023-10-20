@@ -74,20 +74,6 @@ $routes->delete('/admin/sliders/(:any)/(:any)', 'Admin\Sliders::drop/$1/$2', ['f
 $routes->post('/admin/sliders/save', 'Admin\Sliders::save', ['filter' => 'role:admin']);
 $routes->get('/admin/add_slider', 'Admin\Slider::add', ['filter' => 'role:admin']);
 
-// ==== Property Routes
-$routes->get('/admin/property', 'Admin\Property::index', ['filter' => 'role:admin']);
-$routes->get('/admin/property/(:any)', 'Admin\Property::edit/$1', ['filter' => 'role:admin']);
-$routes->get('/admin/property/drop/(:any)', 'Admin\Property::index', ['filter' => 'role:admin']);
-$routes->delete('/admin/property/(:any)/(:any)', 'Admin\Property::drop/$1/$2', ['filter' => 'role:admin']);
-$routes->post('/admin/property/save', 'Admin\Property::save', ['filter' => 'role:admin']);
-$routes->get('/admin/add_property', 'Admin\Property::add', ['filter' => 'role:admin']);
-
-// ==== PropertyImages Routes
-$routes->delete('/admin/propertyimage/(:any)', 'Admin\PropertyImage::drop/$1', ['filter' => 'role:admin']);
-$routes->get('/admin/property-image/(:any)', 'Admin\PropertyImage::index/$1', ['filter' => 'role:admin']);
-$routes->post('/admin/propertyimage/save', 'Admin\PropertyImage::save', ['filter' => 'role:admin']);
-
-
 $routes->post('/admin/cta_save', 'Admin\Services::cta_save', ['filter' => 'role:admin']);
 $routes->get('/admin/services', 'Admin\Services::index', ['filter' => 'role:admin']);
 $routes->get('/admin/services/(:any)', 'Admin\Services::edit/$1', ['filter' => 'role:admin']);
@@ -105,6 +91,28 @@ $routes->get('/admin/faq', 'Admin\Faq::index', ['filter' => 'role:admin']);
 $routes->get('/admin/faq/drop/(:any)', 'Admin\Faq::index', ['filter' => 'role:admin']);
 $routes->delete('/admin/faq/(:any)', 'Admin\Faq::drop/$1', ['filter' => 'role:admin']);
 $routes->post('/admin/faq_save', 'Admin\Faq::save', ['filter' => 'role:admin']);
+
+// ========================== AKM Property
+// ==== Property Routes
+
+$routes->get('/admin/property', 'Admin\Property::index', ['filter' => 'role:admin']);
+$routes->get('/admin/property/(:any)', 'Admin\Property::edit/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/property/drop/(:any)', 'Admin\Property::index', ['filter' => 'role:admin']);
+$routes->delete('/admin/property/(:any)/(:any)', 'Admin\Property::drop/$1/$2', ['filter' => 'role:admin']);
+$routes->post('/admin/property/save', 'Admin\Property::save', ['filter' => 'role:admin']);
+$routes->get('/admin/add_property', 'Admin\Property::add', ['filter' => 'role:admin']);
+
+// ==== PropertyImages Routes
+$routes->delete('/admin/propertyimage/(:any)', 'Admin\PropertyImage::drop/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/property-image/(:any)', 'Admin\PropertyImage::index/$1', ['filter' => 'role:admin']);
+$routes->post('/admin/propertyimage/save', 'Admin\PropertyImage::save', ['filter' => 'role:admin']);
+
+$routes->get('/admin/promo', 'Admin\Promo::index', ['filter' => 'role:admin']);
+$routes->get('/admin/promo/(:any)', 'Admin\Promo::edit/$1', ['filter' => 'role:admin']);
+$routes->get('/admin/promo/drop/(:any)', 'Admin\Promo::index', ['filter' => 'role:admin']);
+$routes->delete('/admin/promo/(:any)/(:any)', 'Admin\Promo::drop/$1/$2', ['filter' => 'role:admin']);
+$routes->post('/admin/promo/save', 'Admin\Promo::save', ['filter' => 'role:admin']);
+$routes->get('/admin/promo', 'Admin\Promo::add', ['filter' => 'role:admin']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

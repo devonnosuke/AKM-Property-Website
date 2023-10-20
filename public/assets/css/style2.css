@@ -685,3 +685,9 @@ iframe.hoverable {
 .collapsible-body p {
   font-size: 0.8rem;
 }
+
+.property-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}

@@ -17,6 +17,12 @@
             </a>
         </li>
         <li class="divider"></li>
+        <li class="menu-item <?= (isset($promo_active) ? $promo_active : '') ?>">
+            <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/promo">
+                <i class="white-text bi bi-tags-fill"></i>Promosi
+            </a>
+        </li>
+        <li class="divider"></li>
         <li class="menu-item <?= (isset($personal_active) ? $personal_active : '') ?>">
             <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/personal">
                 <i class="white-text bi bi-person-fill"></i>Personal About

@@ -27,7 +27,7 @@
                                 <ul>
 
                                     <li class="collection-header">
-                                        <h4>Kantor Kami</h4>
+                                        <h4><?= $contact->office_name ?></h4>
                                     </li>
 
                                     <li class="collection-item">
@@ -36,17 +36,12 @@
                                     </li>
 
                                     <li class="collection-item">
-                                        <i class="bi bi-mailbox2 left"></i>
-                                        <?= $contact->country ?>
-                                    </li>
-
-                                    <li class="collection-item">
                                         <i class="bi bi-telephone-fill left"></i>
                                         <?= $contact->telephone ?>
                                     </li>
 
                                     <li class="collection-item">
-                                        <i class="bi bi-phone-fill left"></i>
+                                        <i class="bi bi-whatsapp left"></i>
                                         <?= $contact->phone ?>
                                     </li>
 
@@ -62,8 +57,45 @@
                                 <a href="#modal-address" class="modal-trigger btn btn-large blue waves-effect waves-dark hoverable"><i class="bi bi-pencil-fill left"></i> Change Address</a>
                             </div>
                         </div>
-
                         <div class="col m6 s12">
+                            <h4>Contact Address Preview</h4>
+                            <div class="collection with-header hoverable z-depth-2">
+
+                                <ul>
+
+                                    <li class="collection-header">
+                                        <h4><?= $contact1->office_name ?></h4>
+                                    </li>
+
+                                    <li class="collection-item">
+                                        <i class="bi bi-geo-alt-fill left"></i>
+                                        <?= $contact1->address ?>
+                                    </li>
+
+                                    <li class="collection-item">
+                                        <i class="bi bi-telephone-fill left"></i>
+                                        <?= $contact1->telephone ?>
+                                    </li>
+
+                                    <li class="collection-item">
+                                        <i class="bi bi-whatsapp left"></i>
+                                        <?= $contact1->phone ?>
+                                    </li>
+
+                                    <li class="collection-item">
+                                        <i class="bi bi-envelope-fill left"></i>
+                                        <?= $contact1->email ?>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div class="col s12 center card-col">
+                                <a href="#modal-address1" class="modal-trigger btn btn-large blue waves-effect waves-dark hoverable"><i class="bi bi-pencil-fill left"></i> Change Address</a>
+                            </div>
+                        </div>
+
+                        <div class="col s12">
                             <h4>Social Media Preview</h4>
                             <?php foreach ($social as $s) : ?>
                                 <div class="col m6 s12 contact-col">
@@ -128,36 +160,6 @@
                         <option value="whatsapp">
                             whatsapp
                         </option>
-                        <option value="twitter">
-                            twitter
-                        </option>
-                        <option value="discord">
-                            discord
-                        </option>
-                        <option value="pinterest">
-                            pinterest
-                        </option>
-                        <option value="github">
-                            github
-                        </option>
-                        <option value="linkedin">
-                            linkedin
-                        </option>
-                        <option value="messenger">
-                            messenger
-                        </option>
-                        <option value="reddit">
-                            reddit
-                        </option>
-                        <option value="skype">
-                            skype
-                        </option>
-                        <option value="telegram">
-                            telegram
-                        </option>
-                        <option value="twitch">
-                            twitch
-                        </option>
                         <option value="chat-fill">
                             Other
                         </option>
@@ -198,20 +200,15 @@
     <div class="modal-content contact-content">
         <form action="<?= base_url() ?>/admin/address_save" method="post" class="modal-form">
             <?= csrf_field() ?>
+            <input type="hidden" name="id" value="1">
             <div class="row card-panel card-form-modal">
 
                 <h4>Change Address</h4>
-
+                        
                 <div class="input-field col s12">
                     <i class="bi bi-geo-alt-fill prefix form-icon-modal"></i>
                     <input type="text" name="address" value="<?= oldCheck('address', $contact->address) ?>" id="address" class="validate" required>
                     <label for="address">Address</label>
-                </div>
-
-                <div class="input-field col s12">
-                    <i class="bi bi-mailbox2 prefix form-icon-modal"></i>
-                    <input type="text" name="country" value="<?= oldCheck('country', $contact->country) ?>" id="country" class="validate" required>
-                    <label for="country">County</label>
                 </div>
 
                 <div class="input-field col s12">
@@ -229,6 +226,60 @@
                 <div class="input-field col s12">
                     <i class="bi bi-envelope-fill prefix form-icon-modal"></i>
                     <input type="email" name="email" value="<?= oldCheck('email', $contact->email) ?>" id="email" class="validate" required>
+                    <label for="email">email</label>
+                </div>
+
+
+            </div>
+
+            <div class="modal-footer col s12 white z-depth-1">
+                <div class="row modal-button">
+                    <div class="col s6 center">
+                        <a class="modal-action btn-flat waves-effect waves-red modal-close">Cancel</a>
+                    </div>
+                    <div class="col s6 center">
+                        <button type="submit" class="btn-modal-submit modal-action btn-flat waves-effect waves-green">
+                            <span class="btn-text">Save</span>
+                            <img src="<?= base_url() ?>/loading.webp" class="loading-icon-modal">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<!-- Change Address Modal -->
+<div class="modal modal-medium" id="modal-address1">
+    <div class="modal-content contact-content">
+        <form action="<?= base_url() ?>/admin/address_save" method="post" class="modal-form">
+            <?= csrf_field() ?>
+            <input type="hidden" name="id" value="2">
+            <div class="row card-panel card-form-modal">
+
+                <h4>Change Address</h4>
+                        
+                <div class="input-field col s12">
+                    <i class="bi bi-geo-alt-fill prefix form-icon-modal"></i>
+                    <input type="text" name="address" value="<?= oldCheck('address', $contact1->address) ?>" id="address" class="validate" required>
+                    <label for="address">Address</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <i class="bi bi-telephone-fill prefix form-icon-modal"></i>
+                    <input type="number" name="telephone" value="<?= oldCheck('telephone', $contact1->telephone) ?>" id="telephone" class="validate" required>
+                    <label for="telephone">Telephone</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <i class="bi bi-phone-fill prefix form-icon-modal"></i>
+                    <input type="number" name="phone" value="<?= oldCheck('phone', $contact1->phone) ?>" id="phone" class="validate" required>
+                    <label for="phone">Phone</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <i class="bi bi-envelope-fill prefix form-icon-modal"></i>
+                    <input type="email" name="email" value="<?= oldCheck('email', $contact1->email) ?>" id="email" class="validate" required>
                     <label for="email">email</label>
                 </div>
 

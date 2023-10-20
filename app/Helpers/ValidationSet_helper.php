@@ -161,3 +161,21 @@ function splitString($string, $separator)
 {
     return(explode($separator,$string));
 }
+
+function checkAvaiable($id_property, $promo) {
+    foreach ($promo as $p ) {
+        if ($p->id_property == $id_property) {
+            return "disabled";
+        }
+    }
+}
+
+function readAvaiable($id_property, $promo) {
+    foreach ($promo as $p ) {
+        if ($p->id_property == $id_property) {
+            return "<i> --telah memiliki promo-- </i>";
+        }
+    }
+}
+
+

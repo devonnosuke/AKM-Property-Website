@@ -16,6 +16,7 @@ class Contacts extends BaseController
         // which have been provided in codeigniter : findAll()
         $data['social'] = $this->socialcontactModels->findAll();
         $data['contact'] = $this->addressContactModels->find(1);
+        $data['contact1'] = $this->addressContactModels->find(2);
 
         // Set title page
         $data['title'] = 'Contact & Social';
@@ -95,7 +96,7 @@ class Contacts extends BaseController
         // Get all data POST with ci4 : getPost()
         $data = $this->request->getPost();
         // Get id data POST with ci4 : getVar(name)
-        $id = 1;
+        $id = $this->request->getVar('id');
 
         $data['id'] = $id;
         // Run validation with the rules set in App/Config/Validation.php

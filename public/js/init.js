@@ -256,22 +256,30 @@ $(document).ready(function () {
   });
 
   // to check Chips Feature to run or not
-  function runFeatureField(type) {
-    const featureFieldStatus = $(".feature-field").data("status");
+  function runFeatureField(status, chips, inputChips) {
+    chips.material_chip("data");
+    const featureFieldStatus = inputChips.data("status");
 
+    // console.log(chips);
     if (featureFieldStatus == true) {
       // console.log('Feature Status is True');
-      if (type == true) {
-        inputChipsToSend($(".feature-field"));
+      if (status == true) {
+        inputChipsToSend(inputChips, chips);
         // console.log('inputChipsToSend() Active!');
       } else {
-        generateChips();
+        generateChips(chips, inputChips);
         // console.log('generateChips() Not!');
       }
     } else {
-      // console.log('Feature Status is False');
+      console.log("Feature Status is False");
     }
   }
+
+  let chipsBebas = $(".chips-bebas");
+  let inputBebas = $(".input-bebas");
+
+  let inputFeature = $(".input-feature");
+  let chipsFeature = $(".chips-features");
 
   // for button loading animation on submit
   function loadingSubmit(form, btnText, btnSubmit, loadingIcon) {
@@ -279,7 +287,10 @@ $(document).ready(function () {
       $(btnSubmit).addClass("disabled");
       $(btnText).addClass("hidden-text");
       $(loadingIcon).addClass("show-inline");
-      runFeatureField(true);
+
+      runFeatureField(true, chipsBebas, inputBebas);
+      runFeatureField(true, $(".chips-bonus"), $(".input-bonus"));
+      runFeatureField(true, chipsFeature, inputFeature);
     });
   }
 
@@ -318,21 +329,24 @@ $(document).ready(function () {
   });
 
   // =========== Chips Section
-  const chips = $(".chips-placeholder");
-  chips.material_chip();
+  // const chipss = $(".chips-placeholder");
+  // chipss.material_chip("data");
+  // console.log(chipss);
 
-  function inputChipsToSend(featureField) {
+  function inputChipsToSend(inputChips, chips) {
     let tags = "";
     chips.material_chip("data").forEach((tag) => {
       tags += "," + tag.tag;
     });
-    featureField.val(tags.substr(1));
+    inputChips.val(tags.substr(1));
   }
 
-  function generateChips() {
-    let dataFeature = $(".feature-field").data("feature").split(",");
-    console.log(dataFeature);
-    // if (dataFeature.length != 0) {
+  function generateChips(chips, inputChips) {
+    // console.log(chips.material_chip("data"));
+    let dataFeature = inputChips.data("value").split(",");
+
+    let placeholder = inputChips.data("placeholder");
+    let secondaryPlaceholder = inputChips.data("secondary-placeholder");
 
     let dataFeatureReady = [];
     dataFeature.forEach((data) => {
@@ -340,8 +354,8 @@ $(document).ready(function () {
     });
 
     let dataChips = {
-      placeholder: "Masukkan Fitur",
-      secondaryPlaceholder: "+ Features",
+      placeholder: placeholder,
+      secondaryPlaceholder: secondaryPlaceholder,
     };
 
     if (dataFeature[0] == "") {
@@ -352,7 +366,10 @@ $(document).ready(function () {
     // }
   }
 
-  runFeatureField(false);
+  // runFeatureField(false);
+  runFeatureField(false, chipsBebas, inputBebas);
+  runFeatureField(false, $(".chips-bonus"), $(".input-bonus"));
+  runFeatureField(false, chipsFeature, inputFeature);
 
   if ($(window).width() < 767) {
     $(".tooltipped").tooltip("remove");
@@ -361,6 +378,8 @@ $(document).ready(function () {
   $(".btn-link").on("click", () => {
     Materialize.toast("Link Telah Dicopy!", 3000);
   });
+
+  $(".select-property").material_select();
 });
 
 function resetValidate() {

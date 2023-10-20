@@ -1140,7 +1140,7 @@ a.contact-link .bi {
 }
 
 .row.content {
-  padding-top: 20vh;
+  padding-top: 15vh;
 }
 
 /* AKM Property */
@@ -1156,6 +1156,12 @@ a.contact-link .bi {
 input:not([type]),
 input[type="text"]:not(.browser-default).invalid.file-path {
   border-bottom: 2px solid #f44336;
+}
+
+.property-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem !important;
 }
 
 .upload__box {
@@ -1303,4 +1309,16 @@ input[type="color"] {
 
 .collapsible-body.facility {
   padding-top: 3.5rem;
+}
+
+.property-name span {
+  background-color: var(--property-color);
+  display: inline-block;
+  width: 1.9rem;
+  height: 1.9rem;
+  /* line-height: 4rem; */
+  margin-top: 24px;
+  position: relative;
+  bottom: -0.5rem;
+  border: 1px solid black;
 }

@@ -58,6 +58,7 @@ class LandingPages extends BaseController
 			'personal' => $this->personalModels->find('1'),
 			'social' => $this->socialcontactModels->findAll(),
 			'contact' => $this->addressContactModels->find(1),
+			'contact1' => $this->addressContactModels->find(2),
 			'title' => 'Contact us'
 		];
 
