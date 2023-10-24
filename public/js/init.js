@@ -572,9 +572,7 @@ function copyToClipboard(element) {
   $temp.remove();
 }
 
-// $(window).on("scroll", function () {
-//   if ($(this).scrollTop() > 50) {
-//     return headingWrapper.addClass("scroll");
-//   }
-//   return headingWrapper.removeClass("scroll");
-// });
+function loadingUploadBar() {
+  $(".loading-upload").modal();
+  $("#modal-loading-upload").modal("open");
+}

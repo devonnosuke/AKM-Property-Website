@@ -15,12 +15,13 @@
  *
  * @return imgResize|bool
  */
-function imgResize($imageName, $path, $width, $height, $maintainRatio = false, $quality = 100)
+function imgResize($imageName, $path, $width, $height, $maintainRatio = false, $quality = 68)
 {
     $imgManipulator = \Config\Services::image('gd');
 
     $imgManipulator->withFile($path . '/' . $imageName)
-        ->resize($width, $height, $maintainRatio)
+        ->resize($width, $height, $maintainRatio, 'width')
+        ->withResource()
         ->save($path . '/' . $imageName, $quality);
 
     return $imgManipulator;

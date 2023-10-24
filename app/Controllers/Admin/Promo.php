@@ -130,7 +130,8 @@ class Promo extends BaseController
                     $convert = imgConvert($newImageName['nameWithOldExt'], $newImageName['nameOnly'], 'assets/img/promo', $img_ext);
      
                     // Crop and Resize image
-                    $fit = imgFit($newImageName['nameWithNewExt'], 'assets/img/promo/');
+                    // $fit = imgFit($newImageName['nameWithNewExt'], 'assets/img/promo/');
+                    $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/promo/',1080, 1080, true);
                 }
 
                 // Check if the upload and image manipulation process is success

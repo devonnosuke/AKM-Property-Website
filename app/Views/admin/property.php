@@ -78,7 +78,7 @@
 <!-- Add Property Structure -->
 <div class="modal" id="add-property-modal">
     <div class="modal-content contact-content">
-        <form action="<?= base_url() ?>/admin/property/save/true" enctype="multipart/form-data" method="post" class="modal-form">
+        <form action="<?= base_url() ?>/admin/property/save/true" enctype="multipart/form-data" method="post" class="modal-form" onsubmit="loadingUploadBar()">
             <?= csrf_field() ?>
             <input type="hidden" class="feature-field input-feature" name="features" data-value="<?= old('features') ?>" data-placeholder="Masukkan Fasilitas" data-secondary-placeholder="+ Fasilitas" data-status="true">
 
@@ -138,7 +138,7 @@
                                 <div class="file-field input-field col s12 upload__btn-box">
                                     <div class="btn waves-effect waves-light deep-purple lighten-1 upload__btn">
                                         <span>Pilih Banyak gambar</span>
-                                        <input type="file" multiple data-max_length="20" name="img[]" class="upload__inputfileonly">
+                                        <input type="file" id="file1" multiple data-max_length="20" name="img[]" class="upload__inputfileonly">
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input type="text" class="file-path img-path validate <?= validCheck($validation->getError('img')) ?>">
@@ -252,5 +252,15 @@
 
         </form>
     </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal-loading-upload" class="modal loading-upload">
+  <div class="modal-content">
+    <h4>Mengupload Gambar</h4>
+    <div class="progress">
+      <div class="indeterminate"></div>
+    </div>
+  </div>
 </div>
 <?= $this->endSection() ?>

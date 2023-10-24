@@ -157,7 +157,9 @@ class Property extends BaseController
                     $convert = imgConvert($newImageName['nameWithOldExt'], $newImageName['nameOnly'], 'assets/img/property', $img_ext);
      
                     // Crop and Resize image
-                    $fit = imgFit($newImageName['nameWithNewExt'], 'assets/img/property/');
+                    // $fit = imgFit($newImageName['nameWithNewExt'], 'assets/img/property/');
+                    $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
+
                 }
 
                 // Check if the upload and image manipulation process is success
@@ -180,7 +182,9 @@ class Property extends BaseController
                     $convert = imgConvert($newDenahImageName['nameWithOldExt'], $newDenahImageName['nameOnly'], 'assets/img/property', $img_ext);
      
                     // Crop and Resize image
-                    $fit = imgFit($newDenahImageName['nameWithNewExt'], 'assets/img/property/');
+                    // $fit = imgFit($newDenahImageName['nameWithNewExt'], 'assets/img/property/');
+                    $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
+
                 }
 
                 // Check if the upload and image manipulation process is success
@@ -223,7 +227,9 @@ class Property extends BaseController
                     $convert = imgConvert( $imageName['nameWithOldExt'], $imageName['nameOnly'], 'assets/img/property', $img_ext, 78);
 
                     // Crop and Resize image
-                    $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
+                    // $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
+                    $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
+
 
                     // Check if the upload and image manipulation process is success
                     if ($img_file && $convert && $fit) {
