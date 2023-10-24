@@ -48,27 +48,11 @@
                     </a>
                     <!-- %%% Dekstop Nav %%% -->
                     <ul class="right hide-on-med-and-down">
-                        <li><a class="nav-link" href="<?= $base ?>#about">About</a></li>
-                        <li><a class="nav-link" href="<?= $base ?>#skills">Skills</a></li>
-                        <li><a class="nav-link" href="<?= $base ?>#education">Educational</a></li>
-                        <li><a class="nav-link" href="<?= $base ?>#services">Services</a></li>
-                        <li><a class="nav-link" href="<?= $base ?>#faq">FAQ</a></li>
-                        <li><a class="nav-link" href="<?= $base ?>/contact">Contact Us</a></li>
-                        <li><a class="nav-link" href="<?= base_url() ?>/portfolio">Portfolio</a></li>
-                        <!-- Dropdown Trigger Menu -->
-                        <!-- <li>
-                            <a class="dropdown-button center-align nav-link" href="#!" data-activates="menu-dropdown">
-                                <span>Menu</span>
-                                <i class="bi bi-caret-down-fill right small-icon"></i>
-                            </a>
-                        </li> -->
+                        <li class="<?= (isset($index_active) ? $index_active : '') ?>"><a class="nav-link" href="<?= base_url() ?>/">Home</a></li>
+                        <li class="<?= (isset($property_active) ? $property_active : '') ?>"><a class="nav-link" href="<?= base_url() ?>/properti">Properti</a></li>
+                        <li class="<?= (isset($promo_active) ? $promo_active : '') ?>"><a class="nav-link" href="<?= base_url() ?>/promo">Promo</a></li>
+                        <li class="<?= (isset($contact_active) ? $contact_active : '') ?>"><a class="nav-link" href="<?= base_url() ?>/contact">Alamat Kami</a></li>
                     </ul>
-                    <!-- The Dropdown Menu -->
-                    <!-- <ul id="menu-dropdown" class="dropdown-content">
-                        <li><a href="#!" class="light"><i class="bi bi-house-door-fill left"></i> Home</a></li>
-                        <li><a href="#!" class="light"><i class="bi bi-globe2 left"></i> Blog</a></li>
-                        <li><a href="code/index.html" class="light"><i class="bi bi-file-earmark-code-fill left"></i> My code</a></li>
-                    </ul> -->
                     <!-- %%% Mobile Nav %%% -->
                     <ul id="slide-out" class="side-nav grey darken-4">
                         <ul class="collapsible" data-collapsible="accordion">
@@ -82,13 +66,10 @@
                             </li>
                         </ul>
                         <li><a class="subheader">Menu Navigasi</a></li>
-                        <li><a class="waves-effect waves-light mobile" href="<?= $base ?>#about"><i class="bi bi-info-circle-fill left"></i>About</a></li>
-                        <li><a class="waves-effect waves-light mobile" href="<?= $base ?>#skills"><i class="bi bi-pie-chart-fill left"></i>Skills</a></li>
-                        <li><a class="waves-effect waves-light mobile" href="<?= $base ?>#education"><i class="bi bi-graph-up left"></i>Educational</a></li>
-                        <li><a class="waves-effect waves-light mobile" href="<?= $base ?>#services"><i class="bi bi-grid-fill left"></i>Services</a></li>
-                        <li><a class="waves-effect waves-light mobile" href="<?= $base ?>/contact"><i class="bi bi-info-circle-fill left"></i>Contact Us</a></li>
-                        <li><a class="waves-effect waves-light mobile" href="<?= base_url() ?>/portfolio"><i class="bi bi-telephone-fill left"></i>Portfolio</a></li>
-                        <li><a class="waves-effect waves-light mobile" href="<?= $base ?>#faq"><i class="bi bi-question-circle-fill left"></i>FAQ</a></li>
+                        <li class="<?= (isset($index_active) ? $index_active : '') ?>"><a class="waves-effect waves-light mobile" href="<?= base_url() ?>/"><i class="bi bi-house-fill left"></i>Halaman Utama</a></li>
+                        <li class="<?= (isset($property_active) ? $property_active : '') ?>"><a class="waves-effect waves-light mobile" href="<?= base_url() ?>/properti"><i class="bi bi-houses-fill left"></i>Properti</a></li>
+                        <li class="<?= (isset($promo_active) ? $promo_active : '') ?>"><a class="waves-effect waves-light mobile" href="<?= base_url() ?>/promo"><i class="bi bi-tags-fill left"></i>Promo</a></li>
+                        <li class="<?= (isset($contact_active) ? $contact_active : '') ?>"><a class="waves-effect waves-light mobile" href="<?= base_url() ?>/contact"><i class="bi bi-geo-alt-fill left"></i>Alamat Kami</a></li>
                     </ul>
                 </div>
             </div>

@@ -31,6 +31,6 @@ class PromoModel extends Model
         $builder = $db->table($this->table);
         $builder->select('*');
         $builder->where('slug', $slug);
-        $builder->get()->getResultArray();
+        return $builder->get()->getResultArray();
     }
 }

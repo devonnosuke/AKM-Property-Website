@@ -584,3 +584,12 @@ div.card-contact:hover {
 .parallax-container h3 {
   margin-top: 70px;
 }
+
+.card-property {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-property .card-content {
+  height: 168px;
+}

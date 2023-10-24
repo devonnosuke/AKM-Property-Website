@@ -12,6 +12,7 @@ class LandingPages extends BaseController
 
 	public function index()
 	{
+	
 		$data = [
 			'educational' => $this->educationalModels->findAll(),
 			'personal' => $this->personalModels->find('1'),
@@ -21,35 +22,39 @@ class LandingPages extends BaseController
 			'services' => $this->servicesModels->findAll(),
 			'cta' => $this->ctaModels->findAll(),
 			'faqs' => $this->faqModels->findAll(),
+			'promos' => $this->promoModels->findAll(),
+			'properties' => $this->propertyModels->findAll(),
 			'title' => 'Landing Pages'
 		];
+        $data['index_active'] = 'active';
+
 		return view('landing/index', $data);
 	}
 
-	public function portfolio()
-	{
-		$data = [
-			'portfolio' => $this->portfolioModels->findAll(),
-			'personal' => $this->personalModels->find('1'),
-			'social' => $this->socialcontactModels->findAll(),
-			'title' => 'Portfolio'
-		];
+	// public function portfolio()
+	// {
+	// 	$data = [
+	// 		'portfolio' => $this->portfolioModels->findAll(),
+	// 		'personal' => $this->personalModels->find('1'),
+	// 		'social' => $this->socialcontactModels->findAll(),
+	// 		'title' => 'Portfolio'
+	// 	];
 
-		return view('landing/portfolio', $data);
-	}
+	// 	return view('landing/portfolio', $data);
+	// }
 
-	public function faq()
-	{
-		$data = [
-			// 'faqs' => $this->faqModels->findAll(),
-			'personal' => $this->personalModels->find('1'),
-			'social' => $this->socialcontactModels->findAll(),
-			'title' => 'Frequently Asked Questions',
-			'faqs' => $this->faqModels->findAll(),
-		];
+	// public function faq()
+	// {
+	// 	$data = [
+	// 		// 'faqs' => $this->faqModels->findAll(),
+	// 		'personal' => $this->personalModels->find('1'),
+	// 		'social' => $this->socialcontactModels->findAll(),
+	// 		'title' => 'Frequently Asked Questions',
+	// 		'faqs' => $this->faqModels->findAll(),
+	// 	];
 
-		return view('landing/faq', $data);
-	}
+	// 	return view('landing/faq', $data);
+	// }
 
 	public function contact()
 	{
@@ -61,6 +66,7 @@ class LandingPages extends BaseController
 			'contact1' => $this->addressContactModels->find(2),
 			'title' => 'Contact us'
 		];
+        $data['contact_active'] = 'active';
 
 		return view('landing/contact', $data);
 	}
@@ -105,10 +111,12 @@ class LandingPages extends BaseController
 		$data = [
 			'portfolio' => $this->portfolioModels->findAll(),
 			'personal' => $this->personalModels->find('1'),
+			'properties' => $this->propertyModels->findAll(),
 			'social' => $this->socialcontactModels->findAll(),
 			'contact' => $this->addressContactModels->find(1),
 			'title' => 'Contact us'
 		];
+        $data['property_active'] = 'active';
 		
 		if ($slug) {
 			$proprety = $this->propertyModels->getBySlug($slug);
@@ -126,6 +134,38 @@ class LandingPages extends BaseController
 		}
 		
 		return view('landing/property', $data);
+	}
+
+	public function promo($slug = false)
+	{
+		$data = [
+			'portfolio' => $this->portfolioModels->findAll(),
+			'personal' => $this->personalModels->find('1'),
+			'social' => $this->socialcontactModels->findAll(),
+			'promo' => $this->promoModels->findAll(),
+			'title' => 'Contact us'
+		];
+		$data['promo_active'] = 'active';
+		
+		if ($slug) {
+			$promo = $this->promoModels->getBySlug($slug);
+			$property = $this->propertyModels->findId($promo[0]['id_property']);
+			$data = [
+				'promo' => $promo[0],
+				'property' => $property[0],
+				'portfolio' => $this->portfolioModels->findAll(),
+				'personal' => $this->personalModels->find('1'),
+				'social' => $this->socialcontactModels->findAll(),
+				'contact' => $this->addressContactModels->find(1),
+				'title' => 'Detail Properti',
+				'services' => $this->servicesModels->findAll(),
+				'cta' => $this->ctaModels->findAll(),
+			];
+			$data['promo_active'] = 'active';
+			return view('landing/promo-single', $data);
+		}
+		
+		return view('landing/promo', $data);
 	}
 
 	public function sendWA() {
