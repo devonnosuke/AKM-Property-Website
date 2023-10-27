@@ -7,10 +7,10 @@
                 <div class="bordering left"></div>
 
                 <ul class="f-list">
-                    <li><a class="white-text" href="#!">Fajri Arahim</a></li>
-                    <li><a class="white-text" href="#!">Kaze Xandro</a></li>
-                    <li><a class="white-text" href="#!">Devon Nosuke</a></li>
-                    <li><a class="white-text" href="#!">Giano Jerman</a></li>
+                    <li><a class="white-text" href="<?= base_url() ?>/">Halaman Utama</a></li>
+                    <li><a class="white-text" href="<?= base_url() ?>/properti">Proeperti</a></li>
+                    <li><a class="white-text" href="<?= base_url() ?>/promo">Promo</a></li>
+                    <li><a class="white-text" href="<?= base_url() ?>/contact">Alamat Kami</a></li>
                 </ul>
             </div>
             <div class="col m6 s12">
@@ -32,7 +32,7 @@
     </div>
     <div class="footer-copyright grey darken-4">
         <div class="container center">
-            <span class="grey-text text-lighten-4">Copyright 2021 © Yura Studios</span>
+            <span class="grey-text text-lighten-4">Copyright 2023 © Yura Studios</span>
         </div>
     </div>
 </footer>

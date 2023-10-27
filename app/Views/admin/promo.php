@@ -43,7 +43,10 @@
                                     </div>
 
                                     <div class="card-action center z-depth-1">
+                                        <p style="display:none" id="<?= $promo->id ?>"><?= base_url() ?>/promo/<?= $promo->slug ?></p>
                                         <a href="<?= base_url() ?>/admin/promo/<?= $promo->id ?>" class="btn orange darken-2 waves-effect waves-dark tooltipped btn-card" data-position="bottom" data-delay="150" data-tooltip="Change"><i class="bi bi-pencil-fill"></i></a>
+
+                                        <button class="btn green darken-1 waves-effect waves-light btn-card-more btn-link" onclick="copyToClipboard('#<?= $promo->id ?>')">Salin Link <i class="bi bi-link-45deg"></i></button>
 
                                         <button data-href="<?= base_url() ?>/admin/promo/<?= $promo->id ?>/<?= $promo->brosur ?>" class="btn red darken-2 waves-effect waves-dark delete-btn tooltipped" data-tooltip="Delete" data-delay="150" data-position="bottom">
                                             <i class="bi bi-trash-fill"></i>

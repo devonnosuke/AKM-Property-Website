@@ -1,18 +1,16 @@
 $(document).ready(function () {
-	$(".button-collapse").sideNav();
-	$(".slider").slider({
+  $(".button-collapse").sideNav();
+  $(".slider").slider({
+    indicators: true,
 
-		indicators: true,
+    height: 600,
 
-		height: 500,
+    transition: 600,
 
-		transition: 600,
-
-		interval: 6500
-
-	});
-	$(".modal").modal();
-	$('.parallax').parallax();
-	$('.materialboxed').materialbox();
-	$('.materialboxed12').materialbox();
+    interval: 7000,
+  });
+  $(".modal").modal();
+  $(".parallax").parallax();
+  $(".materialboxed").materialbox();
+  $(".materialboxed12").materialbox();
 });

@@ -9,7 +9,7 @@
                 <div class="nav-wrapper">
                     <?php
                     $base = '';
-                    ($title == 'Portfolio' || $title == 'Contact us') ? $base = base_url() . '/' : $base = '';
+                    ($title != 'Landing Pages' ) ? $base = base_url() . '/' : $base = '';
                     ?>
                     <!-- Menu Button -->
                     <a href="#" data-activates="slide-out" class="button-collapse nav-link"><i class="bi bi-list"></i></a>

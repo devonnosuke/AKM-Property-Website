@@ -23,51 +23,9 @@
             </a>
         </li>
         <li class="divider"></li>
-        <li class="menu-item <?= (isset($personal_active) ? $personal_active : '') ?>">
-            <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/personal">
-                <i class="white-text bi bi-person-fill"></i>Personal About
-            </a>
-        </li>
-        <li class="divider"></li>
-        <li class="menu-item <?= (isset($skills_active) ? $skills_active : '') ?>">
-            <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/skills">
-                <i class="white-text bi bi-pie-chart-fill"></i>Skills
-            </a>
-        </li>
-        <li class="divider"></li>
         <li class="menu-item <?= (isset($contacts_active) ? $contacts_active : '') ?>">
             <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/contacts">
                 <i class="white-text bi bi-telephone-fill"></i>Contacts
-            </a>
-        </li>
-        <li class="divider"></li>
-        <li class="menu-item <?= (isset($portfolio_active) ? $portfolio_active : '') ?>">
-            <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/portfolio">
-                <i class="white-text bi bi-images"></i>Portfolio
-            </a>
-        </li>
-        <li class="divider"></li>
-        <li class="menu-item <?= (isset($sliders_active) ? $sliders_active : '') ?>">
-            <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/sliders">
-                <i class="white-text bi bi-collection-fill"></i>Sliders
-            </a>
-        </li>
-        <li class="divider"></li>
-        <li class="menu-item <?= (isset($educational_active) ? $educational_active : '') ?>">
-            <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/educational">
-                <i class="white-text bi bi-trophy-fill"></i>Educational
-            </a>
-        </li>
-        <li class="divider"></li>
-        <li class="menu-item <?= (isset($services_active) ? $services_active : '') ?>">
-            <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/services">
-                <i class="white-text bi bi-grid-fill"></i>Services
-            </a>
-        </li>
-        <li class="divider"></li>
-        <li class="menu-item <?= (isset($faq_active) ? $faq_active : '') ?>">
-            <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/faq">
-                <i class="white-text bi bi-question-circle-fill"></i>FAQ
             </a>
         </li>
         <li class="divider"></li>

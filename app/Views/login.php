@@ -43,10 +43,15 @@
             img.responsive-img {
                 width: 35vw;
             }
+
+            .row {
+                padding-top: 2rem;
+            }
         }
 
         .card-panel {
             padding: 10px 30px;
+            background-color: rgba(255,255,255, 0.9);
         }
 
         [type="checkbox"]:checked+label:before {
@@ -104,18 +109,27 @@
             display: inline-block;
             width: 90%;
         }
+
+        .bg-base {
+            background-color: var(--color);
+        }
+
+        .color-base {
+            color: var(--color);
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="row container-login login-img" style="padding: 0; margin: 0">
+    <div class="row container-login login-img" style="margin: 0; --color:#aa0000ff;">
 
-        <div class="col s12" style="margin: 0; padding: 2%;">
+        <div class="col s12" style="margin: 0;">
 
             <div class="card-panel hoverable">
 
                 <div class="center">
-                    <h4 class="purple-text text-darken-2">Form Login</h4>
+                    <h4 class="color-base text-darken-2">Form Login</h4>
                     <img class="responsive-img" width="200" src="<?= base_url() ?>/img/g57664.png">
                 </div>
 
@@ -164,19 +178,19 @@
                         <input type="checkbox" name="remember" id="remember">
 
                         <label for="remember">Ingat saya</label>
-
+                        <?= lang('Auth.rememberMe') ?>
                     </p> -->
                     <?php if ($config->allowRemembering) : ?>
                         <p class="checkbox-field center">
                             <input type="checkbox" name="remember" id="remember" <?php if (old('remember')) : ?> checked <?php endif ?>>
-                            <label for="remember"> <?= lang('Auth.rememberMe') ?> <i>(for 7 Days)</i></label>
+                            <label for="remember"> Ingat Saya <i>(selama 7 hari)</i></label>
                         </p>
                     <?php endif; ?>
 
                     <div class="submit-field center-align">
 
-                        <button type="submit" class="btn btn-submit purple darken-2 waves-effect waves-light btn-large">
-                            <span class="btn-text"> <i class="bi bi-box-arrow-in-left right"></i> login</span>
+                        <button type="submit" class="btn btn-submit bg-base waves-effect waves-light btn-large">
+                            <span class="btn-text"><i class="bi bi-box-arrow-in-left left"></i> login</span>
                             <img src="<?= base_url() ?>/loading.webp" class="loading-icon">
                         </button>
 

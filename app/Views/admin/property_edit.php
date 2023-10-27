@@ -9,12 +9,18 @@
                 <div class="menu-wraper text-color">
                     <span class="flash-data" data-flashdata="" data-type="Tagline"></span>
 
-                    <div class="heading-wrapper white">
-                        <h2 class="header center-on-small-only">
-                            <i class="bi bi-collection-fill purple-text header-icon"></i> Change slider
-                        </h2>
-                        <h6>Change the slider information that has been created.</h6>
-                        <hr class="left">
+                    <div class="heading-wrapper white row">
+                        <div class="col s9 m8 left">
+                            <h2 class="header center-on-small-only">
+                                <i class="bi bi-collection-fill purple-text header-icon"></i> Edit Properti
+                            </h2>
+                            <hr class="left">
+                        </div>
+                        <div class="col s3 m4 right">
+                            <h2 class="header center-on-small-only">
+                                <a href="<?= base_url() ?>/admin/property" class="modal-trigger btn color-base white waves-effect waves-dark"><i class="bi bi-arrow-left left"></i></a>
+                            </h2>
+                        </div>
                     </div>
 
                     <div class="row content">
@@ -27,9 +33,6 @@
                                     <input type="hidden" name="old_denah" value="<?= $property->denah ?>">
                                     <input type="hidden" name="slug" value="<?= $property->slug ?>">
                                     <input type="hidden" class="feature-field input-feature" name="features" data-value="<?= oldCheck('features', $property->features) ?>" data-placeholder="Masukkan Fasilitas" data-secondary-placeholder="+ Fasilitas" data-status="true">
-                                    
-
-                                    <h4>Edit Properti</h4>
                                     <ul class="collapsible collapsible-property input popout" data-collapsible="expandable">
                                         <li class="flow-text">
                                             <div class="collapsible-header active"><i class="material-icons">info</i>Info Dasar</div>
@@ -74,12 +77,12 @@
                                                 <div class="col s12 m4 img-input">
                                                     <p>Gambar Utama:</p>
                                                     <div class="card-panel card-image card-thumb z-depth-2 material-placeholder">
-                                                        <img class="profile-pic img-preview materialboxed" src="<?= base_url() ?>/assets/img/property/<?= $property->image ?>">
+                                                        <img class="profile-pic img-preview materialboxed responsive-img" src="<?= base_url() ?>/assets/img/property/<?= $property->image ?>">
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="file-field input-field col m9 s12">
-                                                    <div class="btn waves-effect waves-light deep-purple lighten-1">
+                                                    <div class="btn waves-effect waves-light bg-base lighten-1">
                                                         <span>Ganti Gambar Utama</span>
                                                         <input type="file" name="image" accept="image/*" id="image" onchange="previewImg()">
                                                     </div>
@@ -166,11 +169,11 @@
                                                     <div class="col s12 m4 img-input">
                                                         <p>Gambar Denah:</p>
                                                         <div class="card-panel card-image card-thumb z-depth-2 material-placeholder">
-                                                            <img class="profile-pic img-preview materialboxed" src="<?= base_url() ?>/assets/img/property/<?= $property->denah ?>">
+                                                            <img class="profile-pic img-preview materialboxed responsive-img" src="<?= base_url() ?>/assets/img/property/<?= $property->denah ?>">
                                                         </div>
                                                     </div>
 
-                                                    <div class="btn waves-effect waves-light deep-purple lighten-1">
+                                                    <div class="btn waves-effect waves-light bg-base lighten-1">
                                                         <span>Ganti Gambar Denah Rumah</span>
                                                         <input type="file" name="denah" accept="image/*" id="denah" onchange="previewImg()">
                                                     </div>

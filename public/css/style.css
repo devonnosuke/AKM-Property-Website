@@ -25,26 +25,26 @@
 
 /* ===================================== */
 .first-color {
-  background-color: #ab47bc !important;
+  background-color: #aa0000ff !important;
 }
 .sub-nav-color {
   background-color: #37474f !important;
 }
 .second-color {
-  background-color: #ab47bc !important;
+  background-color: #aa0000ff !important;
 }
 .thrid-color {
-  background-color: #ab47bc !important;
+  background-color: #aa0000ff !important;
 }
 .fourth-color {
   background-color: #181818 !important;
 }
 .sixth-color {
-  background-color: #ab47bc !important;
+  background-color: #aa0000ff !important;
 }
 
 .base-color-text {
-  color: #ab47bc;
+  color: #aa0000ff;
 }
 
 .card-content-color {
@@ -94,7 +94,7 @@ h6.sub-header {
 }
 
 .curr-active {
-  border-left: 3px solid #ab47bc !important;
+  border-left: 3px solid #aa0000ff !important;
   background-color: rgb(6, 6, 6);
 }
 
@@ -104,7 +104,7 @@ h6.sub-header {
 
 .divider {
   margin: 0 !important;
-  background-color: #000;
+  background-color: #121212;
 }
 
 i.bi {
@@ -152,7 +152,7 @@ header .collapsible-header {
 }
 
 hr {
-  border: 1px solid #7b1fa2;
+  border: 1px solid var(--color);
   width: 90%;
   transition: 0.6s;
 }
@@ -237,7 +237,7 @@ hr {
 
   hr {
     float: left;
-    width: 60%;
+    width: 90%;
     margin: 0;
   }
 
@@ -387,7 +387,7 @@ hr {
     width: 100% !important;
     padding: 10px;
     margin: 5px auto !important;
-    border: 1px solid #ab47bc;
+    border: 1px solid #aa0000ff;
   }
 
   table.skill-table tbody,
@@ -1106,7 +1106,7 @@ a.contact-link .bi {
   z-index: 3;
   width: 83%;
   padding-bottom: 10px;
-  top: 7vh;
+  top: 6vh;
   left: 15.8vw;
   padding-top: 15px;
   padding-left: 25px;
@@ -1140,7 +1140,7 @@ a.contact-link .bi {
 }
 
 .row.content {
-  padding-top: 15vh;
+  padding-top: 8vh;
 }
 
 /* AKM Property */
@@ -1252,7 +1252,7 @@ input[type="text"]:not(.browser-default).invalid.file-path {
 
 #swatch {
   background: white;
-  box-shadow: 1em 1em 1em rgba(0, 0, 0, 0.1);
+  box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
@@ -1332,4 +1332,17 @@ input[type="color"] {
   height: 3rem;
   color: var(--color);
   border-radius: -4px;
+}
+
+.bg-base {
+  background-color: var(--color);
+}
+
+.color-base {
+  color: var(--color);
+}
+
+.dropdown-content li > a,
+.dropdown-content li > span {
+  color: var(--color) !important;
 }

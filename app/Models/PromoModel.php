@@ -33,4 +33,13 @@ class PromoModel extends Model
         $builder->where('slug', $slug);
         return $builder->get()->getResultArray();
     }
+
+    public function findAllPromo()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('*, promo.slug');
+        $builder->join('property', "property.id = $this->table.id_property");
+        return $builder->get()->getResultObject();
+    }
 }

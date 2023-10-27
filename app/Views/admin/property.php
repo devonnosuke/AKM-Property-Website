@@ -15,14 +15,14 @@
                     <div class="heading-wrapper white row">
                         <div class="col s9 m8 left">
                             <h2 class="header center-on-small-only">
-                                <i class="bi bi-house-fill purple-text header-icon"></i> Daftar <span class="table-name">Properti</span>
+                                <i class="bi bi-house-fill color-base header-icon"></i> Daftar <span class="table-name">Properti</span>
                             </h2>
                             <h6>Daftar Seluluh Property dari ®️AKM Property.</h6>
                             <hr class="left">
                         </div>
                         <div class="col s3 m4 right">
                             <h2 class="header center-on-small-only">
-                                <a href="#add-property-modal" class="modal-trigger btn btn-large blue waves-effect waves-dark hoverable"><i class="bi bi-plus left"></i> Tambah Properti</a>
+                                <a href="#add-property-modal" class="modal-trigger btn btn-large blue waves-effect waves-dark hoverable"><i class="bi bi-plus"></i> <span class="hide-on-med-and-down">Tambah Properti</span></a>
                             </h2>
                         </div>
                     </div>
@@ -38,15 +38,14 @@
                                     </div>
 
                                     <div class="card-content desc">
-                                        <p id="<?= $prop->id ?>">https://akmproperti.com/properti/<?= $prop->slug ?></p>
                                         <?= cutString($prop->description) ?>
                                     </div>
-
+                                    
                                     <div class="card-action center z-depth-1">
-                                        
-                                        <button class="btn orange darken-2 waves-effect waves-light btn-card-more btn-link" onclick="copyToClipboard('#<?= $prop->id ?>')">Salin Link <i class="bi bi-link-45deg"></i></button>
+                                        <p style="display:none" id="<?= $prop->id ?>"><?= base_url() ?>/properti/<?= $prop->slug ?></p>
+                                        <button class="btn green darken-1 waves-effect waves-light btn-card-more btn-link" onclick="copyToClipboard('#<?= $prop->id ?>')">Salin Link <i class="bi bi-link-45deg"></i></button>
                                         <!-- Dropdown Trigger -->
-                                        <button class='dropdown-button btn purple darken-1 btn-card-more' data-activates='dropdown<?= $prop->id ?>'><i class="bi bi-list"></i></button>
+                                        <button class='dropdown-button btn bg-base btn-card-more' data-activates='dropdown<?= $prop->id ?>'><i class="bi bi-list"></i></button>
                                         <!-- Dropdown Structure -->
                                         <ul id='dropdown<?= $prop->id ?>' class='dropdown-content'>
                                         <li><a href="<?= base_url() ?>/admin/property-image/<?= $prop->id ?>"><i class="bi bi-images"></i>Lihat Gallery Foto</a></li>

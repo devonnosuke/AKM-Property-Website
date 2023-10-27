@@ -14,6 +14,7 @@ class LandingPages extends BaseController
 	{
 	
 		$data = [
+			'properties' => $this->propertyModels->findAll(),
 			'educational' => $this->educationalModels->findAll(),
 			'personal' => $this->personalModels->find('1'),
 			'skills' => $this->skillsModels->findAll(),
@@ -22,12 +23,14 @@ class LandingPages extends BaseController
 			'services' => $this->servicesModels->findAll(),
 			'cta' => $this->ctaModels->findAll(),
 			'faqs' => $this->faqModels->findAll(),
-			'promos' => $this->promoModels->findAll(),
+			// 'promos' => $this->promoModels->findAll(),
+			'promos' => $this->promoModels->findAllPromo(),
 			'properties' => $this->propertyModels->findAll(),
 			'title' => 'Landing Pages'
 		];
         $data['index_active'] = 'active';
 
+		// dd($data['promos']);
 		return view('landing/index', $data);
 	}
 

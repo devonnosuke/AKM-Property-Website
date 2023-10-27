@@ -472,7 +472,7 @@ div.card-contact:hover {
 
 .slider .indicators .indicator-item.active {
   background-color: var(--color);
-  /* border: 3px solid var(--color); */
+  filter: brightness(1.6);
   width: 28px;
   transform: scale(1.5);
 }
@@ -484,11 +484,18 @@ div.card-contact:hover {
 }
 
 .slider .indicators .indicator-item {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .slider .indicators {
-  bottom: 60px;
+  bottom: 55px;
   z-index: 2;
+}
+
+.slider-promo {
+  height: 640px !important;
+}
+.slider-promo .slides {
+  height: 600px !important;
 }
 
 .desc-service {
@@ -592,4 +599,14 @@ div.card-contact:hover {
 }
 .card-property .card-content {
   height: 168px;
+}
+
+.card-reveal p {
+  margin-top: 1px;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.card-reveal p span {
+  font-weight: 300;
 }

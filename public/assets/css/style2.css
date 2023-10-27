@@ -146,6 +146,7 @@ section.contact .row .col {
   .heading-text h2 {
     margin-bottom: 5px;
     font-size: 2.6rem;
+    font-weight: 400;
   }
 
   .contact .row {
@@ -588,7 +589,7 @@ nav .button-collapse {
 .row.services {
   align-items: stretch;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
@@ -749,4 +750,8 @@ iframe.hoverable {
 
 blockquote {
   border-left: 5px solid var(--color);
+}
+
+.f-list {
+  margin-top: 2rem;
 }
