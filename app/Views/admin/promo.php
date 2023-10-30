@@ -15,14 +15,14 @@
                     <div class="heading-wrapper white row">
                         <div class="col s9 m8 left">
                             <h2 class="header center-on-small-only">
-                                <i class="bi bi-house-fill purple-text header-icon"></i> Daftar <span class="table-name">Promo</span>
+                                <i class="bi bi-house-fill color-base header-icon"></i> Daftar <span class="table-name">Promo</span>
                             </h2>
                             <h6>Daftar Property yang sedang promo dari ®️AKM Property.</h6>
                             <hr class="left">
                         </div>
                         <div class="col s3 m4 right">
                             <h2 class="header center-on-small-only">
-                                <a href="#add-property-modal" class="modal-trigger btn btn-large blue waves-effect waves-dark hoverable"><i class="bi bi-plus left"></i> Tambah Properti</a>
+                                <a href="#add-property-modal" class="modal-trigger btn btn-large blue waves-effect waves-dark hoverable"><i class="bi bi-plus"></i> <span class="hide-on-med-and-down">Tambah Promo</span></a>
                             </h2>
                         </div>
                     </div>
@@ -34,23 +34,32 @@
 
                                     <div class="card-image">
                                         <img src="<?= base_url() ?>/assets/img/promo/<?= $promo->brosur ?>" class="img-slider" alt="<?= $promo->nama_promo ?>">
+                                        <span class="card-title center-align flow-text"><?= $promo->nama_promo ?></span>
                                     </div>
 
                                     <div class="card-content desc">
-                                        <p><?= $promo->nama_promo ?></p>
-                                        <p><?= $promo->promo ?></p>
-                                        <?= cutString($promo->deskripsi) ?>
+                                        <p><b>Bonus: </b> <?= $promo->bonus ?></p>
+                                        <p><b>Free: </b> <?= $promo->bebas ?></p>
+                                        <p><b>Deskripsi: </b> <?= $promo->deskripsi ?></p>
                                     </div>
 
-                                    <div class="card-action center z-depth-1">
+                                    <div class="card-action center z-depth-1 row">
                                         <p style="display:none" id="<?= $promo->id ?>"><?= base_url() ?>/promo/<?= $promo->slug ?></p>
-                                        <a href="<?= base_url() ?>/admin/promo/<?= $promo->id ?>" class="btn orange darken-2 waves-effect waves-dark tooltipped btn-card" data-position="bottom" data-delay="150" data-tooltip="Change"><i class="bi bi-pencil-fill"></i></a>
-
-                                        <button class="btn green darken-1 waves-effect waves-light btn-card-more btn-link" onclick="copyToClipboard('#<?= $promo->id ?>')">Salin Link <i class="bi bi-link-45deg"></i></button>
-
-                                        <button data-href="<?= base_url() ?>/admin/promo/<?= $promo->id ?>/<?= $promo->brosur ?>" class="btn red darken-2 waves-effect waves-dark delete-btn tooltipped" data-tooltip="Delete" data-delay="150" data-position="bottom">
-                                            <i class="bi bi-trash-fill"></i>
-                                        </button>
+                                        <div class="col s4">
+                                            <a href="<?= base_url() ?>/admin/promo/<?= $promo->id ?>" class="btn orange darken-2 waves-effect waves-dark tooltipped btn-card" data-position="bottom" data-delay="150" data-tooltip="Change"><i class="bi bi-pencil-fill"></i></a>
+                                        </div>
+                                        
+                                        <div class="col s4">
+                                            <button class="btn green darken-1 waves-effect waves-light btn-card-more btn-link" onclick="copyToClipboard('#<?= $promo->id ?>')">
+                                            <i class="bi bi-link-45deg"></i> 
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="col s4">
+                                            <button data-href="<?= base_url() ?>/admin/promo/<?= $promo->id ?>/<?= $promo->brosur ?>" class="btn red darken-2 waves-effect waves-dark delete-btn tooltipped" data-tooltip="Delete" data-delay="150" data-position="bottom">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </button>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -97,12 +106,6 @@
                 </div>
 
                 <div class="input-field col s12">
-                    <input type="text" name="promo" id="promo" class="validate <?= validCheck($validation->getError('promo')) ?>" value="<?= old('promo') ?>" required>
-                    <label for="promo" <?= errorMsgCheck($validation->getError('promo')) ?>>Tajuk Promo</label>
-                    <span>contoh: Promo 500 Ribu, Potongan harga DP 10%...</span>
-                </div>
-
-                <div class="input-field col s12">
                     <textarea name="deskripsi" id="deskripsi" class="materialize-textarea validate <?= validCheck($validation->getError('deskripsi')) ?>" data-length="56" maxlength="56"><?= old('deskripsi') ?></textarea>
                     <label for="deskripsi" <?= errorMsgCheck($validation->getError('tagline')) ?>>Deskripsi Promo</label>
                 </div>
@@ -123,13 +126,13 @@
 
                 <div class="input-field col m3 s12">
                     <div class="card-panel card-thumb z-depth-2">
-                        <img src="<?= base_url() ?>/assets/img/noimg.png" class="portfolio-view img-preview materialboxed">
+                        <img src="<?= base_url() ?>/assets/img/noimg.png" class="portfolio-view img-preview materialboxed" id="brosur-preview">
                     </div>
                 </div>
                 <div class="file-field input-field col m9 s12">
-                    <div class="btn waves-effect waves-light deep-purple lighten-1">
+                    <div class="btn waves-effect waves-light bg-base">
                         <span>Pilih 1 Gambar Brosur</span>
-                        <input type="file" name="brosur" accept="image/*" id="img" onchange="previewImg()" required>
+                        <input type="file" name="brosur" accept="image/*" id="brosur" onchange="previewImg('#brosur',false,'#brosur-preview')" required>
                     </div>
                     <div class="file-path-wrapper">
                         <input type="text" class="file-path img-path validate">
@@ -143,11 +146,11 @@
             <div class="modal-footer col s12 white z-depth-1">
                 <div class="row modal-button">
                     <div class="col s6 center">
-                        <a class="modal-action btn-flat waves-effect waves-red modal-close">Cancel</a>
+                        <a class="modal-action btn-flat waves-effect waves-red modal-close">Batal</a>
                     </div>
                     <div class="col s6 center">
                         <button type="submit" class="modal-action btn-flat waves-effect waves-green">
-                            <span class="btn-text">Save</span>
+                            <span class="btn-text">Simpan</span>
                             <img src="<?= base_url() ?>/loading.webp" class="loading-icon-modal">
                         </button>
                     </div>

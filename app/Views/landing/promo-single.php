@@ -17,7 +17,6 @@
 
                 <blockquote class="flow-text">
                     <p><span>Nama Promo : </span><?= $promo['nama_promo']; ?></p>
-                    <p><span>Promo : </span><?= $promo['promo']; ?></p>
                 </blockquote>
                 <blockquote class="flow-text">
                     <p>

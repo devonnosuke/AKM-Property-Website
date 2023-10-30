@@ -40,7 +40,7 @@ class Promo extends BaseController
         // $name = $this->request->getVar('name');
 
         // Delete picture in server
-        if (unlink('assets/img/property/' . $nameImage)) {
+        if (unlink('assets/img/promo/' . $nameImage)) {
             // Delete data in table with Some functions
             // which have been provided in codeigniter : delete($id)
             if ($this->promoModels->delete($id)) {
@@ -51,6 +51,8 @@ class Promo extends BaseController
             } else {
                 throw new \CodeIgniter\Exceptions\PageNotFoundException('Id:' . $id . 'Not Found!');
             }
+        } else {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Name image:' . $nameImage . 'Not Found!');
         }
     }
 
@@ -85,7 +87,6 @@ class Promo extends BaseController
                 'nama_promo' => $this->request->getVar('nama_promo'),
                 'id_property' => $this->request->getVar('id_property'),
                 'deskripsi' => $this->request->getVar('deskripsi'),
-                'promo' => $this->request->getVar('promo'),
                 'brosur' => $newImageName['nameWithNewExt'],
                 'bonus' => $this->request->getVar('bonus'),
                 'bebas' => $this->request->getVar('bebas'),

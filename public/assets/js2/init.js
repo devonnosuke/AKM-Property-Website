@@ -134,3 +134,6 @@ lightGallery(document.getElementById("property-img"), {
 lightGallery(document.getElementById("property-denah"), {
   download: false,
 });
+lightGallery(document.getElementById("promo-img"), {
+  download: false,
+});

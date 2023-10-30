@@ -94,6 +94,7 @@ class Property extends BaseController
                 'type_name' => $this->request->getVar('type_name'),
                 'address' => $this->request->getVar('address'),
                 'description' => $this->request->getVar('description'),
+                'harga_jual' => $this->request->getVar('harga_jual'),
                 'features' => $this->request->getVar('features'),
                 'image' => $newImageName['nameWithNewExt'],
                 'color' => strtoupper($this->request->getVar('color')),
@@ -210,7 +211,7 @@ class Property extends BaseController
             }
             
             // Convert and crop images
-            if ($insert) {
+            if ($insert && $img_files['img'][0]->getError() !== 4) {
                 
                 $id_property = $this->propertyModels->getLastid();
                 $id_property = $id_property[0]['id'];
@@ -232,7 +233,7 @@ class Property extends BaseController
 
 
                     // Check if the upload and image manipulation process is success
-                    if ($img_file && $convert && $fit) {
+                    if ($img_files && $convert && $fit) {
 
                         $dataImages = [
                             'image_name'=>$imageName['nameWithNewExt'],

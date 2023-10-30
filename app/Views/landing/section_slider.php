@@ -6,7 +6,7 @@
                 <img src="<?= base_url() ?>/assets/img/promo/<?= $promo->brosur ?>" alt="<?= $promo->slug ?>">
                 <div class="caption left-align">
                     <h1 class="promo"><span>Promo!</span> <?= $promo->nama_promo ?></h1>
-                    <h2 class="white-text info">Promo <?= $promo->promo ?></h2>
+                    <h2 class="white-text info">Harga Jual <?= rupiah($promo->harga_jual) ?></h2>
                     <div>
                         <h3><?= $promo->type_name ?></h3>
                         <?php $bebas = splitString($promo->bebas, ',') ?>

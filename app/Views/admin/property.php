@@ -1,7 +1,6 @@
 <?= $this->extend('admin/templates/index') ?>
 
 <?= $this->section('main') ?>
-
 <main>
     <div class="section">
         <div class="row">
@@ -30,34 +29,53 @@
                     <div class="row content content-slider">
                         <?php foreach ($property as $prop) : ?>
                             <div class="col m4 s12 col-sliders-card">
-                                <div class="card medium hoverable card-slider">
+                                <div class="card medium hoverable card-slider property">
 
                                     <div class="card-image">
                                         <img src="<?= base_url() ?>/assets/img/property/<?= $prop->image ?>" class="img-slider">
-                                        <span class="card-title center-align flow-text"><?= $prop->type_name ?></span>
+                                        <span class="card-title center-align flow-text"><div class="property-color" style="--color-pro: <?= $prop->color ?>;"></div><?= $prop->type_name ?></span>
                                     </div>
 
                                     <div class="card-content desc">
-                                        <?= cutString($prop->description) ?>
+                                        <p><b>Alamat: </b> <?= $prop->address ?></p>
+                                        <p><b>LT: </b> <?= $prop->luas_tanah ?>m<sup>2</sup> | LB: </b> <?= $prop->luas_bangunan ?></p>
+                                        <p><b>Harga Jual: </b> <?= rupiah($prop->harga_jual) ?></p>
+                                        <p><b>Fasilitas: </b> <?= $prop->features ?></p>
+                                        <p><b>pondasi: </b> <?= $prop->pondasi ?></p>
+                                        <p><b>dinding: </b> <?= $prop->dinding ?></p>
+                                        <p><b>atap: </b> <?= $prop->atap ?></p>
+                                        <p><b>plafon: </b> <?= $prop->plafon ?></p>
+                                        <p><b>listrik: </b> <?= $prop->listrik ?></p>
+                                        <p><b>lantai: </b> <?= $prop->lantai ?></p>
+                                        <p><b>kusen: </b> <?= $prop->kusen ?></p>
+                                        <p><b>kloset: </b> <?= $prop->kloset ?></p>
+                                        <p><b>lantai_kmwc: </b> <?= $prop->lantai_kmwc ?></p>
+                                        <p><b>dinding_kmwc: </b> <?= $prop->dinding_kmwc ?></p>
+                                        <p></p>
+                                        <p><b>Denah: </b></p>
+                                        <div class="card-panel property-denah lightGallery">
+                                            <a href="<?= base_url() ?>/assets/img/property/<?= $prop->denah ?>" class="col-md-2">
+                                                <img class="responsive-img" src="<?= base_url() ?>/assets/img/property/<?= $prop->denah ?>" alt="<?= $prop->slug; ?>" />
+                                            </a>
+                                        </div>
                                     </div>
                                     
-                                    <div class="card-action center z-depth-1">
+                                    <div class="card-action center z-depth-1 row">
                                         <p style="display:none" id="<?= $prop->id ?>"><?= base_url() ?>/properti/<?= $prop->slug ?></p>
-                                        <button class="btn green darken-1 waves-effect waves-light btn-card-more btn-link" onclick="copyToClipboard('#<?= $prop->id ?>')">Salin Link <i class="bi bi-link-45deg"></i></button>
-                                        <!-- Dropdown Trigger -->
-                                        <button class='dropdown-button btn bg-base btn-card-more' data-activates='dropdown<?= $prop->id ?>'><i class="bi bi-list"></i></button>
-                                        <!-- Dropdown Structure -->
-                                        <ul id='dropdown<?= $prop->id ?>' class='dropdown-content'>
-                                        <li><a href="<?= base_url() ?>/admin/property-image/<?= $prop->id ?>"><i class="bi bi-images"></i>Lihat Gallery Foto</a></li>
-                                        <li><a href="<?= base_url() ?>/admin/property/<?= $prop->id ?>" class="waves-effect waves-dark"><i class="bi bi-pencil-fill"></i>Edit</a></li>
-                                        <li class="divider"></li>
-                                        <li class="divider"></li>
-                                        <li><a data-href="<?= base_url() ?>/admin/property/<?= $prop->id ?>/<?= $prop->image ?>" class="waves-effect waves-dark delete-btn"><i class="bi bi-trash-fill"></i>Hapus</a></li>
-                                        </ul>
-
-                                        <!-- <button data-href="<?= base_url() ?>/admin/property/<?= $prop->id ?>/<?= $prop->image ?>" class="btn red darken-2 waves-effect waves-dark delete-btn tooltipped btn-card-more" data-tooltip="Delete" data-delay="150" data-position="bottom">
-                                            <i class="bi bi-trash-fill"></i>
-                                        </button> -->
+                                        <div class="col s12">
+                                            <button class="btn green darken-1 waves-effect waves-light btn-card-more btn-link" onclick="copyToClipboard('#<?= $prop->id ?>')">Salin Link <i class="bi bi-link-45deg"></i></button>
+                                        </div>
+                                        <div class="col s12">
+                                            <!-- Dropdown Trigger -->
+                                            <button class='dropdown-button btn bg-base btn-card-more' data-activates='dropdown<?= $prop->id ?>'><i class="bi bi-list"></i></button>
+                                            <!-- Dropdown Structure -->
+                                            <ul id='dropdown<?= $prop->id ?>' class='dropdown-content'>
+                                                <li><a href="<?= base_url() ?>/admin/property-image/<?= $prop->id ?>"><i class="bi bi-images"></i>Lihat Gallery Foto</a></li>
+                                                <li><a href="<?= base_url() ?>/admin/property/<?= $prop->id ?>" class="waves-effect waves-dark"><i class="bi bi-pencil-fill"></i>Edit</a></li>
+                                                <li class="divider"></li>
+                                                <li><a data-href="<?= base_url() ?>/admin/property/<?= $prop->id ?>/<?= $prop->image ?>" class="waves-effect waves-dark delete-btn"><i class="bi bi-trash-fill"></i>Hapus</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -75,7 +93,7 @@
     </div>
 </main>
 <!-- Add Property Structure -->
-<div class="modal" id="add-property-modal">
+<div class="modal" id="add-property-modal"> 
     <div class="modal-content contact-content">
         <form action="<?= base_url() ?>/admin/property/save/true" enctype="multipart/form-data" method="post" class="modal-form" onsubmit="loadingUploadBar()">
             <?= csrf_field() ?>
@@ -92,10 +110,15 @@
                                     <input id="type_name" type="text" name="type_name" class="<?= validCheck($validation->getError('type_name')) ?>" value="<?= old('type_name') ?>" data-length="56" maxlength="56">
                                     <label for="type_name" <?= errorMsgCheck($validation->getError('type_name')) ?>>Nama/Tipe Property</label>
                                 </div>
-
+                                
                                 <div class="input-field">
                                     <textarea name="address" id="address" class="materialize-textarea validate <?= validCheck($validation->getError('address')) ?>" data-length="56" maxlength="56"><?= old('address') ?></textarea>
                                     <label for="address" <?= errorMsgCheck($validation->getError('address')) ?>>Alamat Properti</label>
+                                </div>
+
+                                <div class="input-field">
+                                    <input id="harga_jual" type="text" name="harga_jual" class="<?= validCheck($validation->getError('harga_jual')) ?>" value="<?= old('harga_jual') ?>" data-length="12" maxlength="12">
+                                    <label for="harga_jual" <?= errorMsgCheck($validation->getError('harga_jual')) ?>>Harga Jual</label>
                                 </div>
 
                                 <div class="input-field">
@@ -123,23 +146,29 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="file-field input-field col m9 s12">
-                                <div class="btn waves-effect waves-light deep-purple lighten-1">
-                                    <span>Pilih 1 Gambar Utama</span>
-                                    <input type="file" name="image" accept="image/*" id="image" onchange="previewImg()">
+                            <div class="col s12 m4 img-input">
+                                <p>Gambar Utama:</p>
+                                <div class="card-panel card-image card-thumb z-depth-2 material-placeholder">
+                                    <img class="profile-pic img-preview materialboxed responsive-img" id="image-preview" src="<?= base_url() ?>/assets/img/noimg.png">
                                 </div>
-                                <div class="file-path-wrapper">
+                            </div>
+                            <div class="file-field input-field col m9 s12">
+                                <div class="btn waves-effect waves-light bg-base">
+                                    <span>Pilih 1 Gambar Utama</span>
+                                    <input type="file" name="image" accept="image/*" id="image" onchange="previewImg('#image',false, '#image-preview')">
+                                </div>
+                                <div class="file-path-wrapper hidee">
                                     <input type="text" class="file-path img-path validate">
                                 </div>
                                 <span class="err-validation"><?= $validation->getError('image') ?></span>
                             </div>
                             <div class="upload__box">
                                 <div class="file-field input-field col s12 upload__btn-box">
-                                    <div class="btn waves-effect waves-light deep-purple lighten-1 upload__btn">
+                                    <div class="btn waves-effect waves-light bg-base upload__btn">
                                         <span>Pilih Banyak gambar</span>
                                         <input type="file" id="file1" multiple data-max_length="20" name="img[]" class="upload__inputfileonly">
                                     </div>
-                                    <div class="file-path-wrapper">
+                                    <div class="file-path-wrapper hidee">
                                         <input type="text" class="file-path img-path validate <?= validCheck($validation->getError('img')) ?>">
                                     </div>
                                     <span class="err-validation"><?= $validation->getError('img') ?></span>
@@ -220,11 +249,19 @@
                         <div class="collapsible-header active"><i class="material-icons">home</i>Denah Rumah</div>
                         <div class="collapsible-body">
                             <div class="file-field input-field col m9 s12">
-                                <div class="btn waves-effect waves-light deep-purple lighten-1">
-                                    <span>Pilih 1 Gambar Denah Rumah</span>
-                                    <input type="file" name="denah" accept="image/*" id="denah" onchange="previewImg()">
+
+                                <div class="col s12 m4 img-input">
+                                    <p>Gambar Denah:</p>
+                                    <div class="card-panel card-image card-thumb z-depth-2 material-placeholder">
+                                        <img class="profile-pic img-preview materialboxed responsive-img" id="denah-preview" src="<?= base_url() ?>/assets/img/noimg.png">
+                                    </div>
                                 </div>
-                                <div class="file-path-wrapper">
+
+                                <div class="btn waves-effect waves-light bg-base">
+                                    <span>Pilih 1 Gambar Denah Rumah</span>
+                                    <input type="file" name="denah" accept="image/*" id="denah" onchange="previewImg('#denah',false, '#denah-preview')">
+                                </div>
+                                <div class="file-path-wrapper hidee">
                                     <input type="text" class="file-path img-path validate">
                                 </div>
                                 <span class="err-validation"><?= $validation->getError('denah') ?></span>
@@ -238,11 +275,11 @@
             <div class="modal-footer col s12 white z-depth-1">
                 <div class="row modal-button">
                     <div class="col s6 center">
-                        <a class="modal-action btn-flat waves-effect waves-red modal-close">Cancel</a>
+                        <a class="modal-action btn-flat waves-effect waves-red modal-close">Batal</a>
                     </div>
                     <div class="col s6 center">
                         <button type="submit" class="modal-action btn-flat waves-effect waves-green">
-                            <span class="btn-text">Save</span>
+                            <span class="btn-text">Simpan</span>
                             <img src="<?= base_url() ?>/loading.webp" class="loading-icon-modal">
                         </button>
                     </div>

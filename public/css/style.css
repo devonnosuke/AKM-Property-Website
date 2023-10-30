@@ -809,6 +809,10 @@ td.btn-wrapper {
   height: 345px !important;
 }
 
+.card-slider.property {
+  height: 425px !important;
+}
+
 @media only screen and (min-width: 1365px) {
   .div-portfolio .card {
     height: 140px;
@@ -936,8 +940,9 @@ button.delete-btn {
 }
 
 .card-slider .card-image .card-title {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 500;
+  line-height: 3rem;
 }
 
 /* Submit Loading btn */
@@ -1345,4 +1350,39 @@ input[type="color"] {
 .dropdown-content li > a,
 .dropdown-content li > span {
   color: var(--color) !important;
+}
+
+.card-action.row {
+  margin-bottom: 0;
+  padding-bottom: 0 !important;
+}
+
+.card-action.row .col {
+  padding: 0 0.3rem;
+}
+
+.property-color {
+  width: 1.2rem;
+  height: 1.2rem;
+  background-color: var(--color-pro);
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.property-denah {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.property-denah img {
+  height: 24rem;
+}
+
+.card-image {
+  box-shadow: 0px 5px 8px -2px #888;
+}
+
+.card .card-content p {
+  font-size: 1.1rem;
+  font-weight: 400;
 }

@@ -6,9 +6,21 @@ $(window).on("load", function () {
   preloader.fadeOut();
 });
 
+const rupiah = (number) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  }).format(number);
+};
+
 $(document).ready(function () {
   // for img multiple upload
   // ImgUpload();
+
+  const lightGallInit = document.querySelectorAll(".lightGallery");
+  for (let i = 0; i < lightGallInit.length; i++) {
+    lightGallery(lightGallInit[i]);
+  }
 
   // for dropdown menu
   $(".dropdown-button").dropdown();
@@ -386,12 +398,14 @@ function resetValidate() {
   $("input").removeClass("invalid");
 }
 
-function previewImg() {
-  const img = document.querySelector("#img");
-  const imgLabel = document.querySelector(".img-path");
-  const imgPreview = document.querySelector(".img-preview");
+function previewImg(input, path, preview) {
+  const img = document.querySelector(input);
+  const imgPreview = document.querySelector(preview);
 
-  imgLabel.textContent = img.files[0].name;
+  if (path) {
+    const imgLabel = document.querySelector(path);
+    imgLabel.textContent = img.files[0].name;
+  }
 
   const imgFile = new FileReader();
   imgFile.readAsDataURL(img.files[0]);
@@ -576,3 +590,9 @@ function loadingUploadBar() {
   $(".loading-upload").modal();
   $("#modal-loading-upload").modal("open");
 }
+
+// function initLightGallery(id) {
+
+// }
+
+lightGallery(document.getElementById("property-gallery"));

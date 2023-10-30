@@ -14,6 +14,7 @@
                             <h2 class="header center-on-small-only">
                                 <i class="bi bi-collection-fill purple-text header-icon"></i> Edit Properti
                             </h2>
+                            <h6>Ubah informasi properti yang telah dibuat.</h6>
                             <hr class="left">
                         </div>
                         <div class="col s3 m4 right">
@@ -42,10 +43,15 @@
                                                         <input id="type_name" type="text" name="type_name" class="<?= validCheck($validation->getError('type_name')) ?>" value="<?= oldCheck('type_name', $property->type_name) ?>" data-length="56" maxlength="56">
                                                         <label for="type_name" <?= errorMsgCheck($validation->getError('type_name')) ?>>Nama/Tipe Property</label>
                                                     </div>
-
+                                                    
                                                     <div class="input-field">
                                                         <textarea name="address" id="address" class="materialize-textarea validate <?= validCheck($validation->getError('address')) ?>" data-length="56" maxlength="56"><?= oldCheck('address', $property->address) ?></textarea>
                                                         <label for="address" <?= errorMsgCheck($validation->getError('address')) ?>>Alamat Properti</label>
+                                                    </div>
+
+                                                    <div class="input-field">
+                                                        <input id="harga_jual" type="text" name="harga_jual" class="<?= validCheck($validation->getError('harga_jual')) ?>" value="<?= oldCheck('harga_jual', $property->harga_jual) ?>" data-length="56" maxlength="56">
+                                                        <label for="harga_jual" <?= errorMsgCheck($validation->getError('harga_jual')) ?>>Harga Jual</label>
                                                     </div>
 
                                                     <div class="input-field">
@@ -77,14 +83,14 @@
                                                 <div class="col s12 m4 img-input">
                                                     <p>Gambar Utama:</p>
                                                     <div class="card-panel card-image card-thumb z-depth-2 material-placeholder">
-                                                        <img class="profile-pic img-preview materialboxed responsive-img" src="<?= base_url() ?>/assets/img/property/<?= $property->image ?>">
+                                                        <img class="profile-pic img-preview materialboxed responsive-img" id="image-preview" src="<?= base_url() ?>/assets/img/property/<?= $property->image ?>">
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="file-field input-field col m9 s12">
                                                     <div class="btn waves-effect waves-light bg-base lighten-1">
                                                         <span>Ganti Gambar Utama</span>
-                                                        <input type="file" name="image" accept="image/*" id="image" onchange="previewImg()">
+                                                        <input type="file" name="image" accept="image/*" id="image" onchange="previewImg('#image',false, '#image-preview')">
                                                     </div>
                                                     <div class="file-path-wrapper">
                                                         <input type="text" class="file-path img-path validate">
@@ -169,13 +175,13 @@
                                                     <div class="col s12 m4 img-input">
                                                         <p>Gambar Denah:</p>
                                                         <div class="card-panel card-image card-thumb z-depth-2 material-placeholder">
-                                                            <img class="profile-pic img-preview materialboxed responsive-img" src="<?= base_url() ?>/assets/img/property/<?= $property->denah ?>">
+                                                            <img class="profile-pic img-preview materialboxed responsive-img" id="denah-preview" src="<?= base_url() ?>/assets/img/property/<?= $property->denah ?>">
                                                         </div>
                                                     </div>
 
                                                     <div class="btn waves-effect waves-light bg-base lighten-1">
                                                         <span>Ganti Gambar Denah Rumah</span>
-                                                        <input type="file" name="denah" accept="image/*" id="denah" onchange="previewImg()">
+                                                        <input type="file" name="denah" accept="image/*" id="denah" onchange="previewImg('#denah',false, '#denah-preview')">
                                                     </div>
                                                     <div class="file-path-wrapper">
                                                         <input type="text" class="file-path img-path validate">
@@ -190,11 +196,11 @@
                                     <div class="modal-footer edit">
                                         <div class="row modal-button">
                                             <div class="col m6 s12 center">
-                                                <a href="<?= base_url() ?>/admin/property" class="modal-action btn-flat waves-effect waves-red back-btn"><i class="bi bi-x left"></i>Cancel</a>
+                                                <a href="<?= base_url() ?>/admin/property" class="modal-action btn-flat waves-effect waves-red back-btn"><i class="bi bi-arrow-left left"></i>Kembali</a>
                                             </div>
                                             <div class="col m6 s12 center">
                                                 <button type="submit" class="modal-action btn-submit btn-flat waves-effect waves-green">
-                                                    <span class="btn-text"><i class="bi bi-check left"></i>Save</span>
+                                                    <span class="btn-text"><i class="bi bi-check left"></i>Simpan</span>
                                                     <img src="<?= base_url() ?>/loading.webp" class="loading-icon-modal">
                                                 </button>
                                             </div>

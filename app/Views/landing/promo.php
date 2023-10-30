@@ -17,7 +17,7 @@
                             <span class="card-title"><?= $pro->nama_promo; ?></span>
                         </div>
                         <div class="card-content">
-                            <p><i class="bi bi-geo-alt-fill color-base"></i><b>Alamat:</b> <?= $pro->promo; ?></p>
+                            <p><i class="bi bi-geo-alt-fill color-base"></i><b>Alamat:</b></p>
                             <p><i class="bi bi-border-outer color-base"></i> <b>LT:</b> <?= $pro->bonus; ?>m<sup>2</sup> | <i class="bi bi-border-style color-base"></i> LB: <?= $pro->bebas; ?></p>
                             <p><i class="bi bi-list-columns-reverse color-base"></i> <b>Deskripsi:</b> <?= $pro->bebas; ?></p>
                             <p><i class="bi bi-door-open-fill color-base"></i> <b>Fasilitas:</b> <?= $pro->deskripsi; ?></p>

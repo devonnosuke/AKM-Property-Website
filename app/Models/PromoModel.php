@@ -9,7 +9,7 @@ class PromoModel extends Model
     protected $table      = 'promo';
     protected $primaryKey = 'id';
     protected $returnType     = 'object';
-    protected $allowedFields = ['nama_promo', 'slug', 'id_property', 'deskripsi','promo','potongan_harga','brosur','bonus','bebas'];
+    protected $allowedFields = ['nama_promo', 'slug', 'id_property', 'deskripsi','potongan_harga','brosur','bonus','bebas'];
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

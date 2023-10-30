@@ -27,10 +27,7 @@
   <link href="<?= base_url() ?>/assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="<?= base_url() ?>/assets/css/style2.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="<?= base_url() ?>/assets/css/form_style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-<link rel="stylesheet" href="<?= base_url() ?>/assets/css/lightgallery.min.css" />
-
-
-
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lightgallery.min.css" />
   <!-- Bootsrap icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
@@ -48,9 +45,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   
   <script src="<?= base_url() ?>/assets/js/lightgallery.min.js"></script>
-    <script src="<?= base_url() ?>/assets/js/lg-fullscreen.min.js"></script>
-    <script src="<?= base_url() ?>/assets/js/lg-zoom.min.js"></script>
-    <script src="<?= base_url() ?>/assets/js/lg-thumbnail.min.js"></script>
+  <script src="<?= base_url() ?>/assets/js/lg-fullscreen.min.js"></script>
+  <script src="<?= base_url() ?>/assets/js/lg-zoom.min.js"></script>
+  <script src="<?= base_url() ?>/assets/js/lg-thumbnail.min.js"></script>
 
   <script src="<?= base_url() ?>/assets/js2/init.js"></script>
   

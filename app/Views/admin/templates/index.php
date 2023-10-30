@@ -16,6 +16,8 @@
     <link href="<?= base_url() ?>/css/form_style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link class="css-href" href="<?= base_url() ?>/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lightgallery.min.css" />
+    
     <!-- Bootsrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
@@ -66,6 +68,11 @@
     <!-- <script src="<?= base_url() ?>/js/sweetalert2.all.min.js"></script> -->
     <script src="<?= base_url() ?>/js/materialize.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+
+    <script src="<?= base_url() ?>/assets/js/lightgallery.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/lg-fullscreen.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/lg-zoom.min.js"></script>
+    <script src="<?= base_url() ?>/assets/js/lg-thumbnail.min.js"></script>
 
     <script src="<?= base_url() ?>/js/init.js"></script>
 </body>

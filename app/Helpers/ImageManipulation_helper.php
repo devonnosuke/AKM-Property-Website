@@ -178,7 +178,7 @@ function imgUploadBatch($img_file, $imgExt)
                 ];
                 array_push($listnames, $names);
             } else {
-                throw new \RuntimeException($file->getErrorString() . '(' . $img->getError() . ')');
+                throw new \RuntimeException($img_file->getErrorString() . '(' . $img->getError() . ')');
             }
         }
     }
