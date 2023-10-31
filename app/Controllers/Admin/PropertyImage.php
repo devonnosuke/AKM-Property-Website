@@ -29,6 +29,7 @@ class PropertyImage extends BaseController
     {
         $id_property = $this->request->getVar('id_property');
         $img_files = $this->request->getFiles();
+        // dd($img_files);
 
         // d($id_property);
         // dd($img_files);
@@ -54,7 +55,9 @@ class PropertyImage extends BaseController
                     $convert = imgConvert( $imageName['nameWithOldExt'], $imageName['nameOnly'], 'assets/img/property', $img_ext, 78);
 
                     // Crop and Resize image
-                    $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
+                    // $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
+                    $fit = imgResize($imageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
+
 
                     // Check if the upload and image manipulation process is success
                     if ($img_files && $convert && $fit) {

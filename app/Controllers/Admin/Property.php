@@ -146,7 +146,31 @@ class Property extends BaseController
             $data['image'] = $img_file;
             $data['denah'] = $denah_file;
         }
+
+        // ==== add spec data
+        $specification_name = $_POST['spec_name'];
+        $specification = $_POST['spec'];
+
+        $specValidation = [];
+        $data_spec = [];
+
+        for ($i=0; $i < (count($specification)); $i++) {
+
+            $spec['spec_name'] = $specification_name[$i]; 
+            
+            $spec['spec'] = $specification[$i]; 
+            // $i+1;
+        //    $spec['id_property'] = $id_property;
+
+            // if (!$this->propertyModels->save($data)) {
+            //     return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
+            // }
+           
+            // array_push($specValidation,$spec);
+            d($spec);
+        }
         
+        // dd($spec);
         // Run validation with the rules set in App/Config/Validation.php
         if ($this->validation->run($data, $validation_rules)) {
             // dd($this->validation->run($data, $validation_rules));
@@ -210,11 +234,12 @@ class Property extends BaseController
                 return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
             }
             
+            $id_property = $this->propertyModels->getLastid();
+            $id_property = $id_property[0]['id'];
+            
             // Convert and crop images
             if ($insert && $img_files['img'][0]->getError() !== 4) {
                 
-                $id_property = $this->propertyModels->getLastid();
-                $id_property = $id_property[0]['id'];
                 
                 // Uplaod images
                 if (!$images = imgUploadBatch($img_files, $img_ext)) {
@@ -261,6 +286,9 @@ class Property extends BaseController
             // Set show modal session to shown up modal form if validation is wrong
             // Initialization of this function can be seen in App/Helper/ValidationSet_helper.php
             setModalValidation(false, '#add-property-modal', false);
+            setOldSepec('spec',$specification);
+            setOldSepec('spec_name',$specification_name);
+            // dd();
 
             // Back to previous controller and send the old() data input form
             return redirect()->back()->withInput();

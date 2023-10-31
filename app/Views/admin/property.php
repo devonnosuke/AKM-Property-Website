@@ -98,6 +98,9 @@
         <form action="<?= base_url() ?>/admin/property/save/true" enctype="multipart/form-data" method="post" class="modal-form" onsubmit="loadingUploadBar()">
             <?= csrf_field() ?>
             <input type="hidden" class="feature-field input-feature" name="features" data-value="<?= old('features') ?>" data-placeholder="Masukkan Fasilitas" data-secondary-placeholder="+ Fasilitas" data-status="true">
+            <input type="hidden" class="spec_count" name="spec_count" value="<?= old('spec_count') ?>">
+            <input type="hidden" class="spec_name_old" name="spec_name_old" value="<?= (null !== session()->getFlashdata('spec_name'))?implode(',',session()->getFlashdata('spec_name')):''?>">
+            <input type="hidden" class="spec_old" name="spec__old" value="<?= (null !== session()->getFlashdata('spec'))?implode(',',session()->getFlashdata('spec')):''?>">
 
             <div class="row card-panel card-form-modal">
                 <h4>Input Informasi Properti</h4>
@@ -106,6 +109,17 @@
                         <div class="collapsible-header active"><i class="material-icons">info</i>Info Dasar</div>
                         <div class="collapsible-body">
                             <div class="col s12">
+                                <div class="row spec" id="spec">
+                                    <div class="input-field col s6">
+                                        <input id="pondasi" type="text" name="spec_name[0]" class="<?= validSpecCheck(getOldSpec(0,'spec_name')) ?>" value="<?= getOldSpec(0,'spec_name') ?>" data-length="56" maxlength="56">
+                                        <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Nama Spesifikasi</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="pondasi" type="text" name="spec[0]" class="<?= validSpecCheck(getOldSpec(0,'spec')) ?>" value="<?= getOldSpec(0,'spec') ?>" data-length="56" maxlength="56">
+                                        <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Spesifikasi</label>
+                                    </div>                         
+                                </div>
+                                <div class="btn spec-btn">Tambah Spesifikasi</div><div class="btn spec-btn red">Hapus Spesifikasi</div>
                                 <div class="input-field">
                                     <input id="type_name" type="text" name="type_name" class="<?= validCheck($validation->getError('type_name')) ?>" value="<?= old('type_name') ?>" data-length="56" maxlength="56">
                                     <label for="type_name" <?= errorMsgCheck($validation->getError('type_name')) ?>>Nama/Tipe Property</label>
@@ -127,11 +141,11 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col s6">
+                                    <div class="col s6 input-field">
                                         <input id="luas_tanah" type="text" name="luas_tanah" class="<?= validCheck($validation->getError('luas_tanah')) ?>" value="<?= old('luas_tanah') ?>" data-length="3" maxlength="3">
                                         <label for="luas_tanah" <?= errorMsgCheck($validation->getError('luas_tanah')) ?>>Luas Tanah m<sup>2</sup> </label>
                                     </div>
-                                    <div class="col s6">
+                                    <div class="col s6 input-field">
                                         <input id="luas_bangunan" type="text" name="luas_bangunan" class="<?= validCheck($validation->getError('luas_bangunan')) ?>" value="<?= old('luas_bangunan') ?>" data-length="10" maxlength="10">
                                         <label for="luas_bangunan" <?= errorMsgCheck($validation->getError('luas_bangunan')) ?>>Luasan Bangunan</label>
                                     </div>

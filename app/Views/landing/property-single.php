@@ -90,15 +90,11 @@
             <div id="gallery" class="col s12 tabs-property">
                 <div class="row">
                     <div id="property-gallery" class="col s12 m4">
-                        <a href="<?= base_url() ?>/assets/img/property/properti 02 Oct 2023 [03.14-pm]_1696277698.jpg" class="col-md-2">
-                        <img class="responsive-img" src="<?= base_url() ?>/assets/img/property/properti 02 Oct 2023 [03.14-pm]_1696277698.jpg" alt="<?= $property['slug']; ?>" />
-                        </a>
-                        <a href="<?= base_url() ?>/assets/img/property/properti 03 Oct 2023 [02.43-PM] 1696362204.jpg" class="col-md-2">
-                        <img class="responsive-img" src="<?= base_url() ?>/assets/img/property/properti 03 Oct 2023 [02.43-PM] 1696362204.jpg" alt="<?= $property['slug']; ?>" />
-                        </a>
-                        <a href="<?= base_url() ?>/assets/img/property/properti 05 Oct 2023 [05.28-PM] 1696544886.jpg" class="col-md-2">
-                        <img class="responsive-img" src="<?= base_url() ?>/assets/img/property/properti 05 Oct 2023 [05.28-PM] 1696544886.jpg" alt="<?= $property['slug']; ?>" />
-                        </a>
+                        <?php foreach ($gallery as $gal) : ?>
+                            <a href="<?= base_url() ?>/assets/img/property/<?=$gal->image_name?>" class="col-md-2">
+                            <img class="responsive-img" src="<?= base_url() ?>/assets/img/property/<?=$gal->image_name?>" alt="<?= $property['slug']; ?>" />
+                            </a>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>

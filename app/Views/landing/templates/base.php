@@ -49,8 +49,7 @@
   <script src="<?= base_url() ?>/assets/js/lg-zoom.min.js"></script>
   <script src="<?= base_url() ?>/assets/js/lg-thumbnail.min.js"></script>
 
-  <script src="<?= base_url() ?>/assets/js2/init.js"></script>
-  
+  <script src="<?= base_url() ?>/assets/js2/init.js"></script>    
 </body>
 
 </html>

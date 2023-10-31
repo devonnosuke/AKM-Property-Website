@@ -13,7 +13,46 @@ const rupiah = (number) => {
   }).format(number);
 };
 
-$(document).ready(function () {
+$(document).ready(function (event) {
+  let specCount;
+  let count = 1;
+  $(".spec-btn").click(() => {
+    $("#spec").append(`
+    <div class="input-field col s6">
+        <input id="pondasi" type="text" name="spec_name[${count}]" value="" data-length="56" maxlength="56">
+        <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Nama Spesifikasi</label>
+    </div>
+    <div class="input-field col s6">
+        <input id="pondasi" type="text" name="spec[${count}]" value="" data-length="56" maxlength="56">
+        <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Spesifikasi</label>
+    </div>  
+    `);
+    count++;
+    specCount = $(".spec_count").val(count - 1);
+  });
+
+  let spec_name_old = $(".spec_name_old").val();
+  spec_name_old = spec_name_old.split(",");
+
+  let spec_old = $(".spec_old").val();
+  spec_old = spec_old.split(",");
+
+  if ($(".spec_count").val()) {
+    for (let i = 0; i < $(".spec_count").val(); i++) {
+      $("#spec").append(`
+      <div class="input-field col s6">
+          <input id="pondasi" type="text" name="spec_name[${count}]" value="${spec_name_old[count]}" data-length="56" maxlength="56">
+          <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Nama Spesifikasi</label>
+      </div>
+      <div class="input-field col s6">
+          <input id="pondasi" type="text" name="spec[${count}]" value="${spec_old[count]}" data-length="56" maxlength="56">
+          <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Spesifikasi</label>
+      </div>  
+      `);
+      count++;
+    }
+  }
+
   // for img multiple upload
   // ImgUpload();
 

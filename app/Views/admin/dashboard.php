@@ -12,8 +12,19 @@
                     <hr class="center">
                     <div class="row content">
                         <div class="col s12">
-                            <div class="card-panel hoverable center card-content-color">
-                                <h5>My Own Template Responsive Admin Page</h5>
+                            <div class="card-panel card-visitor hoverable center card-content-color row">
+                                <div class="col s12">
+                                    <p class="flow-text" style="text-align:center !important;">Pengunjung Hari ini</p>
+                                    <b><?= $visitor['pengunjunghariini'] ?></b>
+                                </div>
+                                <div class="col s6">
+                                    <p class="flow-text" style="text-align:center !important;">Total Pengunjung</p>
+                                    <b><?= $visitor['totalpengunjung'] ?></b>
+                                </div>
+                                <div class="col s6">
+                                    <p class="flow-text" style="text-align:center !important;">Pegunjung online</p>
+                                    <b><?= $visitor['pengunjungonline'] ?></b>
+                                </div>
                             </div>
                         </div>
                     </div>

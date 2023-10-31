@@ -183,3 +183,47 @@ function rupiah ($angka) {
     return $hasil;
 }
 
+function getVisitor(){
+    $date  = date("Y-m-d"); // Mendapatkan tanggal sekarang
+    $db = \Config\Database::connect();
+    $pengunjunghariini  = $db->query("SELECT * FROM visitor WHERE date='".$date."' GROUP BY ip")->getNumRows(); // Hitung jumlah pengunjung
+    
+    $dbpengunjung = $db->query("SELECT COUNT(hits) as hits FROM visitor")->getRow(); 
+    
+    $totalpengunjung = isset($dbpengunjung->hits)?($dbpengunjung->hits):0; // hitung total pengunjung
+    
+    $bataswaktu = time() - 300;
+    
+    $pengunjungonline  = $db->query("SELECT * FROM visitor WHERE online > '".$bataswaktu."'")->getNumRows(); // hitung pengunjung online
+    
+    
+    $data['pengunjunghariini']=$pengunjunghariini;
+    $data['totalpengunjung']=$totalpengunjung;
+    $data['pengunjungonline']=$pengunjungonline;
+    return $data;
+}
+
+function setOldSepec($flashName,$specification)
+{
+ 
+    session()->setFlashdata($flashName, $specification);
+ 
+}
+
+function getOldSpec($id, $flashName)
+{
+    // dd(session()->getFlashdata('spec'));
+    if(session()->getFlashdata($flashName) != null){
+        return session()->getFlashdata($flashName)[$id];
+    }
+    return false;
+}
+
+function validSpecCheck($data)
+{
+    if ($data == '') {
+        return 'invalid';
+    }
+
+    return 'valid';
+}

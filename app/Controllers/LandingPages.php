@@ -7,12 +7,35 @@ class LandingPages extends BaseController
 
 	public function __construct()
 	{
-		$this->email = \Config\Services::email();
+		
+	}
+
+	function counter(){
+		$ip    = $this->request->getIPAddress(); // Mendapatkan IP user
+		$date  = date("Y-m-d"); // Mendapatkan tanggal sekarang
+		$waktu = time(); //
+		$timeinsert = date("Y-m-d H:i:s");
+		
+		// Cek berdasarkan IP, apakah user sudah pernah mengakses hari ini
+		$db = \Config\Database::connect();
+		$s = $db->query("SELECT * FROM visitor WHERE ip='".$ip."' AND date='".$date."'")->getNumRows();
+		$ss = isset($s)?($s):0;
+		
+		
+		// Kalau belum ada, simpan data user tersebut ke database
+		if($ss == 0){
+		$db->query("INSERT INTO visitor(ip, date, hits, online, time) VALUES('".$ip."','".$date."','1','".$waktu."','".$timeinsert."')");
+		}
+		
+		// Jika sudah ada, update
+		else{
+		$db->query("UPDATE visitor SET hits=hits+1, online='".$waktu."' WHERE ip='".$ip."' AND date='".$date."'");
+		}
 	}
 
 	public function index()
 	{
-	
+		$this->counter();
 		$data = [
 			'properties' => $this->propertyModels->findAll(),
 			'educational' => $this->educationalModels->findAll(),
@@ -33,31 +56,6 @@ class LandingPages extends BaseController
 		// dd($data['promos']);
 		return view('landing/index', $data);
 	}
-
-	// public function portfolio()
-	// {
-	// 	$data = [
-	// 		'portfolio' => $this->portfolioModels->findAll(),
-	// 		'personal' => $this->personalModels->find('1'),
-	// 		'social' => $this->socialcontactModels->findAll(),
-	// 		'title' => 'Portfolio'
-	// 	];
-
-	// 	return view('landing/portfolio', $data);
-	// }
-
-	// public function faq()
-	// {
-	// 	$data = [
-	// 		// 'faqs' => $this->faqModels->findAll(),
-	// 		'personal' => $this->personalModels->find('1'),
-	// 		'social' => $this->socialcontactModels->findAll(),
-	// 		'title' => 'Frequently Asked Questions',
-	// 		'faqs' => $this->faqModels->findAll(),
-	// 	];
-
-	// 	return view('landing/faq', $data);
-	// }
 
 	public function contact()
 	{
@@ -123,6 +121,8 @@ class LandingPages extends BaseController
 		
 		if ($slug) {
 			$proprety = $this->propertyModels->getBySlug($slug);
+			$dataGallery = $this->propertyImgModels->getPropertyById($proprety[0]['id']);
+			
 			$data = [
 				'portfolio' => $this->portfolioModels->findAll(),
 				'property' => $proprety[0],
@@ -132,6 +132,7 @@ class LandingPages extends BaseController
 				'title' => 'Detail Properti',
 				'services' => $this->servicesModels->findAll(),
 				'cta' => $this->ctaModels->findAll(),
+				'gallery' => $dataGallery,
 			];
 			return view('landing/property-single', $data);
 		}
