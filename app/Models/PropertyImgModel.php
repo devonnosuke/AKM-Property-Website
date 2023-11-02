@@ -44,4 +44,13 @@ class PropertyImgModel extends Model
         return $builder->get()->getResultObject();
     }
 
+    public function getImageByProId($id_property) {
+        $db      = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('*');
+        $builder->where('id_property', $id_property);
+
+        return $builder->get()->getResultArray();
+    }
+
 }

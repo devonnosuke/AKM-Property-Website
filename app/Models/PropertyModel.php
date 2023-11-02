@@ -41,4 +41,12 @@ class PropertyModel extends Model
         $builder->where('id', $id);
         return $builder->get()->getResultArray();
     }
+    
+    public function findAllArray()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('*');
+        return $builder->get()->getResultArray();
+    }
 }

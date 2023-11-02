@@ -145,16 +145,6 @@ class Validation
 		'color' => 'required',
 		'luas_tanah' => 'required',
 		'luas_bangunan' => 'required',
-		'pondasi' => 'required',
-		'dinding' => 'required',
-		'atap' => 'required',
-		'plafon' => 'required',
-		'listrik' => 'required',
-		'lantai' => 'required',
-		'kusen' => 'required',
-		'kloset' => 'required',
-		'lantai_kmwc' => 'required',
-		'dinding_kmwc' => 'required',
 		'denah' => 'uploaded[image]|max_size[image,61440]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 	];
 	
@@ -170,16 +160,6 @@ class Validation
 		'color' => 'required',
 		'luas_tanah' => 'required',
 		'luas_bangunan' => 'required',
-		'pondasi' => 'required',
-		'dinding' => 'required',
-		'atap' => 'required',
-		'plafon' => 'required',
-		'listrik' => 'required',
-		'lantai' => 'required',
-		'kusen' => 'required',
-		'kloset' => 'required',
-		'lantai_kmwc' => 'required',
-		'dinding_kmwc' => 'required',
 	];
 	
 	public $property_images = [

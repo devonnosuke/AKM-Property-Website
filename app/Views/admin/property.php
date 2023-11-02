@@ -38,20 +38,15 @@
 
                                     <div class="card-content desc">
                                         <p><b>Alamat: </b> <?= $prop->address ?></p>
-                                        <p><b>LT: </b> <?= $prop->luas_tanah ?>m<sup>2</sup> | LB: </b> <?= $prop->luas_bangunan ?></p>
+                                        <p><b>LT: </b> <?= $prop->luas_tanah ?>m<sup>2</sup> | <b>LB: </b> <?= $prop->luas_bangunan ?></p>
                                         <p><b>Harga Jual: </b> <?= rupiah($prop->harga_jual) ?></p>
                                         <p><b>Fasilitas: </b> <?= $prop->features ?></p>
-                                        <p><b>pondasi: </b> <?= $prop->pondasi ?></p>
-                                        <p><b>dinding: </b> <?= $prop->dinding ?></p>
-                                        <p><b>atap: </b> <?= $prop->atap ?></p>
-                                        <p><b>plafon: </b> <?= $prop->plafon ?></p>
-                                        <p><b>listrik: </b> <?= $prop->listrik ?></p>
-                                        <p><b>lantai: </b> <?= $prop->lantai ?></p>
-                                        <p><b>kusen: </b> <?= $prop->kusen ?></p>
-                                        <p><b>kloset: </b> <?= $prop->kloset ?></p>
-                                        <p><b>lantai_kmwc: </b> <?= $prop->lantai_kmwc ?></p>
-                                        <p><b>dinding_kmwc: </b> <?= $prop->dinding_kmwc ?></p>
-                                        <p></p>
+                                        <p><b>Spesifikasi:</b></p>
+                                        <?php $specc =  specGetByProIdSeparate($prop->id); ?>
+                                        <?php $i = 0; ?>
+                                        <?php foreach($specc['spec_name'] as $spec_name): ?>
+                                            <p><b><?= $spec_name; ?>: </b> <?= $specc['spec'][$i] ?></p>
+                                        <?php $i++; endforeach; ?>
                                         <p><b>Denah: </b></p>
                                         <div class="card-panel property-denah lightGallery">
                                             <a href="<?= base_url() ?>/assets/img/property/<?= $prop->denah ?>" class="col-md-2">
@@ -98,7 +93,7 @@
         <form action="<?= base_url() ?>/admin/property/save/true" enctype="multipart/form-data" method="post" class="modal-form" onsubmit="loadingUploadBar()">
             <?= csrf_field() ?>
             <input type="hidden" class="feature-field input-feature" name="features" data-value="<?= old('features') ?>" data-placeholder="Masukkan Fasilitas" data-secondary-placeholder="+ Fasilitas" data-status="true">
-            <input type="hidden" class="spec_count" name="spec_count" value="<?= old('spec_count') ?>">
+            <input type="hidden" class="spec_count" name="spec_count"  data-edit="false" value="<?= old('spec_count') ?>">
             <input type="hidden" class="spec_name_old" name="spec_name_old" value="<?= (null !== session()->getFlashdata('spec_name'))?implode(',',session()->getFlashdata('spec_name')):''?>">
             <input type="hidden" class="spec_old" name="spec__old" value="<?= (null !== session()->getFlashdata('spec'))?implode(',',session()->getFlashdata('spec')):''?>">
 
@@ -109,17 +104,6 @@
                         <div class="collapsible-header active"><i class="material-icons">info</i>Info Dasar</div>
                         <div class="collapsible-body">
                             <div class="col s12">
-                                <div class="row spec" id="spec">
-                                    <div class="input-field col s6">
-                                        <input id="pondasi" type="text" name="spec_name[0]" class="<?= validSpecCheck(getOldSpec(0,'spec_name')) ?>" value="<?= getOldSpec(0,'spec_name') ?>" data-length="56" maxlength="56">
-                                        <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Nama Spesifikasi</label>
-                                    </div>
-                                    <div class="input-field col s6">
-                                        <input id="pondasi" type="text" name="spec[0]" class="<?= validSpecCheck(getOldSpec(0,'spec')) ?>" value="<?= getOldSpec(0,'spec') ?>" data-length="56" maxlength="56">
-                                        <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Spesifikasi</label>
-                                    </div>                         
-                                </div>
-                                <div class="btn spec-btn">Tambah Spesifikasi</div><div class="btn spec-btn red">Hapus Spesifikasi</div>
                                 <div class="input-field">
                                     <input id="type_name" type="text" name="type_name" class="<?= validCheck($validation->getError('type_name')) ?>" value="<?= old('type_name') ?>" data-length="56" maxlength="56">
                                     <label for="type_name" <?= errorMsgCheck($validation->getError('type_name')) ?>>Nama/Tipe Property</label>
@@ -195,56 +179,17 @@
                         <div class="collapsible-header active"><i class="material-icons">layers</i>Spesifikasi</div>
                         <div class="collapsible-body">
                             <div class="col s12">
-                                <div class="input-field">
-                                    <input id="pondasi" type="text" name="pondasi" class="<?= validCheck($validation->getError('pondasi')) ?>" value="<?= old('pondasi') ?>" data-length="56" maxlength="56">
-                                    <label for="pondasi" <?= errorMsgCheck($validation->getError('pondasi')) ?>>Pondasi</label>
+                                <div class="row spec" id="spec">
+                                    <div class="input-field col s6">
+                                        <input id="pondasi" type="text" name="spec_name[0]" class="<?= validSpecCheck(getOldSpec(0,'spec_name')) ?>" value="<?= getOldSpec(0,'spec_name') ?>" data-length="56" maxlength="56" required>
+                                        <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Nama Spesifikasi</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="pondasi" type="text" name="spec[0]" class="<?= validSpecCheck(getOldSpec(0,'spec')) ?>" value="<?= getOldSpec(0,'spec') ?>" data-length="56" maxlength="56" required>
+                                        <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Spesifikasi</label>
+                                    </div>                         
                                 </div>
-
-                                <div class="input-field">
-                                    <input id="dinding" type="text" name="dinding" class="<?= validCheck($validation->getError('dinding')) ?>" value="<?= old('dinding') ?>" data-length="56" maxlength="56">
-                                    <label for="dinding" <?= errorMsgCheck($validation->getError('dinding')) ?>>dinding</label>
-                                </div>
-
-                                <div class="input-field">
-                                    <input id="atap" type="text" name="atap" class="<?= validCheck($validation->getError('atap')) ?>" value="<?= old('atap') ?>" data-length="56" maxlength="56">
-                                    <label for="atap" <?= errorMsgCheck($validation->getError('atap')) ?>>Atap</label>
-                                </div>
-                                
-                                <div class="input-field">
-                                    <input id="plafon" type="text" name="plafon" class="<?= validCheck($validation->getError('plafon')) ?>" value="<?= old('plafon') ?>" data-length="56" maxlength="56">
-                                    <label for="plafon" <?= errorMsgCheck($validation->getError('plafon')) ?>>Plafon</label>
-                                </div>
-                                
-                                <div class="input-field">
-                                    <input id="listrik" type="text" name="listrik" class="<?= validCheck($validation->getError('listrik')) ?>" value="<?= old('listrik') ?>" data-length="56" maxlength="56">
-                                    <label for="listrik" <?= errorMsgCheck($validation->getError('listrik')) ?>>Listrik</label>
-                                </div>
-                                
-                                <div class="input-field">
-                                    <input id="lantai" type="text" name="lantai" class="<?= validCheck($validation->getError('lantai')) ?>" value="<?= old('lantai') ?>" data-length="56" maxlength="56">
-                                    <label for="lantai" <?= errorMsgCheck($validation->getError('lantai')) ?>>Lantai</label>
-                                </div>
-                                
-                                <div class="input-field">
-                                    <input id="kusen" type="text" name="kusen" class="<?= validCheck($validation->getError('kusen')) ?>" value="<?= old('kusen') ?>" data-length="56" maxlength="56">
-                                    <label for="kusen" <?= errorMsgCheck($validation->getError('kusen')) ?>>Kusen</label>
-                                </div>
-                                
-                                <div class="input-field">
-                                    <input id="kloset" type="text" name="kloset" class="<?= validCheck($validation->getError('kloset')) ?>" value="<?= old('kloset') ?>" data-length="56" maxlength="56">
-                                    <label for="kloset" <?= errorMsgCheck($validation->getError('kloset')) ?>>Tipe Kloset</label>
-                                </div>
-                                
-                                <div class="input-field">
-                                    <input id="lantai_kmwc" type="text" name="lantai_kmwc" class="<?= validCheck($validation->getError('lantai_kmwc')) ?>" value="<?= old('lantai_kmwc') ?>" data-length="56" maxlength="56">
-                                    <label for="lantai_kmwc" <?= errorMsgCheck($validation->getError('lantai_kmwc')) ?>>Lantai(Km/Wc)</label>
-                                </div>
-                                
-                                <div class="input-field">
-                                    <input id="dinding_kmwc" type="text" name="dinding_kmwc" class="<?= validCheck($validation->getError('dinding_kmwc')) ?>" value="<?= old('dinding_kmwc') ?>" data-length="56" maxlength="56">
-                                    <label for="dinding_kmwc" <?= errorMsgCheck($validation->getError('dinding_kmwc')) ?>>Dinding(Km/Wc)</label>
-                                </div>
-
+                                <div class="btn spec-btn">Tambah Spesifikasi</div><div class="btn red delete-spec-btn">Hapus Spesifikasi</div>
                             </div>
                         </div>
                     </li>

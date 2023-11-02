@@ -15,16 +15,22 @@ const rupiah = (number) => {
 
 $(document).ready(function (event) {
   let specCount;
+
   let count = 1;
+
+  if ($(".spec_count").data("edit") == true) {
+    count = $(".spec_count").val();
+  }
+
   $(".spec-btn").click(() => {
     $("#spec").append(`
     <div class="input-field col s6">
-        <input id="pondasi" type="text" name="spec_name[${count}]" value="" data-length="56" maxlength="56">
-        <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Nama Spesifikasi</label>
+        <input id="pondasi" type="text" name="spec_name[${count}]" value="" data-length="56" maxlength="56" required>
+        <label for="pondasi">Nama Spesifikasi</label>
     </div>
     <div class="input-field col s6">
-        <input id="pondasi" type="text" name="spec[${count}]" value="" data-length="56" maxlength="56">
-        <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Spesifikasi</label>
+        <input id="pondasi" type="text" name="spec[${count}]" value="" data-length="56" maxlength="56" required>
+        <label for="pondasi">Spesifikasi</label>
     </div>  
     `);
     count++;
@@ -37,21 +43,48 @@ $(document).ready(function (event) {
   let spec_old = $(".spec_old").val();
   spec_old = spec_old.split(",");
 
-  if ($(".spec_count").val()) {
-    for (let i = 0; i < $(".spec_count").val(); i++) {
+  let spec_count = $(".spec_count").val();
+
+  if ($(".spec_count").data("edit") == true) {
+    for (let i = 0; i < spec_count; i++) {
       $("#spec").append(`
       <div class="input-field col s6">
-          <input id="pondasi" type="text" name="spec_name[${count}]" value="${spec_name_old[count]}" data-length="56" maxlength="56">
-          <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Nama Spesifikasi</label>
+          <input id="pondasi" type="text" name="spec_name[${i}]" value="${spec_name_old[i]}" data-length="56" maxlength="56" required>
+          <label for="pondasi">Nama Spesifikasi</label>
       </div>
       <div class="input-field col s6">
-          <input id="pondasi" type="text" name="spec[${count}]" value="${spec_old[count]}" data-length="56" maxlength="56">
-          <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Spesifikasi</label>
+          <input id="pondasi" type="text" name="spec[${i}]" value="${spec_old[i]}" data-length="56" maxlength="56" required>
+          <label for="pondasi">Spesifikasi</label>
+      </div>
+      `);
+    }
+  } else {
+    if ($(".spec_count").val()) {
+      for (let i = 0; i < $(".spec_count").val(); i++) {
+        $("#spec").append(`
+      <div class="input-field col s6">
+          <input id="pondasi" type="text" name="spec_name[${count}]" value="${spec_name_old[count]}" data-length="56" maxlength="56" required>
+          <label for="pondasi">Nama Spesifikasi</label>
+      </div>
+      <div class="input-field col s6">
+          <input id="pondasi" type="text" name="spec[${count}]" value="${spec_old[count]}" data-length="56" maxlength="56" required>
+          <label for="pondasi">Spesifikasi</label>
       </div>  
       `);
-      count++;
+        count++;
+      }
     }
   }
+
+  $(".delete-spec-btn").click(() => {
+    if ($("#spec div").length >= 3) {
+      $("#spec").find("div:last").remove();
+      $("#spec").find("div:last").remove();
+      count--;
+    }
+  });
+
+  $("#modal-picture").modal();
 
   // for img multiple upload
   // ImgUpload();

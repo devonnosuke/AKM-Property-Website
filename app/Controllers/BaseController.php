@@ -71,6 +71,7 @@ class BaseController extends Controller
 		$this->propertyModels = new \App\Models\PropertyModel();
 		$this->propertyImgModels = new \App\Models\PropertyImgModel();
 		$this->promoModels = new \App\Models\PromoModel();
+		$this->specificationModels = new \App\Models\SpecificationModel();
 		
 		helper('auth');
 	}

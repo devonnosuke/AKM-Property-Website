@@ -42,13 +42,33 @@ class Property extends BaseController
         if (unlink('assets/img/property/' . $nameImage)) {
             // Delete data in table with Some functions
             // which have been provided in codeigniter : delete($id)
-            if ($this->propertyModels->delete($id)) {
-                // Create a flashdata session to display alert
-                setAlert('delete');
-                // Return to previous controller
-                return redirect()->back();
+            $images = $this->propertyImgModels->getImageByProId($id);
+            foreach ($images as $image) {
+                if (!unlink('assets/img/property/' . $image['image_name'])) {
+                    throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageFile:' . $image['image_name'] . 'Not Found!');
+                } else {
+                    if (!$this->propertyImgModels->delete($image['image_name'])) {
+                        throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageID:' . $image['image_name'] . 'Not Found!');
+                    }
+                }
+            }
+            
+            // Delete data in table with Some functions
+            // which have been provided in codeigniter : delete($id)
+            if($this->specificationModels->deleteByProId($id)){
+            
+                if ($this->propertyModels->delete($id)) {
+                    
+                    // Create a flashdata session to display alert
+                    setAlert('delete');
+                    // Return to previous controller
+                    return redirect()->back();
+                } else {
+                    throw new \CodeIgniter\Exceptions\PageNotFoundException('property_id:' . $id . 'Not Found!');
+                }
+
             } else {
-                throw new \CodeIgniter\Exceptions\PageNotFoundException('Id:' . $id . 'Not Found!');
+                throw new \CodeIgniter\Exceptions\PageNotFoundException('IdProperty In spec table:' . $id . 'Not Found!');
             }
         }
     }
@@ -69,6 +89,10 @@ class Property extends BaseController
         // Get Old image name if set
         $old_img = $this->request->getVar('old_img');
         $old_denah = $this->request->getVar('old_denah');
+
+        // spec_data
+        $specification_name = $_POST['spec_name'];
+        $specification = $_POST['spec'];
 
         // Set image convert extension
         $img_ext = 'jpg';
@@ -100,16 +124,6 @@ class Property extends BaseController
                 'color' => strtoupper($this->request->getVar('color')),
                 'luas_tanah' => $this->request->getVar('luas_tanah'),
                 'luas_bangunan' => $this->request->getVar('luas_bangunan'),
-                'pondasi' => $this->request->getVar('pondasi'),
-                'dinding' => $this->request->getVar('dinding'),
-                'atap' => $this->request->getVar('atap'),
-                'plafon' => $this->request->getVar('plafon'),
-                'listrik' => $this->request->getVar('listrik'),
-                'lantai' => $this->request->getVar('lantai'),
-                'kusen' => $this->request->getVar('kusen'),
-                'kloset' => $this->request->getVar('kloset'),
-                'lantai_kmwc' => $this->request->getVar('lantai_kmwc'),
-                'dinding_kmwc' => $this->request->getVar('dinding_kmwc'),
                 'denah' => $newDenahImageName['nameWithNewExt'],
             ];
 
@@ -133,6 +147,27 @@ class Property extends BaseController
                 $data['denah'] = $old_denah;
             }
 
+            // ==== add spec data
+            // d($specification);
+            $id_property = $this->request->getVar('id');
+            $this->specificationModels->deleteByProId($id_property);
+            for ($i=0; $i < (count($specification)); $i++) {
+
+                $specc['id_property'] = $id_property;
+                
+                $specc['spec_name'] = $specification_name[$i]; 
+                
+                $specc['spec'] = $specification[$i]; 
+
+                if (!$this->specificationModels->save($specc)) {
+                    return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
+                }
+                
+                // array_push($specValidation,$spec);
+                // d($specc);
+            }
+            // dd($specc);
+
 
         } else {
             
@@ -147,30 +182,6 @@ class Property extends BaseController
             $data['denah'] = $denah_file;
         }
 
-        // ==== add spec data
-        $specification_name = $_POST['spec_name'];
-        $specification = $_POST['spec'];
-
-        $specValidation = [];
-        $data_spec = [];
-
-        for ($i=0; $i < (count($specification)); $i++) {
-
-            $spec['spec_name'] = $specification_name[$i]; 
-            
-            $spec['spec'] = $specification[$i]; 
-            // $i+1;
-        //    $spec['id_property'] = $id_property;
-
-            // if (!$this->propertyModels->save($data)) {
-            //     return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
-            // }
-           
-            // array_push($specValidation,$spec);
-            d($spec);
-        }
-        
-        // dd($spec);
         // Run validation with the rules set in App/Config/Validation.php
         if ($this->validation->run($data, $validation_rules)) {
             // dd($this->validation->run($data, $validation_rules));
@@ -226,6 +237,11 @@ class Property extends BaseController
 
 
             $data['slug'] = url_title($this->request->getVar('type_name'), '-', true);
+
+            unset($data['spec_name']);
+            unset($data['spec']);
+            // dd($data);
+
             // htmlspecialchars is used to prevent special characters from being executed by the browser
             $data = array_map('htmlspecialchars', $data);
 
@@ -275,6 +291,26 @@ class Property extends BaseController
             
             }
 
+            if ($insert) {
+                // ==== add spec data
+                for ($i=0; $i < (count($specification)); $i++) {
+
+                    $spec['id_property'] = $id_property;
+                    
+                    $spec['spec_name'] = $specification_name[$i]; 
+                    
+                    $spec['spec'] = $specification[$i]; 
+
+                    if (!$this->specificationModels->save($spec)) {
+                        return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
+                    }
+                
+                    // array_push($specValidation,$spec);
+                    // d($spec);
+                }
+                // dd($spec);
+            }
+
             // Set alert session to show notification flashdata
             // Initialization of this function can be seen in App/Helper/ValidationSet_helper.php
             setAlert($id);
@@ -304,7 +340,28 @@ class Property extends BaseController
             'title' => $this->title,
             'property' => $this->findAll($id),
             'images' =>getImgList($this->propertyImgModels),
+            // 'spec_name'=>$this->specificationModels->getByProId($id),
         ];
+
+        // ==== read spec data
+        $specification = $this->specificationModels->getByProId($id);
+        $spec_name = [];
+        $spec = [];
+
+        for ($i=0; $i < (count($specification)); $i++) {
+            
+
+            array_push($spec_name,$specification[$i]['spec_name']) ; 
+            array_push($spec,$specification[$i]['spec']) ; 
+            
+            // $data['spec'] = $specification[$i]['spec'];
+        }
+
+        $data['spec_name'] = implode(',',$spec_name);
+        $data['spec'] = implode(',',$spec);
+        $data['spec_count'] = count($specification);
+
+
         $data['property_active'] = 'curr-active';
 
         return view('admin/property_edit', $data);

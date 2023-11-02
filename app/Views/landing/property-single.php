@@ -43,16 +43,11 @@
                         <div class="collapsible-header"><i class="material-icons">layers</i>Spesifikasi</div>
                         <div class="collapsible-body">
                             <ul>
-                                <li><span>Pondasi: </span><?= $property['pondasi']; ?></li>
-                                <li><span>Dinding: </span><?= $property['dinding']; ?></li>
-                                <li><span>Atap: </span><?= $property['atap']; ?></li>
-                                <li><span>Plafon: </span><?= $property['plafon']; ?></li>
-                                <li><span>Listrik: </span><?= $property['listrik']; ?></li>
-                                <li><span>Lantai: </span><?= $property['lantai']; ?></li>
-                                <li><span>Kusen: </span><?= $property['kusen']; ?></li>
-                                <li><span>Kloset: </span><?= $property['kloset']; ?></li>
-                                <li><span>Lantai KM/WC: </span><?= $property['lantai_kmwc']; ?></li>
-                                <li><span>Dinding KM/WC: </span><?= $property['dinding_kmwc']; ?></li>
+                                <?php $specc =  specGetByProIdSeparate($property['id']); ?>
+                                <?php $i = 0; ?>
+                                <?php foreach($specc['spec_name'] as $spec_name): ?>
+                                    <li><span><?= $spec_name; ?>: </span><?= $specc['spec'][$i] ?></li>
+                                <?php $i++; endforeach; ?>
                             </ul>
                         </div>
                     </li>
