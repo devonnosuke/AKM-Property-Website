@@ -17,21 +17,19 @@
                     <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4 truncate"><?= $property->type_name; ?><i class="material-icons">more_vert</i></span>
                     <p>Alamat: <?= $property->address; ?></p>
-                    <p>Lt/lb: <?= $property->luas_tanah; ?>, <?= $property->luas_bangunan; ?></p>
+                    <p>Luas Tanah: <?= $property->luas_tanah; ?></p>
                     <a href="<?= base_url(); ?>/properti/<?= $property->slug; ?>">Lihat Selengkapnya</a>
                     </div>
                     <div class="card-reveal">
                     <span class="card-title grey-text text-darken-4"><?= $property->type_name; ?> <i class="material-icons right">close</i></span>
                         <h6>Deskripsi:</h6>
                         <p><span><?= $property->description; ?></span></p>
-                        <p>Pondasi: <span><?= $property->pondasi; ?></span></p>
-                        <p>dinding: <span><?= $property->dinding; ?></span></p>
-                        <p>Atap: <span><?= $property->atap; ?></span></p>
-                        <p>Plafon: <span><?= $property->plafon; ?></span></p>
-                        <p>Listrik: <span><?= $property->listrik; ?></span></p>
-                        <p>Lantai: <span><?= $property->lantai; ?></span></p>
-                        <p>Kusen: <span><?= $property->kusen; ?></span></p>
-                        <p>Kloset: <span><?= $property->kloset; ?></span></p>
+                        <p><span>Spesifikasi:</span></p>
+                        <?php $specc =  specGetByProIdSeparate($property->id); ?>
+                        <?php $i = 0; ?>
+                        <?php foreach($specc['spec_name'] as $spec_name): ?>
+                            <p><?= $spec_name; ?>: <span><?= $specc['spec'][$i] ?></span></p>
+                        <?php $i++; endforeach; ?>
                         <p><a href="<?= base_url(); ?>/properti/<?= $property->slug; ?>">Lihat Properti selengkapnya</a></p>
                     </div>
                 </div>

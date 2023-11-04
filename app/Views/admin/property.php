@@ -37,8 +37,8 @@
                                     </div>
 
                                     <div class="card-content desc">
-                                        <p><b>Alamat: </b> <?= $prop->address ?></p>
-                                        <p><b>LT: </b> <?= $prop->luas_tanah ?>m<sup>2</sup> | <b>LB: </b> <?= $prop->luas_bangunan ?></p>
+                                        <p><b>Lokasi: </b> <?= $prop->address ?></p>
+                                        <p><b>Luas Tanah: </b> <?= $prop->luas_tanah ?>m<sup>2</sup></p>
                                         <p><b>Harga Jual: </b> <?= rupiah($prop->harga_jual) ?></p>
                                         <p><b>Fasilitas: </b> <?= $prop->features ?></p>
                                         <p><b>Spesifikasi:</b></p>
@@ -111,7 +111,7 @@
                                 
                                 <div class="input-field">
                                     <textarea name="address" id="address" class="materialize-textarea validate <?= validCheck($validation->getError('address')) ?>" data-length="56" maxlength="56"><?= old('address') ?></textarea>
-                                    <label for="address" <?= errorMsgCheck($validation->getError('address')) ?>>Alamat Properti</label>
+                                    <label for="address" <?= errorMsgCheck($validation->getError('address')) ?>>Lokasi Properti</label>
                                 </div>
 
                                 <div class="input-field">
@@ -120,24 +120,18 @@
                                 </div>
 
                                 <div class="input-field">
-                                    <textarea name="description" id="description" class="materialize-textarea validate <?= validCheck($validation->getError('description')) ?>" data-length="56" maxlength="56"><?= old('description') ?></textarea>
+                                    <textarea name="description" id="description" class="materialize-textarea validate <?= validCheck($validation->getError('description')) ?>" data-length="112" maxlength="112"><?= old('description') ?></textarea>
                                     <label for="description" <?= errorMsgCheck($validation->getError('description')) ?>>Deskripsi Properti</label>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col s6 input-field">
-                                        <input id="luas_tanah" type="text" name="luas_tanah" class="<?= validCheck($validation->getError('luas_tanah')) ?>" value="<?= old('luas_tanah') ?>" data-length="3" maxlength="3">
-                                        <label for="luas_tanah" <?= errorMsgCheck($validation->getError('luas_tanah')) ?>>Luas Tanah m<sup>2</sup> </label>
-                                    </div>
-                                    <div class="col s6 input-field">
-                                        <input id="luas_bangunan" type="text" name="luas_bangunan" class="<?= validCheck($validation->getError('luas_bangunan')) ?>" value="<?= old('luas_bangunan') ?>" data-length="10" maxlength="10">
-                                        <label for="luas_bangunan" <?= errorMsgCheck($validation->getError('luas_bangunan')) ?>>Luasan Bangunan</label>
-                                    </div>
+                                <div class="input-field">
+                                    <input id="luas_tanah" type="text" name="luas_tanah" class="<?= validCheck($validation->getError('luas_tanah')) ?>" value="<?= old('luas_tanah') ?>" data-length="10" maxlength="10">
+                                    <label for="luas_tanah" <?= errorMsgCheck($validation->getError('luas_tanah')) ?>>Luas Tanah m<sup>2</sup> </label>
                                 </div>
                                 
                                 <div class="input-field swatch">
                                     <div id="swatch">
-                                        <input type="color" id="color" name="color" value="#D80E0E">
+                                        <input type="color" id="color" name="color" value="<?= (old('color')==null)?'#aa0000ff':old('color') ?>">
                                         <div class="info">
                                             <span>Pilih Warna Properti</span>
                                         </div>
@@ -160,19 +154,6 @@
                                 </div>
                                 <span class="err-validation"><?= $validation->getError('image') ?></span>
                             </div>
-                            <div class="upload__box">
-                                <div class="file-field input-field col s12 upload__btn-box">
-                                    <div class="btn waves-effect waves-light bg-base upload__btn">
-                                        <span>Pilih Banyak gambar</span>
-                                        <input type="file" id="file1" multiple data-max_length="20" name="img[]" class="upload__inputfileonly">
-                                    </div>
-                                    <div class="file-path-wrapper hidee">
-                                        <input type="text" class="file-path img-path validate <?= validCheck($validation->getError('img')) ?>">
-                                    </div>
-                                    <span class="err-validation"><?= $validation->getError('img') ?></span>
-                                </div>
-                                <div class="upload__img-wrap"></div>
-                            </div>
                         </div>
                     </li>
                     <li class="flow-text">
@@ -189,7 +170,14 @@
                                         <label for="pondasi" <?= errorMsgCheck('Kolom wajib diisi') ?>>Spesifikasi</label>
                                     </div>                         
                                 </div>
-                                <div class="btn spec-btn">Tambah Spesifikasi</div><div class="btn red delete-spec-btn">Hapus Spesifikasi</div>
+                                <div class="row">
+                                    <div class="col s6 center">
+                                        <div class="btn spec-btn">Tambah Spesifikasi</div>
+                                    </div>
+                                    <div class="col s6 center">
+                                        <div class="btn red delete-spec-btn">Hapus Spesifikasi</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </li>

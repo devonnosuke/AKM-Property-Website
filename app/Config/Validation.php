@@ -140,12 +140,11 @@ class Validation
 		'harga_jual' => 'required',
 		'description' => 'required',
 		'features' => 'required',
-		'image' => 'uploaded[image]|max_size[image,61440]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
-		'img' => 'max_size[img,61440]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
+		// 'image' => 'uploaded[image]|max_size[image,61440]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
+		// 'img' => 'max_size[img,61440]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 		'color' => 'required',
 		'luas_tanah' => 'required',
-		'luas_bangunan' => 'required',
-		'denah' => 'uploaded[image]|max_size[image,61440]|mime_in[image,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
+		// 'denah' => 'uploaded[denah]|max_size[denah,61440]|mime_in[denah,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
 	];
 	
 	public $propertyEdit = [
@@ -159,7 +158,6 @@ class Validation
 		'features' => 'required',
 		'color' => 'required',
 		'luas_tanah' => 'required',
-		'luas_bangunan' => 'required',
 	];
 	
 	public $property_images = [

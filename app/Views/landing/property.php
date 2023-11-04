@@ -18,7 +18,7 @@
                         </div>
                         <div class="card-content">
                             <p><i class="bi bi-geo-alt-fill color-base"></i><b>Alamat:</b> <?= $property->address; ?></p>
-                            <p><i class="bi bi-border-outer color-base"></i> <b>LT:</b> <?= $property->luas_tanah; ?>m<sup>2</sup> | <i class="bi bi-border-style color-base"></i> LB: <?= $property->luas_bangunan; ?></p>
+                            <p><i class="bi bi-border-outer color-base"></i> <b>Luas Tanah:</b> <?= $property->luas_tanah; ?>m<sup>2</sup></p>
                             <p><i class="bi bi-list-columns-reverse color-base"></i> <b>Deskripsi:</b> <?= $property->description; ?></p>
                             <p><i class="bi bi-door-open-fill color-base"></i> <b>Fasilitas:</b> <?= $property->features; ?></p>
                         </div>

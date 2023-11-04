@@ -5,7 +5,7 @@
         <div class="row container">
             <div>
                 <h3 class="white-text"><?= $property['type_name']; ?></h3>
-                <p class="white-text">LT/LB: <?= $property['luas_tanah']; ?>/<?= $property['luas_bangunan']; ?></p>
+                <p class="white-text">Luas Tanah: <?= $property['luas_tanah']; ?>m<sup>2</sup></p>
             </div>
         </div>
     </div>
@@ -35,7 +35,6 @@
                                 <li><span>Alamat: </span><?= $property['address']; ?></li>
                                 <li><span>Deskripsi: </span><?= $property['description']; ?></li>
                                 <li><span>Luas Tanah: </span><?= $property['luas_tanah']; ?> m<sup>2</sup> </li>
-                                <li><span>Luas bangunan: </span><?= $property['luas_bangunan']; ?></li>
                             </ul>
                         </div>
                     </li>

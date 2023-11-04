@@ -157,7 +157,7 @@ function cutString($string) {
  * @param string $newname
  * @return boolean
  */
-function imgUploadBatch($img_file, $imgExt)
+function imgUploadBatch($img_file, $imgExtl, $forWhat = 'Properti')
 {
     $i=0;
     $listnames= [];
@@ -165,7 +165,7 @@ function imgUploadBatch($img_file, $imgExt)
         foreach ($img_file['img'] as $img) {
             if ($img->isValid() && ! $img->hasMoved()) {
 
-                $imgNewNames = imgGenerateBatchName($img->getRandomName(), 'Properti');
+                $imgNewNames = imgGenerateBatchName($img->getRandomName(), $forWhat);
                 $newName = $imgNewNames['nameOnly'].++$i.'.'.$imgNewNames['oldExtOnly'];
                 
                 $img->move('assets/img/property/',$newName);

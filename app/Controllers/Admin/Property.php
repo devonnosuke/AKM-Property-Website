@@ -40,15 +40,19 @@ class Property extends BaseController
 
         // Delete picture in server
         if (unlink('assets/img/property/' . $nameImage)) {
-            // Delete data in table with Some functions
-            // which have been provided in codeigniter : delete($id)
+
+            unlink('assets/img/property/'.$this->propertyModels->getDenahNameById($id));
+
+
             $images = $this->propertyImgModels->getImageByProId($id);
-            foreach ($images as $image) {
-                if (!unlink('assets/img/property/' . $image['image_name'])) {
-                    throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageFile:' . $image['image_name'] . 'Not Found!');
-                } else {
-                    if (!$this->propertyImgModels->delete($image['image_name'])) {
-                        throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageID:' . $image['image_name'] . 'Not Found!');
+            if ($images) {
+                foreach ($images as $image) {
+                    if (!unlink('assets/img/property/' . $image['image_name'])) {
+                        throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageFile:' . $image['image_name'] . 'Not Found!');
+                    } else {
+                        if (!$this->propertyImgModels->delete($image['image_name'])) {
+                            throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageID:' . $image['image_name'] . 'Not Found!');
+                        }
                     }
                 }
             }
@@ -58,7 +62,6 @@ class Property extends BaseController
             if($this->specificationModels->deleteByProId($id)){
             
                 if ($this->propertyModels->delete($id)) {
-                    
                     // Create a flashdata session to display alert
                     setAlert('delete');
                     // Return to previous controller
@@ -67,9 +70,10 @@ class Property extends BaseController
                     throw new \CodeIgniter\Exceptions\PageNotFoundException('property_id:' . $id . 'Not Found!');
                 }
 
-            } else {
-                throw new \CodeIgniter\Exceptions\PageNotFoundException('IdProperty In spec table:' . $id . 'Not Found!');
             }
+
+        } else {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Image Property ids:' . $id . 'Not Found!');
         }
     }
 
@@ -84,7 +88,7 @@ class Property extends BaseController
         $id = $this->request->getVar('id');
 
         // Get images[] data POST with ci4 : getFile(name)
-        $img_files = $this->request->getFiles();
+        // $img_files = $this->request->getFiles();
         
         // Get Old image name if set
         $old_img = $this->request->getVar('old_img');
@@ -105,7 +109,9 @@ class Property extends BaseController
         // Generate New Img Name
         $newImageName = imgGenerateName($img_file->getRandomName(), 'properti', $img_ext);
         // Generate New Denah Img Name
-        $newDenahImageName = imgGenerateName($denah_file->getRandomName(), 'properti '.$type_name.' ', $img_ext);
+        $newDenahImageName = imgGenerateName($denah_file->getRandomName(), 'properti_Denah '. url_title($type_name) .' ', $img_ext);
+    
+        // dd($newDenahImageName['nameWithOldExt']);
 
         // Check whether to insert or edit
         if (!$insert) {
@@ -123,7 +129,6 @@ class Property extends BaseController
                 'image' => $newImageName['nameWithNewExt'],
                 'color' => strtoupper($this->request->getVar('color')),
                 'luas_tanah' => $this->request->getVar('luas_tanah'),
-                'luas_bangunan' => $this->request->getVar('luas_bangunan'),
                 'denah' => $newDenahImageName['nameWithNewExt'],
             ];
 
@@ -211,15 +216,16 @@ class Property extends BaseController
             }
 
             if ($denah_file->isValid() && !$denah_file->hasMoved()) {
-
+                
                 // Move file to server
+                // dd($denah_file,$newDenahImageName['nameWithOldExt']);
                 if ( $denah_file->move('assets/img/property/', $newDenahImageName['nameWithOldExt'])) {
                     // Convert Image to $img_ext value
                     $convert = imgConvert($newDenahImageName['nameWithOldExt'], $newDenahImageName['nameOnly'], 'assets/img/property', $img_ext);
      
                     // Crop and Resize image
                     // $fit = imgFit($newDenahImageName['nameWithNewExt'], 'assets/img/property/');
-                    $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
+                    $fit = imgResize($newDenahImageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
 
                 }
 
@@ -254,42 +260,42 @@ class Property extends BaseController
             $id_property = $id_property[0]['id'];
             
             // Convert and crop images
-            if ($insert && $img_files['img'][0]->getError() !== 4) {
+            // if ($insert && $img_files['img'][0]->getError() !== 4) {
                 
                 
-                // Uplaod images
-                if (!$images = imgUploadBatch($img_files, $img_ext)) {
-                    return new \CodeIgniter\Exceptions\PageNotFoundException('imgUploadBatch() Error');
-                }
+            //     // Uplaod images
+            //     if (!$images = imgUploadBatch($img_files, $img_ext)) {
+            //         return new \CodeIgniter\Exceptions\PageNotFoundException('imgUploadBatch() Error');
+            //     }
 
-                $i = 0;
-                foreach ($images as $imageName) {
-                    // dd($imageName);
-                    // Convert Image to $img_ext value
-                    $convert = imgConvert( $imageName['nameWithOldExt'], $imageName['nameOnly'], 'assets/img/property', $img_ext, 78);
+            //     $i = 0;
+            //     foreach ($images as $imageName) {
+            //         // dd($imageName);
+            //         // Convert Image to $img_ext value
+            //         $convert = imgConvert( $imageName['nameWithOldExt'], $imageName['nameOnly'], 'assets/img/property', $img_ext, 78);
 
-                    // Crop and Resize image
-                    // $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
-                    $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
-
-
-                    // Check if the upload and image manipulation process is success
-                    if ($img_files && $convert && $fit) {
-
-                        $dataImages = [
-                            'image_name'=>$imageName['nameWithNewExt'],
-                            'id_property'=>$id_property,
-                        ];
-                        // Insert or change records to table with functions provided by codeigniter Model : save($data)
-                        $this->propertyImgModels->simpan($dataImages);
-                    } else {
-                        return new \CodeIgniter\Exceptions\PageNotFoundException('File Failed to save');
-                    }
+            //         // Crop and Resize image
+            //         // $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
+            //         $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
 
 
-                }
+            //         // Check if the upload and image manipulation process is success
+            //         if ($img_files && $convert && $fit) {
+
+            //             $dataImages = [
+            //                 'image_name'=>$imageName['nameWithNewExt'],
+            //                 'id_property'=>$id_property,
+            //             ];
+            //             // Insert or change records to table with functions provided by codeigniter Model : save($data)
+            //             $this->propertyImgModels->simpan($dataImages);
+            //         } else {
+            //             return new \CodeIgniter\Exceptions\PageNotFoundException('File Failed to save');
+            //         }
+
+
+            //     }
             
-            }
+            // }
 
             if ($insert) {
                 // ==== add spec data

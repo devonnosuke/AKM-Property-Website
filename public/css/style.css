@@ -1394,3 +1394,7 @@ input[type="color"] {
 .row .spec .col {
   padding: 0 0.4rem;
 }
+
+.chips .input {
+  width: 200px !important;
+}

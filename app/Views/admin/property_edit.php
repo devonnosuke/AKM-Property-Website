@@ -51,7 +51,7 @@
                                                 
                                                 <div class="input-field">
                                                     <textarea name="address" id="address" class="materialize-textarea validate <?= validCheck($validation->getError('address')) ?>" data-length="56" maxlength="56"><?= oldCheck('address', $property->address) ?></textarea>
-                                                    <label for="address" <?= errorMsgCheck($validation->getError('address')) ?>>Alamat Properti</label>
+                                                    <label for="address" <?= errorMsgCheck($validation->getError('address')) ?>>Lokasi Properti</label>
                                                 </div>
 
                                                 <div class="input-field">
@@ -63,18 +63,12 @@
                                                     <textarea name="description" id="description" class="materialize-textarea validate <?= validCheck($validation->getError('description')) ?>" data-length="56" maxlength="56"><?= oldCheck('description', $property->description) ?></textarea>
                                                     <label for="description" <?= errorMsgCheck($validation->getError('description')) ?>>Deskripsi Properti</label>
                                                 </div>
-
-                                                <div class="row">
-                                                    <div class="col s6">
-                                                        <input id="luas_tanah" type="text" name="luas_tanah" class="<?= validCheck($validation->getError('luas_tanah')) ?>" value="<?= oldCheck('luas_tanah', $property->luas_tanah) ?>" data-length="3" maxlength="3">
-                                                        <label for="luas_tanah" <?= errorMsgCheck($validation->getError('luas_tanah')) ?>>Luas Tanah m<sup>2</sup> </label>
-                                                    </div>
-                                                    <div class="col s6">
-                                                        <input id="luas_bangunan" type="text" name="luas_bangunan" class="<?= validCheck($validation->getError('luas_bangunan')) ?>" value="<?= oldCheck('luas_bangunan', $property->luas_bangunan) ?>" data-length="10" maxlength="10">
-                                                        <label for="luas_bangunan" <?= errorMsgCheck($validation->getError('luas_bangunan')) ?>>Luas Bangunan</label>
-                                                    </div>
-                                                </div>
                                                 
+                                                <div class="input-field">
+                                                    <input id="luas_tanah" type="text" name="luas_tanah" class="<?= validCheck($validation->getError('luas_tanah')) ?>" value="<?= oldCheck('luas_tanah', $property->luas_tanah) ?>" data-length="3" maxlength="3">
+                                                    <label for="luas_tanah" <?= errorMsgCheck($validation->getError('luas_tanah')) ?>>Luas Tanah m<sup>2</sup> </label>
+                                                </div>
+                                                                                                    
                                                 <div class="input-field swatch">
                                                     <div id="swatch">
                                                         <input type="color" id="color" name="color" value="<?= oldCheck('color', $property->color) ?>">

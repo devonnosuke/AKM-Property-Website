@@ -59,6 +59,7 @@
                                             <button data-href="<?= base_url() ?>/admin/promo/<?= $promo->id ?>/<?= $promo->brosur ?>" class="btn red darken-2 waves-effect waves-dark delete-btn tooltipped" data-tooltip="Delete" data-delay="150" data-position="bottom">
                                                 <i class="bi bi-trash-fill"></i>
                                             </button>
+
                                         </div>
                                     </div>
 

@@ -42,7 +42,7 @@ class PropertyImage extends BaseController
         // Run validation with the rules set in App/Config/Validation.php
         if ($this->validation->run($data, "property_images")) {
             // Uplaod images
-            if (!$images = imgUploadBatch($img_files, $img_ext)) {
+            if (!$images = imgUploadBatch($img_files, $img_ext, 'Properti Gallery')) {
                 return new \CodeIgniter\Exceptions\PageNotFoundException('imgUploadBatch() Error');
             }
 

@@ -37,8 +37,6 @@ class Promo extends BaseController
     // This method is used to delete records from the table
     public function drop($id, $nameImage)
     {
-        // $name = $this->request->getVar('name');
-
         // Delete picture in server
         if (unlink('assets/img/promo/' . $nameImage)) {
             // Delete data in table with Some functions
@@ -72,9 +70,12 @@ class Promo extends BaseController
 
         // Get image data POST with ci4 : getFile(name)
         $img_file = $this->request->getFile('brosur');
+        
+        // Get image data POST with ci4 : getFile(name)
+        $nama_promo = $this->request->getVar('nama_promo');
 
         // Generate New Img Name
-        $newImageName = imgGenerateName($img_file->getRandomName(), 'brosur', $img_ext);
+        $newImageName = imgGenerateName($img_file->getRandomName(), 'brosur-'.url_title($nama_promo), $img_ext);
 
         // Check whether to insert or edit
         if (!$insert) {
