@@ -11,23 +11,19 @@
                         <h3><?= $promo->type_name ?></h3>
                         <?php $bebas = splitString($promo->bebas, ',') ?>
                         <?php $bebas = array_slice($bebas, 0, 4) ?>
-                        <span>Bebas : 
+                        <span style="font-size: 1.5rem">Bebas : 
                         <?php foreach ($bebas as $beb) : ?>
                             <div class="chip"><i class="bi bi-check-circle left"></i><?= $beb; ?></div>
                         <?php endforeach; ?>
                         </span>
-                                
+                        <br>   
                         <?php $bonus = splitString($promo->bonus, ',') ?>
                         <?php $bonus = array_slice($bonus, 0, 4) ?>
-                        <span>Bonus : 
+                        <span style="font-size: 1.5rem">Bonus : 
                         <?php foreach ($bonus as $bon) : ?>
                             <div class="chip"><i class="bi bi-check-circle left"></i><?= $bon; ?></div>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
                         </span>
-                        
-                 
-
-                        <span>- Dll...</span>
                     </div>
                     <a href="<?= base_url() ?>/promo/<?= $promo->slug ?>" class="btn more btn-large green darken-2 waves-effect waves-light z-depth-0 modal-trigger">Cek Sekarang!</a>
                 </div>

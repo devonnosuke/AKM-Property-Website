@@ -157,7 +157,7 @@ function cutString($string) {
  * @param string $newname
  * @return boolean
  */
-function imgUploadBatch($img_file, $imgExtl, $forWhat = 'Properti')
+function imgUploadBatch($img_file, $imgExt, $forWhat = 'Properti')
 {
     $i=0;
     $listnames= [];

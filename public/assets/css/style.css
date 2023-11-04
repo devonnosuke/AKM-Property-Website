@@ -6,6 +6,7 @@
 body {
   /* font-family: "Roboto-light"; */
   font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
 }
 section,
 footer {
@@ -609,4 +610,10 @@ div.card-contact:hover {
 
 .card-reveal p span {
   font-weight: 300;
+}
+
+@media only screen and (max-width: 600px) {
+  .slider-promo .slides {
+    height: 93vh !important;
+  }
 }

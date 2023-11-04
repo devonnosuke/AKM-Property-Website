@@ -179,7 +179,7 @@ function readAvaiable($id_property, $promo) {
 }
 
 function rupiah ($angka) {
-    $hasil = 'Rp ' . number_format($angka, 0, ",", ".");
+    $hasil = 'Rp.' . number_format($angka, 0, ",", ".");
     return $hasil;
 }
 

@@ -7,7 +7,8 @@ class LandingPages extends BaseController
 
 	public function __construct()
 	{
-		
+		$this->desc = "Dapatkan perumahan berkualitas di kota palu, perumahan murah di palu, perumahan nyaman, perumahan dekat dengan kota palu, dengan biaya terjangkau haya di perumahan terbaik di kota palu!";
+		$this->og_image = base_url()."/share.png";
 	}
 
 	function counter(){
@@ -49,7 +50,9 @@ class LandingPages extends BaseController
 			// 'promos' => $this->promoModels->findAll(),
 			'promos' => $this->promoModels->findAllPromo(),
 			'properties' => $this->propertyModels->findAll(),
-			'title' => 'Landing Pages'
+			'title' => 'Landing Pages',
+			'desc' => $this->desc,
+			'og_image' => $this->og_image
 		];
         $data['index_active'] = 'active';
 
@@ -65,7 +68,9 @@ class LandingPages extends BaseController
 			'social' => $this->socialcontactModels->findAll(),
 			'contact' => $this->addressContactModels->find(1),
 			'contact1' => $this->addressContactModels->find(2),
-			'title' => 'Contact us'
+			'title' => 'Contact us',
+			'desc' => $this->desc,
+			'og_image' => $this->og_image
 		];
         $data['contact_active'] = 'active';
 
@@ -115,7 +120,9 @@ class LandingPages extends BaseController
 			'properties' => $this->propertyModels->findAll(),
 			'social' => $this->socialcontactModels->findAll(),
 			'contact' => $this->addressContactModels->find(1),
-			'title' => 'Contact us'
+			'title' => 'Contact us',
+			'desc' => $this->desc,
+			'og_image' => $this->og_image
 		];
         $data['property_active'] = 'active';
 		
@@ -123,6 +130,13 @@ class LandingPages extends BaseController
 			$proprety = $this->propertyModels->getBySlug($slug);
 			$dataGallery = $this->propertyImgModels->getPropertyById($proprety[0]['id']);
 			
+			$this->og_image = base_url()."/assets/img/property/".$proprety[0]['image'];
+
+			$this->desc .=' '.$proprety[0]['type_name'];
+			$this->desc .=', '.'lokasi di'.' '.$proprety[0]['address'];
+			$this->desc .=', '.'fasilitas '.$proprety[0]['features'];
+			$this->desc .=', '.'dengan luas tanah '.$proprety[0]['luas_tanah'];
+
 			$data = [
 				'portfolio' => $this->portfolioModels->findAll(),
 				'property' => $proprety[0],
@@ -133,6 +147,9 @@ class LandingPages extends BaseController
 				'services' => $this->servicesModels->findAll(),
 				'cta' => $this->ctaModels->findAll(),
 				'gallery' => $dataGallery,
+				'desc' => $this->desc,
+				'og_image' => $this->og_image
+
 			];
 			return view('landing/property-single', $data);
 		}
@@ -147,13 +164,22 @@ class LandingPages extends BaseController
 			'personal' => $this->personalModels->find('1'),
 			'social' => $this->socialcontactModels->findAll(),
 			'promo' => $this->promoModels->findAll(),
-			'title' => 'Contact us'
+			'title' => 'Contact us',
+			'desc' => $this->desc,
+			'og_image' => $this->og_image
 		];
 		$data['promo_active'] = 'active';
 		
 		if ($slug) {
 			$promo = $this->promoModels->getBySlug($slug);
 			$property = $this->propertyModels->findId($promo[0]['id_property']);
+
+			$this->og_image = base_url()."/assets/img/promo/".$promo[0]['brosur'];
+
+			$this->desc .=' '.$promo[0]['nama_promo'];
+			$this->desc .=', '.'gratis '.$promo[0]['bonus'];
+			$this->desc .=', '.'dengan bebas '.' '.$promo[0]['bebas'];
+
 			$data = [
 				'promo' => $promo[0],
 				'property' => $property[0],
@@ -164,6 +190,9 @@ class LandingPages extends BaseController
 				'title' => 'Detail Properti',
 				'services' => $this->servicesModels->findAll(),
 				'cta' => $this->ctaModels->findAll(),
+				'desc' => $this->desc,
+				'og_image' => $this->og_image
+
 			];
 			$data['promo_active'] = 'active';
 			return view('landing/promo-single', $data);
