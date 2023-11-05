@@ -33,6 +33,7 @@ class PropertyModel extends Model
         $builder->where('slug', $slug);
         return $builder->get()->getResultArray();
     }
+    
     public function findId($id)
     {
         $db = \Config\Database::connect();

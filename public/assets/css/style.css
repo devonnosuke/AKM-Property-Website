@@ -1,7 +1,4 @@
 /* ==================================== Other Section*/
-::selection {
-  /* background: #07cce6; */
-}
 
 body {
   /* font-family: "Roboto-light"; */
@@ -488,15 +485,20 @@ div.card-contact:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
 .slider .indicators {
-  bottom: 55px;
+  bottom: 40px;
   z-index: 2;
 }
 
 .slider-promo {
   height: 640px !important;
 }
+
 .slider-promo .slides {
-  height: 600px !important;
+  height: 93vh !important;
+}
+
+.slider .slider-promo {
+  margin-bottom: 45px;
 }
 
 .desc-service {
@@ -599,7 +601,7 @@ div.card-contact:hover {
   justify-content: space-between;
 }
 .card-property .card-content {
-  height: 168px;
+  height: 190px;
 }
 
 .card-reveal p {
@@ -613,7 +615,8 @@ div.card-contact:hover {
 }
 
 @media only screen and (max-width: 600px) {
-  .slider-promo .slides {
-    height: 93vh !important;
+  .slider .indicators {
+    bottom: -15px;
+    z-index: 2;
   }
 }

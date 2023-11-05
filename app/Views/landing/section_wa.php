@@ -1,9 +1,8 @@
 <!-- *** About Us Section *** -->
 <section id="wa-chat" class="about scrollspy contact">
-    <div class="container">
-        
+    <div>
         <div class="heading-text">    
-            <h2 class="light grey-text text-darken-3 left-align">Send us a message</h2>
+            <h2 class="light grey-text text-darken-3 left-align">Bertanya langsung</h2>
             <div class="left"></div>
         </div>
    

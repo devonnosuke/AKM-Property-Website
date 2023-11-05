@@ -7,6 +7,16 @@ $(window).on("load", function () {
 });
 
 $(document).ready(function () {
+  // .collapsible-property .collapsible-header
+  if ($(window).width() > 600) {
+    $(".collapsible").collapsible("open", 0);
+    $(".collapsible").collapsible("open", 1);
+    $(".collapsible").collapsible("open", 2);
+    $(".collapsible").collapsible("open", 3);
+  } else {
+    $(".collapsible-1").collapsible("open", 0);
+  }
+
   $(".modal").modal();
 
   info = $("#home").data("info");
@@ -103,7 +113,10 @@ $(document).ready(function () {
       $(".nav-link").addClass("grey-text");
 
       $(".nav-link").addClass("text-darken-4");
+
+      $(".nav-wrapper li.active").addClass("scroll");
     } else {
+      $(".nav-wrapper li.active").removeClass("scroll");
       $(".nav-index").addClass("bg-nav");
 
       $("nav").addClass("darken-1");
@@ -126,6 +139,7 @@ $(".materialboxed12").materialbox();
 
 lightGallery(document.getElementById("property-gallery"), {
   download: false,
+  selector: ".item",
 });
 
 lightGallery(document.getElementById("property-img"), {

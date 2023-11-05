@@ -25,7 +25,7 @@
                             <?php endforeach; ?>
                         </span>
                     </div>
-                    <a href="<?= base_url() ?>/promo/<?= $promo->slug ?>" class="btn more btn-large green darken-2 waves-effect waves-light z-depth-0 modal-trigger">Cek Sekarang!</a>
+                    <a href="<?= base_url() ?>/promo/<?= $promo->slug ?>" class="btn more btn-large light-green darken-4 waves-effect waves-light z-depth-0 modal-trigger">Cek Sekarang!</a>
                 </div>
             </li>
         <?php endforeach; ?>

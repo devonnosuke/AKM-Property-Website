@@ -122,7 +122,7 @@ class LandingPages extends BaseController
 			'contact' => $this->addressContactModels->find(1),
 			'title' => 'Contact us',
 			'desc' => $this->desc,
-			'og_image' => $this->og_image
+			'og_image' => $this->og_image,
 		];
         $data['property_active'] = 'active';
 		

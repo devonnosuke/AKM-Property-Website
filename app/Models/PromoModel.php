@@ -42,4 +42,5 @@ class PromoModel extends Model
         $builder->join('property', "property.id = $this->table.id_property");
         return $builder->get()->getResultObject();
     }
+
 }

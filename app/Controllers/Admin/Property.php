@@ -45,6 +45,7 @@ class Property extends BaseController
 
 
             $images = $this->propertyImgModels->getImageByProId($id);
+            // dd($images);
             if ($images) {
                 foreach ($images as $image) {
                     if (!unlink('assets/img/property/' . $image['image_name'])) {
@@ -73,6 +74,7 @@ class Property extends BaseController
             }
 
         } else {
+            redirect()->back();
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Image Property ids:' . $id . 'Not Found!');
         }
     }
