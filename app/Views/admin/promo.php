@@ -27,7 +27,7 @@
                         </div>
                     </div>
 
-                    <div class="row content content-slider">
+                    <div class="row content promo-item">
                         <?php foreach ($promos as $promo) : ?>
                             <div class="col m4 s12 col-sliders-card">
                                 <div class="card medium hoverable card-slider">

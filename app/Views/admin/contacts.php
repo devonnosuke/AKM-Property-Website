@@ -170,8 +170,8 @@
                     <label for="link" id="contact_label">Email</label>
                 </div>
                 <div class="col s12">
-                    <p>For number phone must be use country code <strong><i>ex:+6281234567891</i></strong></p>
-                    <p>Note for link: must add <strong>https://</strong> or <strong>http://</strong> at the beginning of the link. example: <strong>https://www.facebook.com/jhon_doe</strong></p>
+                    <p>Untuk Nomor WA/HP gunakan format kode negara <strong><i>contoh:+6281234567891</i></strong></p>
+                    <p>Untuk Link: harus menambah <strong>https://</strong> di awal link. contoh: <strong>https://www.facebook.com/jhon_doe</strong></p>
                 </div>
             </div>
 
@@ -205,6 +205,12 @@
 
                 <h4>Change Address</h4>
                         
+                <div class="input-field col s12">
+                    <i class="bi bi-geo-alt-fill prefix form-icon-modal"></i>
+                    <input type="text" name="office_name" value="<?= oldCheck('office_name', $contact->office_name) ?>" id="office_name" class="validate" required>
+                    <label for="office_name">Nama Kantor</label>
+                </div>
+
                 <div class="input-field col s12">
                     <i class="bi bi-geo-alt-fill prefix form-icon-modal"></i>
                     <input type="text" name="address" value="<?= oldCheck('address', $contact->address) ?>" id="address" class="validate" required>
@@ -258,7 +264,13 @@
             <div class="row card-panel card-form-modal">
 
                 <h4>Change Address</h4>
-                        
+
+                <div class="input-field col s12">
+                    <i class="bi bi-geo-alt-fill prefix form-icon-modal"></i>
+                    <input type="text" name="office_name" value="<?= oldCheck('office_name', $contact1->office_name) ?>" id="office_name" class="validate" required>
+                    <label for="office_name">Nama Kantor</label>
+                </div>
+ 
                 <div class="input-field col s12">
                     <i class="bi bi-geo-alt-fill prefix form-icon-modal"></i>
                     <input type="text" name="address" value="<?= oldCheck('address', $contact1->address) ?>" id="address" class="validate" required>

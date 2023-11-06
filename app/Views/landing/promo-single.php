@@ -3,18 +3,19 @@
     <div class="container">
 
         <div class="heading-text">    
-            <h2 class="grey-text text-darken-3 left-align">Promo <?= $promo['nama_promo']; ?>!</h2>
+            <h2 class="grey-text text-darken-3 left-align"><?= $promo['nama_promo']; ?>!</h2>
             <div class="left"></div>
         </div>
 
         <div class="row promo">
-            <div class="col s12 m4">
+            <div class="col s12 m6">
                 <div id="promo-img" class="card-panel hoverable">
                     <a href="<?= base_url() ?>/assets/img/promo/<?= $promo['brosur']; ?>">
                         <img src="<?= base_url() ?>/assets/img/promo/<?= $promo['brosur']; ?>" class="responsive-img" alt="<?= $promo['slug']; ?>">
                     </a>
                 </div>
-
+            </div>
+            <div class="col s12 m6">
                 <blockquote class="flow-text">
                     <p><span>Nama Promo : </span><?= $promo['nama_promo']; ?></p>
                 </blockquote>
@@ -40,13 +41,12 @@
                     <p><span>deskripsi: </span><?= $promo['deskripsi']; ?></p>
                 </blockquote>
 
-                <a href="<?= base_url() ?>/properti/<?= $property['slug']; ?>" class="btn more btn-large red darken-2 waves-effect waves-dark z-depth-0 modal-trigger">Cek Properti Selengkapnya!</a>
+                <a href="<?= base_url() ?>/properti/<?= $property['slug']; ?>" class="btn more btn-large light-green darken-3 waves-effect waves-dark z-depth-0 btn-cta">Cek Properti Selengkapnya!</a>
+                
                 <p>*Klik tombol diatas untuk informasi Hunian selengkapnya </p>
             </div>
         </div>
-
-        <?= $this->include('landing/section_wa') ?>
-
     </div>
 </section>
+<?= $this->include('landing/section_wa') ?>
 <?= $this->endSection() ?>

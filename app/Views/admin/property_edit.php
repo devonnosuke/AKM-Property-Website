@@ -103,7 +103,14 @@
                                                         <div class="row spec" id="spec">
                                                                             
                                                         </div>
-                                                        <div class="btn spec-btn">Tambah Spesifikasi</div><div class="btn red delete-spec-btn">Hapus Spesifikasi</div>
+                                                        <div class="row">
+                                                            <div class="col s6 center">
+                                                                <div class="btn spec-btn">Tambah Spesifikasi</div>
+                                                            </div>
+                                                            <div class="col s6 center">
+                                                                <div class="btn red delete-spec-btn">Hapus Spesifikasi</div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                         </li>

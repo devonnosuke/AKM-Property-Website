@@ -1,5 +1,5 @@
 <!-- *** About Us Section *** -->
-<section id="wa-chat" class="about scrollspy contact">
+<section id="wa-chat" class="about scrollspy contact bg-red-light" onload="hexToHSL('--color')">
     <div>
         <div class="heading-text">    
             <h2 class="light grey-text text-darken-3 left-align">Bertanya langsung</h2>

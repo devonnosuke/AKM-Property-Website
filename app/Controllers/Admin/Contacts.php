@@ -52,10 +52,12 @@ class Contacts extends BaseController
         $contact_type = $this->request->getPost('contact_type');
 
         // Create a link that opens in the user's email or telephone program
-        if ($contact_type == 'telephone' || $contact_type == 'whatsapp' || $contact_type == 'telegram') {
+        if ($contact_type == 'telephone' || $contact_type == 'telegram') {
             $data['link'] = "tel:+" . $data['link'];
         } elseif ($contact_type == 'envelope') {
             $data['link'] = "mailto:" . $data['link'];
+        }  elseif ($contact_type == 'whatsapp') {
+            $data['link'] = "https://wa.me/".$data['link']."?text=Hallo saya telah melihat info di akmproperti.com dan ingin bertanya tentang ";
         }
 
         // Get id data POST with ci4 : getVar(name)

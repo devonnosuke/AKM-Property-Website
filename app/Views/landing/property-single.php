@@ -143,9 +143,7 @@ return array_merge(array($a),$b);
                 </div>
             </div>
         </div>
-
-        <?= $this->include('landing/section_wa') ?>
-
     </div>
 </section>
+<?= $this->include('landing/section_wa') ?>
 <?= $this->endSection() ?>

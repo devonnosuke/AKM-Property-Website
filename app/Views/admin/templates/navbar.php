@@ -13,7 +13,7 @@
         <li class="divider"></li>
         <li class="menu-item <?= (isset($property_active) ? $property_active : '') ?>">
             <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/property">
-                <i class="white-text bi bi-house-fill"></i>Properti
+                <i class="white-text bi bi-house-fill"></i>Properti/Perumahan
             </a>
         </li>
         <li class="divider"></li>
@@ -25,7 +25,7 @@
         <li class="divider"></li>
         <li class="menu-item <?= (isset($contacts_active) ? $contacts_active : '') ?>">
             <a class="waves-effect waves-light white-text menu-link" href="<?= base_url() ?>/admin/contacts">
-                <i class="white-text bi bi-telephone-fill"></i>Contacts
+                <i class="white-text bi bi-telephone-fill"></i>Kontak Kantor
             </a>
         </li>
         <li class="divider"></li>

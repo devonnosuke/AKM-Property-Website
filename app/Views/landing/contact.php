@@ -85,7 +85,7 @@
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15957.0156432989!2d119.8966547!3d-0.9637477!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d8bf159dec406b1%3A0x8206a623f21edca7!2sKANTOR%20PEMASARAN%20PERUM%20FAIRUZ%20KALUKUBULA!5e0!3m2!1sid!2sid!4v1697381837539!5m2!1sid!2sid" width="400" height="450" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="hoverable"></iframe>
             </div>
         </div>
-        <?= $this->include('landing/section_wa') ?>
     </div>
 </section>
+<?= $this->include('landing/section_wa') ?>
 <?= $this->endSection() ?>

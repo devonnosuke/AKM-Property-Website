@@ -183,7 +183,7 @@
                     <?php if ($config->allowRemembering) : ?>
                         <p class="checkbox-field center">
                             <input type="checkbox" name="remember" id="remember" <?php if (old('remember')) : ?> checked <?php endif ?>>
-                            <label for="remember"> Ingat Saya <i>(selama 7 hari)</i></label>
+                            <label for="remember"> Ingat Saya <i>(selama 30 hari)</i></label>
                         </p>
                     <?php endif; ?>
 

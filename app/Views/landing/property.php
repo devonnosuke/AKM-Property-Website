@@ -40,7 +40,7 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <?= $this->include('landing/section_wa') ?>
     </div>
 </section>
+<?= $this->include('landing/section_wa') ?>
 <?= $this->endSection() ?>

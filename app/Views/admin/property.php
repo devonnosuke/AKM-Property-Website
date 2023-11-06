@@ -26,7 +26,7 @@
                         </div>
                     </div>
 
-                    <div class="row content content-slider">
+                    <div class="row content property-item">
                         <?php foreach ($property as $prop) : ?>
                             <div class="col m4 s12 col-sliders-card">
                                 <div class="card medium hoverable card-slider property">
@@ -57,7 +57,7 @@
                                     
                                     <div class="card-action center z-depth-1 row">
                                         <p style="display:none" id="<?= $prop->id ?>"><?= base_url() ?>/properti/<?= $prop->slug ?></p>
-                                        <div class="col s12">
+                                        <div class="col s12 link">
                                             <button class="btn green darken-1 waves-effect waves-light btn-card-more btn-link" onclick="copyToClipboard('#<?= $prop->id ?>')">Salin Link <i class="bi bi-link-45deg"></i></button>
                                         </div>
                                         <div class="col s12">
@@ -65,7 +65,7 @@
                                             <button class='dropdown-button btn bg-base btn-card-more' data-activates='dropdown<?= $prop->id ?>'><i class="bi bi-list"></i></button>
                                             <!-- Dropdown Structure -->
                                             <ul id='dropdown<?= $prop->id ?>' class='dropdown-content'>
-                                                <li><a href="<?= base_url() ?>/admin/property-image/<?= $prop->id ?>"><i class="bi bi-images"></i>Lihat Gallery Foto</a></li>
+                                                <li><a href="<?= base_url() ?>/admin/property-image/<?= $prop->id ?>"><i class="bi bi-images"></i>Gallery Foto</a></li>
                                                 <li><a href="<?= base_url() ?>/admin/property/<?= $prop->id ?>" class="waves-effect waves-dark"><i class="bi bi-pencil-fill"></i>Edit</a></li>
                                                 <li class="divider"></li>
                                                 <li><a data-href="<?= base_url() ?>/admin/property/<?= $prop->id ?>/<?= $prop->image ?>" class="waves-effect waves-dark delete-btn"><i class="bi bi-trash-fill"></i>Hapus</a></li>

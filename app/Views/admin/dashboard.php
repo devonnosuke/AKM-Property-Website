@@ -9,7 +9,7 @@
             <div class="col s12 m9 right main-wrapper">
                 <div class="menu-wraper">
                     <span class="flash-data" data-flashdata="" data-type="Tagline"></span>
-                    <h2 class="header center-on-small-only center text-color">Selamat Datang <?= user()->username ?>!</h2>
+                    <h2 class="header center-on-small-only center text-color">Selamat Datang</h2>
                     <h6 class="center text-color">This website is used to manage data on AKM Property website</h6>
                     <hr class="center">
                     <div class="row content">
