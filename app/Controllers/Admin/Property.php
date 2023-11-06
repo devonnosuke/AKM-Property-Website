@@ -36,46 +36,38 @@ class Property extends BaseController
     // This method is used to delete records from the table
     public function drop($id, $nameImage)
     {
-        // $name = $this->request->getVar('name');
-
         // Delete picture in server
-        if (unlink('assets/img/property/' . $nameImage)) {
+        unlink('assets/img/property/' . $nameImage);
 
-            unlink('assets/img/property/'.$this->propertyModels->getDenahNameById($id));
+        unlink('assets/img/property/'.$this->propertyModels->getDenahNameById($id));
 
 
-            $images = $this->propertyImgModels->getImageByProId($id);
-            // dd($images);
-            if ($images) {
-                foreach ($images as $image) {
-                    if (!unlink('assets/img/property/' . $image['image_name'])) {
-                        throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageFile:' . $image['image_name'] . 'Not Found!');
-                    } else {
-                        if (!$this->propertyImgModels->delete($image['image_name'])) {
-                            throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageID:' . $image['image_name'] . 'Not Found!');
-                        }
+        $images = $this->propertyImgModels->getImageByProId($id);
+        
+        if (!empty($images)) {
+            foreach ($images as $image) {
+                if (!unlink('assets/img/property/' . $image['image_name'])) {
+                    throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageFile:' . $image['image_name'] . 'Not Found!');
+                } else {
+                    if (!$this->propertyImgModels->delete($image['image_name'])) {
+                        throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageID:' . $image['image_name'] . 'Not Found!');
                     }
                 }
             }
-            
-            // Delete data in table with Some functions
-            // which have been provided in codeigniter : delete($id)
-            if($this->specificationModels->deleteByProId($id)){
-            
-                if ($this->propertyModels->delete($id)) {
-                    // Create a flashdata session to display alert
-                    setAlert('delete');
-                    // Return to previous controller
-                    return redirect()->back();
-                } else {
-                    throw new \CodeIgniter\Exceptions\PageNotFoundException('property_id:' . $id . 'Not Found!');
-                }
-
-            }
-
-        } else {
-            redirect()->back();
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Image Property ids:' . $id . 'Not Found!');
+        }
+        
+        // Delete data in table with Some functions
+        // which have been provided in codeigniter : delete($id)
+        $this->specificationModels->deleteByProId($id);
+        
+        $this->propertyModels->delete($id);
+        
+        $db = \Config\Database::connect();
+        if ($db->affectedRows() > 0) {
+            // Create a flashdata session to display alert
+            setAlert('delete');
+            // Return to previous controller
+            return redirect()->back();
         }
     }
 

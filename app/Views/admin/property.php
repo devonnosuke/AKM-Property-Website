@@ -93,9 +93,9 @@
         <form action="<?= base_url() ?>/admin/property/save/true" enctype="multipart/form-data" method="post" class="modal-form" onsubmit="loadingUploadBar()">
             <?= csrf_field() ?>
             <input type="hidden" class="feature-field input-feature" name="features" data-value="<?= old('features') ?>" data-placeholder="Masukkan Fasilitas" data-secondary-placeholder="+ Fasilitas" data-status="true">
-            <input type="hidden" class="spec_count" name="spec_count"  data-edit="false" value="<?= old('spec_count') ?>">
-            <input type="hidden" class="spec_name_old" name="spec_name_old" value="<?= (null !== session()->getFlashdata('spec_name'))?implode(',',session()->getFlashdata('spec_name')):''?>">
-            <input type="hidden" class="spec_old" name="spec__old" value="<?= (null !== session()->getFlashdata('spec'))?implode(',',session()->getFlashdata('spec')):''?>">
+            <input type="hidden" name="spec_count"  data-edit="false" value="<?= old('spec_count') ?>">
+            <input type="hidden" name="spec_name" value="<?= (null !== session()->getFlashdata('spec_name'))?implode(',',session()->getFlashdata('spec_name')):''?>">
+            <input type="hidden" name="spec" value="<?= (null !== session()->getFlashdata('spec'))?implode(',',session()->getFlashdata('spec')):''?>">
 
             <div class="row card-panel card-form-modal">
                 <h4>Input Informasi Properti</h4>
@@ -120,7 +120,7 @@
                                 </div>
 
                                 <div class="input-field">
-                                    <textarea name="description" id="description" class="materialize-textarea validate <?= validCheck($validation->getError('description')) ?>" data-length="112" maxlength="112"><?= old('description') ?></textarea>
+                                    <textarea name="description" id="description" class="materialize-textarea validate <?= validCheck($validation->getError('description')) ?>"><?= old('description') ?></textarea>
                                     <label for="description" <?= errorMsgCheck($validation->getError('description')) ?>>Deskripsi Properti</label>
                                 </div>
 
@@ -147,7 +147,7 @@
                             <div class="file-field input-field col m9 s12">
                                 <div class="btn waves-effect waves-light bg-base">
                                     <span>Pilih 1 Gambar Utama</span>
-                                    <input type="file" name="image" accept="image/*" id="image" onchange="previewImg('#image',false, '#image-preview')">
+                                    <input type="file" name="image" accept="image/*" id="image" onchange="previewImg('#image',false, '#image-preview')" required>
                                 </div>
                                 <div class="file-path-wrapper hidee">
                                     <input type="text" class="file-path img-path validate">
@@ -206,7 +206,7 @@
 
                                 <div class="btn waves-effect waves-light bg-base">
                                     <span>Pilih 1 Gambar Denah Rumah</span>
-                                    <input type="file" name="denah" accept="image/*" id="denah" onchange="previewImg('#denah',false, '#denah-preview')">
+                                    <input type="file" name="denah" accept="image/*" id="denah" onchange="previewImg('#denah',false, '#denah-preview')" required>
                                 </div>
                                 <div class="file-path-wrapper hidee">
                                     <input type="text" class="file-path img-path validate">

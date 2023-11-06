@@ -38,20 +38,14 @@ class Promo extends BaseController
     public function drop($id, $nameImage)
     {
         // Delete picture in server
-        if (unlink('assets/img/promo/' . $nameImage)) {
-            // Delete data in table with Some functions
-            // which have been provided in codeigniter : delete($id)
-            if ($this->promoModels->delete($id)) {
-                // Create a flashdata session to display alert
-                setAlert('delete');
-                // Return to previous controller
-                return redirect()->back();
-            } else {
-                throw new \CodeIgniter\Exceptions\PageNotFoundException('Id:' . $id . 'Not Found!');
-            }
-        } else {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Name image:' . $nameImage . 'Not Found!');
-        }
+        unlink('assets/img/promo/' . $nameImage);
+        // Delete data in table with Some functions
+        // which have been provided in codeigniter : delete($id)
+        $this->promoModels->delete($id);
+        // Create a flashdata session to display alert
+        setAlert('delete');
+        // Return to previous controller
+        return redirect()->back();
     }
 
     // This method is used for validation and save data to table

@@ -36,8 +36,8 @@
                                     <input type="hidden" class="feature-field input-feature" name="features" data-value="<?= oldCheck('features', $property->features) ?>" data-placeholder="Masukkan Fasilitas" data-secondary-placeholder="+ Fasilitas" data-status="true">
                                     
                                     <input type="hidden" class="spec_count" name="spec_count" data-edit="true" value="<?= $spec_count ?>">
-                                    <input type="hidden" class="spec_name_old" name="spec_name_old" value="<?= $spec_name ?>">
-                                    <input type="hidden" class="spec_old" name="spec__old" value="<?= $spec ?>">
+                                    <input type="hidden" class="spec_name_old" name="spec_name" value="<?= $spec_name ?>">
+                                    <input type="hidden" class="spec_old" name="spec" value="<?= $spec ?>">
 
 
                                     <ul class="collapsible collapsible-property input popout" data-collapsible="expandable">
@@ -60,12 +60,12 @@
                                                 </div>
 
                                                 <div class="input-field">
-                                                    <textarea name="description" id="description" class="materialize-textarea validate <?= validCheck($validation->getError('description')) ?>" data-length="56" maxlength="56"><?= oldCheck('description', $property->description) ?></textarea>
+                                                    <textarea name="description" id="description" class="materialize-textarea validate <?= validCheck($validation->getError('description')) ?>"><?= oldCheck('description', $property->description) ?></textarea>
                                                     <label for="description" <?= errorMsgCheck($validation->getError('description')) ?>>Deskripsi Properti</label>
                                                 </div>
                                                 
                                                 <div class="input-field">
-                                                    <input id="luas_tanah" type="text" name="luas_tanah" class="<?= validCheck($validation->getError('luas_tanah')) ?>" value="<?= oldCheck('luas_tanah', $property->luas_tanah) ?>" data-length="3" maxlength="3">
+                                                    <input id="luas_tanah" type="text" name="luas_tanah" class="<?= validCheck($validation->getError('luas_tanah')) ?>" value="<?= oldCheck('luas_tanah', $property->luas_tanah) ?>" data-length="10" maxlength="10">
                                                     <label for="luas_tanah" <?= errorMsgCheck($validation->getError('luas_tanah')) ?>>Luas Tanah m<sup>2</sup> </label>
                                                 </div>
                                                                                                     

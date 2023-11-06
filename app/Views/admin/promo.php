@@ -107,7 +107,7 @@
                 </div>
 
                 <div class="input-field col s12">
-                    <textarea name="deskripsi" id="deskripsi" class="materialize-textarea validate <?= validCheck($validation->getError('deskripsi')) ?>" data-length="56" maxlength="56"><?= old('deskripsi') ?></textarea>
+                    <textarea name="deskripsi" id="deskripsi" class="materialize-textarea validate <?= validCheck($validation->getError('deskripsi')) ?>"><?= old('deskripsi') ?></textarea>
                     <label for="deskripsi" <?= errorMsgCheck($validation->getError('tagline')) ?>>Deskripsi Promo</label>
                 </div>
 
