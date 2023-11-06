@@ -8,7 +8,7 @@
   <meta property="og:image:type" content="image/jpg">
   <meta property="og:image:width" content="720">
   <meta property="og:image:height" content="720">
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="<?= base_url() ?>/favicon.ico">
   <title><?= $title ?> | Perumahan termurah terbaik di kota palu, perumahan kalukubula, perumahan sigi, perumahan termurah di kota palu</title>
   <!-- CSS Materialize -->
   <link href="<?= base_url() ?>/assets/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />

@@ -52,14 +52,9 @@ class Validation
     ];
 
 	public $personal = [
-		'fullname' => 'required|min_length[6]',
-		'born' => 'required',
-		'age' => 'required|is_natural',
-		'gender' => 'required',
-		'country' => 'required',
-		'about_text' => 'required',
-		'cv' => 'max_size[cv,3548]|mime_in[cv,application/pdf]|ext_in[cv,pdf]',
-		'img' => 'max_size[img,3548]|mime_in[img,image/img,image/jpg,image/png,image/jpeg]|ext_in[img,jpg,png,jpeg]',
+		'profile' => 'required|min_length[6]',
+		'visi' => 'required|min_length[6]',
+		'misi' => 'required|min_length[6]',
 	];
 
 	public $sliders = [

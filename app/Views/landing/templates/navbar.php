@@ -49,6 +49,7 @@
                     <!-- %%% Dekstop Nav %%% -->
                     <ul class="right hide-on-med-and-down">
                         <li class="<?= (isset($index_active) ? $index_active : '') ?>"><a class="nav-link" href="<?= base_url() ?>/">Home</a></li>
+                        <li class="<?= (isset($about_active) ? $about_active : '') ?>"><a class="nav-link" href="<?= base_url() ?>/about">About</a></li>
                         <li class="<?= (isset($property_active) ? $property_active : '') ?>"><a class="nav-link" href="<?= base_url() ?>/properti">Properti</a></li>
                         <li class="<?= (isset($promo_active) ? $promo_active : '') ?>"><a class="nav-link" href="<?= base_url() ?>/promo">Promo</a></li>
                         <li class="<?= (isset($contact_active) ? $contact_active : '') ?>"><a class="nav-link" href="<?= base_url() ?>/contact">Alamat Kami</a></li>
@@ -67,6 +68,7 @@
                         </ul>
                         <li><a class="subheader">Menu Navigasi</a></li>
                         <li class="<?= (isset($index_active) ? $index_active : '') ?>"><a class="waves-effect waves-light mobile" href="<?= base_url() ?>/"><i class="bi bi-house-fill left"></i>Halaman Utama</a></li>
+                        <li class="<?= (isset($about_active) ? $about_active : '') ?>"><a class="waves-effect waves-light mobile" href="<?= base_url() ?>/about"><i class="bi bi-houses-fill left"></i>About</a></li>
                         <li class="<?= (isset($property_active) ? $property_active : '') ?>"><a class="waves-effect waves-light mobile" href="<?= base_url() ?>/properti"><i class="bi bi-houses-fill left"></i>Properti</a></li>
                         <li class="<?= (isset($promo_active) ? $promo_active : '') ?>"><a class="waves-effect waves-light mobile" href="<?= base_url() ?>/promo"><i class="bi bi-tags-fill left"></i>Promo</a></li>
                         <li class="<?= (isset($contact_active) ? $contact_active : '') ?>"><a class="waves-effect waves-light mobile" href="<?= base_url() ?>/contact"><i class="bi bi-geo-alt-fill left"></i>Alamat Kami</a></li>

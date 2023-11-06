@@ -37,6 +37,7 @@ $routes->get('/properti/(:any)', 'LandingPages::property/$1');
 $routes->get('/properti', 'LandingPages::property');
 $routes->get('/promo/(:any)', 'LandingPages::promo/$1');
 $routes->get('/promo', 'LandingPages::promo');
+$routes->get('/about', 'LandingPages::about');
 // $routes->get('/portfolio', 'LandingPages::portfolio');
 $routes->get('/contact', 'LandingPages::contact');
 // $routes->get('/faq', 'LandingPages::faq');
@@ -48,7 +49,8 @@ $routes->post('/sendWA', 'LandingPages::sendWA');
 // $routes->get('/properti/(:any)', 'LandingPages::download/$1');
 
 $routes->get('/admin/personal', 'Admin\Personal::index', ['filter' => 'role:admin']);
-$routes->post('/admin/personal/save', 'Admin\Personal::save', ['filter' => 'role:admin']);
+$routes->post('/admin/personal/save', 'Admin\Dashboard::save', ['filter' => 'role:admin']);
+
 
 $routes->get('/admin/skills', 'Admin\Skills::index', ['filter' => 'role:admin']);
 $routes->get('/admin/skill/drop/(:any)', 'Admin\Skills::index', ['filter' => 'role:admin']);

@@ -49,7 +49,7 @@ return array_merge(array($a),$b);
                                     </div>
                                     <ul>
                                         <li><span>Nama/Tipe: </span><?= $property['type_name']; ?></li>
-                                        <li><span>Alamat: </span><?= $property['address']; ?></li>
+                                        <li><span>Lokasi: </span><?= $property['address']; ?></li>
                                         <li><span>Deskripsi: </span><?= $property['description']; ?></li>
                                         <li><span>Luas Tanah: </span><?= $property['luas_tanah']; ?> m<sup>2</sup> </li>
                                     </ul>

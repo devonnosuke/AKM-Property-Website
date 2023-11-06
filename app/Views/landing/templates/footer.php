@@ -2,7 +2,7 @@
 <footer class="page-footer grey darken-4">
     <div class="container">
         <div class="row">
-            <div class="col m6 s12">
+            <div class="col m4 s12">
                 <h5 class="white-text">AKM Properti</h5>
                 <div class="bordering left"></div>
 
@@ -13,7 +13,11 @@
                     <li><a class="white-text" href="<?= base_url() ?>/contact">Alamat Kami</a></li>
                 </ul>
             </div>
-            <div class="col m6 s12">
+            <div class="col m4 s12">
+                <h5 class="white-text">Profil Perusahaan</h5>
+                <?= $about['profile'] ?>
+            </div>
+            <div class="col m4 s12">
                 <h5>#AKM_Properti</h5>
                 <h5 class="white-text footer-h5"><b>Follow us</b></h5>
                 <ul class="sosmed-footer">

@@ -38,6 +38,7 @@ class LandingPages extends BaseController
 	{
 		$this->counter();
 		$data = [
+			'about' => $this->personalModels->findAll()[0],
 			'properties' => $this->propertyModels->findAll(),
 			'educational' => $this->educationalModels->findAll(),
 			'personal' => $this->personalModels->find('1'),
@@ -63,6 +64,7 @@ class LandingPages extends BaseController
 	public function contact()
 	{
 		$data = [
+			'about' => $this->personalModels->findAll()[0],
 			'portfolio' => $this->portfolioModels->findAll(),
 			'personal' => $this->personalModels->find('1'),
 			'social' => $this->socialcontactModels->findAll(),
@@ -115,6 +117,7 @@ class LandingPages extends BaseController
 	public function property($slug = false)
 	{
 		$data = [
+			'about' => $this->personalModels->findAll()[0],
 			'portfolio' => $this->portfolioModels->findAll(),
 			'personal' => $this->personalModels->find('1'),
 			'properties' => $this->propertyModels->findAll(),
@@ -138,6 +141,7 @@ class LandingPages extends BaseController
 			$this->desc .=', '.'dengan luas tanah '.$proprety[0]['luas_tanah'];
 
 			$data = [
+				'about' => $this->personalModels->findAll()[0],
 				'portfolio' => $this->portfolioModels->findAll(),
 				'property' => $proprety[0],
 				'personal' => $this->personalModels->find('1'),
@@ -151,8 +155,11 @@ class LandingPages extends BaseController
 				'og_image' => $this->og_image
 
 			];
+			$data['property_active'] = 'active';
+
 			return view('landing/property-single', $data);
 		}
+		
 		
 		return view('landing/property', $data);
 	}
@@ -160,6 +167,7 @@ class LandingPages extends BaseController
 	public function promo($slug = false)
 	{
 		$data = [
+			'about' => $this->personalModels->findAll()[0],
 			'portfolio' => $this->portfolioModels->findAll(),
 			'personal' => $this->personalModels->find('1'),
 			'social' => $this->socialcontactModels->findAll(),
@@ -181,6 +189,7 @@ class LandingPages extends BaseController
 			$this->desc .=', '.'dengan bebas '.' '.$promo[0]['bebas'];
 
 			$data = [
+				'about' => $this->personalModels->findAll()[0],
 				'promo' => $promo[0],
 				'property' => $property[0],
 				'portfolio' => $this->portfolioModels->findAll(),
@@ -209,6 +218,26 @@ class LandingPages extends BaseController
 
 		return redirect()->to($link);
 	}
+
+	public function about()
+	{
+		$data = [
+			'about' => $this->personalModels->findAll()[0],
+			'portfolio' => $this->portfolioModels->findAll(),
+			'about' => $this->personalModels->findAll()[0],
+			'personal' => $this->personalModels->find('1'),
+			'social' => $this->socialcontactModels->findAll(),
+			'contact' => $this->addressContactModels->find(1),
+			'contact1' => $this->addressContactModels->find(2),
+			'title' => 'About Us',
+			'desc' => $this->desc,
+			'og_image' => $this->og_image
+		];
+        $data['about_active'] = 'active';
+
+		return view('landing/about', $data);
+	}
+
 
 
 }

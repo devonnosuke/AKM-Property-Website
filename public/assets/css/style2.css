@@ -5,7 +5,7 @@ body {
 }
 section,
 footer {
-  padding: 20px 0;
+  padding: 20px 40px;
   padding-top: 90px;
 }
 section.portfolio {
