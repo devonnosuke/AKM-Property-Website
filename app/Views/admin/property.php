@@ -93,9 +93,9 @@
         <form action="<?= base_url() ?>/admin/property/save/true" enctype="multipart/form-data" method="post" class="modal-form" onsubmit="loadingUploadBar()">
             <?= csrf_field() ?>
             <input type="hidden" class="feature-field input-feature" name="features" data-value="<?= old('features') ?>" data-placeholder="Masukkan Fasilitas" data-secondary-placeholder="+ Fasilitas" data-status="true">
-            <input type="hidden" name="spec_count"  data-edit="false" value="<?= old('spec_count') ?>">
-            <input type="hidden" name="spec_name" value="<?= (null !== session()->getFlashdata('spec_name'))?implode(',',session()->getFlashdata('spec_name')):''?>">
-            <input type="hidden" name="spec" value="<?= (null !== session()->getFlashdata('spec'))?implode(',',session()->getFlashdata('spec')):''?>">
+            <input type="hidden" class="spec_count" name="spec_count"  data-edit="false" value="<?= old('spec_count') ?>">
+            <input type="hidden" class="spec_name_old" name="spec_name" value="<?= (null !== session()->getFlashdata('spec_name'))?implode(',',session()->getFlashdata('spec_name')):''?>">
+            <input type="hidden" class="spec_old" name="spec" value="<?= (null !== session()->getFlashdata('spec'))?implode(',',session()->getFlashdata('spec')):''?>">
 
             <div class="row card-panel card-form-modal">
                 <h4>Input Informasi Properti</h4>
@@ -115,7 +115,7 @@
                                 </div>
 
                                 <div class="input-field">
-                                    <input id="harga_jual" type="text" name="harga_jual" class="<?= validCheck($validation->getError('harga_jual')) ?>" value="<?= old('harga_jual') ?>" data-length="12" maxlength="12">
+                                    <input id="harga_jual" type="text" inputmode="numeric" name="harga_jual" class="<?= validCheck($validation->getError('harga_jual')) ?>" value="<?= old('harga_jual') ?>" data-length="12" maxlength="12">
                                     <label for="harga_jual" <?= errorMsgCheck($validation->getError('harga_jual')) ?>>Harga Jual</label>
                                 </div>
 
@@ -125,7 +125,7 @@
                                 </div>
 
                                 <div class="input-field">
-                                    <input id="luas_tanah" type="text" name="luas_tanah" class="<?= validCheck($validation->getError('luas_tanah')) ?>" value="<?= old('luas_tanah') ?>" data-length="10" maxlength="10">
+                                    <input id="luas_tanah" type="text" inputmode="numeric" name="luas_tanah" class="<?= validCheck($validation->getError('luas_tanah')) ?>" value="<?= old('luas_tanah') ?>" data-length="10" maxlength="10">
                                     <label for="luas_tanah" <?= errorMsgCheck($validation->getError('luas_tanah')) ?>>Luas Tanah m<sup>2</sup> </label>
                                 </div>
                                 
@@ -172,10 +172,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s6 center">
-                                        <div class="btn spec-btn">Tambah Spesifikasi</div>
+                                        <div class="btn spec-btn">Tambah Spec</div>
                                     </div>
                                     <div class="col s6 center">
-                                        <div class="btn red delete-spec-btn">Hapus Spesifikasi</div>
+                                        <div class="btn red delete-spec-btn">Hapus Spec</div>
                                     </div>
                                 </div>
                             </div>

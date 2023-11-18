@@ -13,4 +13,14 @@ class AddressContactModel extends Model
     protected $useTimestamps = true;
     protected $ceratedField  = 'created_at';
     protected $updatedField  = 'updated_at';
+
+    function getWaNumber($id = 1)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('phone');
+        $builder->where('id', $id);
+        return $builder->get()->getResultArray()[0]['phone'];
+    }
 }
+

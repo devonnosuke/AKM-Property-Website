@@ -4,6 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
     <title>AKM Admin App | <?= $title ?></title>
+    <link rel="manifest" href="<?= base_url() ?>/manifest.json" />
     <!-- CSS Materialize -->
     <link href="<?= base_url() ?>/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
 

@@ -15,7 +15,7 @@
  *
  * @return imgResize|bool
  */
-function imgResize($imageName, $path, $width, $height, $maintainRatio = false, $quality = 68)
+function imgResize($imageName, $path, $width, $height, $maintainRatio = false, $quality = 100)
 {
     $imgManipulator = \Config\Services::image('gd');
 
@@ -42,7 +42,7 @@ function imgResize($imageName, $path, $width, $height, $maintainRatio = false, $
  *
  * @return imgConvert|bool
  */
-function imgConvert($imgNameWithOldExt, $imgNameOnly, $path, $target_extension, $quality = 100)
+function imgConvert($imgNameWithOldExt, $imgNameOnly, $path, $target_extension = 'png', $quality = 50)
 {
     $imgManipulator = \Config\Services::image('gd');
 
@@ -112,14 +112,14 @@ function imgFit($imageName, $path, $width = 1000, $height = 500, $quality = 80)
  * @param int $img_newExt
  * @return imgGenerateName|array
  */
-function imgGenerateName($randomName, $forWhat = 'Website', $img_newExt = 'jpg')
+function imgGenerateName($randomName, $forWhat = 'Website', $img_newExt = 'png')
 {
 
     // Get name Img without extension
     $img_arr = explode('.', $randomName);
 
     // Generate New name
-    $date = date(' d M Y [h.i-A] ');
+    $date = date('-d-M-Y-h-i-A-');
     $img_nameOnly =  $img_arr[0];
     $img_nameOnly = explode('_', $img_nameOnly);
     $img_nameOnly = $forWhat . $date . $img_nameOnly[0];
@@ -196,7 +196,7 @@ function imgUploadBatch($img_file, $imgExt, $forWhat = 'Properti')
  * @param int $img_newExt
  * @return imgGenerateName|array
  */
-function imgGenerateBatchName($img_file, $forWhat = 'Website', $img_newExt = 'jpg')
+function imgGenerateBatchName($img_file, $forWhat = 'Website', $img_newExt = 'png')
 {
     // dd($img_files['img'][0]->getRandomName());
     // $imageNames = [];

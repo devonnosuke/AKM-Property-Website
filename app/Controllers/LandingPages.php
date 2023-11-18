@@ -214,7 +214,9 @@ class LandingPages extends BaseController
 		$name = $this->request->getVar('name');
 		$message = $this->request->getVar('message');
 
-		$link = "https://wa.me/+6284646322123?text=Hallo saya $name, saya telah melihat info di akmproperti.com dan ingin bertanya tentang $message";
+		$wa = $this->addressContactModels->getWaNumber();
+
+		$link = "https://wa.me/+".$wa."?text=Hallo saya $name, saya telah melihat info di akmproperti.com dan ingin bertanya tentang $message";
 
 		return redirect()->to($link);
 	}

@@ -490,11 +490,11 @@ div.card-contact:hover {
 }
 
 .slider-promo {
-  height: 640px !important;
+  height: 110vh !important;
 }
 
 .slider-promo .slides {
-  height: 93vh !important;
+  height: 110vh !important;
 }
 
 .slider .slider-promo {
@@ -616,7 +616,7 @@ div.card-contact:hover {
 
 @media only screen and (max-width: 600px) {
   .slider .indicators {
-    bottom: -15px;
+    bottom: 15px;
     z-index: 2;
   }
 }

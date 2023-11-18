@@ -38,7 +38,10 @@ class Promo extends BaseController
     public function drop($id, $nameImage)
     {
         // Delete picture in server
-        unlink('assets/img/promo/' . $nameImage);
+        if (file_exists('assets/img/promo/' . $nameImage)) {
+            unlink('assets/img/promo/' . $nameImage);
+        }
+        
         // Delete data in table with Some functions
         // which have been provided in codeigniter : delete($id)
         $this->promoModels->delete($id);
@@ -60,7 +63,7 @@ class Promo extends BaseController
         $old_img = $this->request->getVar('old_brosur');
 
         // Set image convert extension
-        $img_ext = 'jpg';
+        $img_ext = 'png';
 
         // Get image data POST with ci4 : getFile(name)
         $img_file = $this->request->getFile('brosur');
@@ -69,13 +72,13 @@ class Promo extends BaseController
         $nama_promo = $this->request->getVar('nama_promo');
 
         // Generate New Img Name
-        $newImageName = imgGenerateName($img_file->getRandomName(), 'brosur-'.url_title($nama_promo), $img_ext);
+        $newImageName = imgGenerateName($img_file->getRandomName(), 'brosur'.url_title($nama_promo), $img_ext);
 
         // Check whether to insert or edit
         if (!$insert) {
             // Set the validation rules to be used (Rules to edit form)
             // $validation_rules = 'promo';
-            
+            $resized = true;
             // Get POST id data with ci4 : getVar(name) and save to $data
             $data = [
                 'id' => $id,
@@ -126,14 +129,25 @@ class Promo extends BaseController
                     $convert = imgConvert($newImageName['nameWithOldExt'], $newImageName['nameOnly'], 'assets/img/promo', $img_ext);
      
                     // Crop and Resize image
-                    // $fit = imgFit($newImageName['nameWithNewExt'], 'assets/img/promo/');
-                    $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/promo/',1080, 1080, true);
+                    $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/promo/',500, 500, true);
+
+                    // \Tinify\setKey("dp2V008T2SVxk8TXLsf0YvfMJ3b0DSfH");
+
+                    // $source = \Tinify\fromFile("assets/img/promo/".'0-'.$newImageName['nameWithOldExt']);
+                    // $resized = $source->resize(array(
+                    //     "method" => "fit",
+                    //     "width" => 650,
+                    //     "height" => 650
+                    // ));
+                    // $converted = $source->convert(array("type" => ["image/png"]));
+                    // $resized->toFile("assets/img/promo/".$newImageName['nameWithNewExt']);
                 }
 
                 // Check if the upload and image manipulation process is success
-                if ($img_file && $convert && $fit) {
+                if ($fit) {
                     if ($id) {
-                        unlink('assets/img/promo/' . $old_img);
+                        if (file_exists('assets/img/promo/' . $old_img))
+                        {unlink('assets/img/promo/' . $old_img);}
                     }
                 } else {
                     return new \CodeIgniter\Exceptions\PageNotFoundException('Gambar Gagal Disimpan!');
@@ -148,10 +162,11 @@ class Promo extends BaseController
 
             // dd($data);
             // Insert or change records to table with functions provided by codeigniter Model : save($data)
-            if (!$this->promoModels->save($data)) {
-                return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
+            if ($fit) {
+                if (!$this->promoModels->save($data)) {
+                    return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
+                }
             }
-            
             // Convert and crop images
 
             // Set alert session to show notification flashdata

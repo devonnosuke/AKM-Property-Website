@@ -5671,7 +5671,7 @@ if (Vel) {
       $chips.data('chips').forEach(function (elem) {
         $chips.append(self.renderChip(elem));
       });
-      $chips.append($('<input id="' + chipId + '" class="input" placeholder="">'));
+      $chips.append($('<input id="' + chipId + '" class="input" placeholder="" inputmode="text">'));
       self.setPlaceholder($chips);
 
       // Set for attribute for label

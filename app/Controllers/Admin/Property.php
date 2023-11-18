@@ -37,22 +37,24 @@ class Property extends BaseController
     public function drop($id, $nameImage)
     {
         // Delete picture in server
-        unlink('assets/img/property/' . $nameImage);
+        if (file_exists('assets/img/property/' . $nameImage))
+        {unlink('assets/img/property/' . $nameImage);}
 
-        unlink('assets/img/property/'.$this->propertyModels->getDenahNameById($id));
-
+        if (file_exists('assets/img/property/'.$this->propertyModels->getDenahNameById($id)))
+        {unlink('assets/img/property/'.$this->propertyModels->getDenahNameById($id));}
 
         $images = $this->propertyImgModels->getImageByProId($id);
         
         if (!empty($images)) {
             foreach ($images as $image) {
-                if (!unlink('assets/img/property/' . $image['image_name'])) {
-                    throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageFile:' . $image['image_name'] . 'Not Found!');
-                } else {
+
+                if (file_exists('assets/img/property/' . $image['image_name'])) {
+                    unlink('assets/img/property/' . $image['image_name']);
                     if (!$this->propertyImgModels->delete($image['image_name'])) {
                         throw new \CodeIgniter\Exceptions\PageNotFoundException('ImageID:' . $image['image_name'] . 'Not Found!');
                     }
                 }
+                
             }
         }
         
@@ -93,7 +95,7 @@ class Property extends BaseController
         $specification = $_POST['spec'];
 
         // Set image convert extension
-        $img_ext = 'jpg';
+        $img_ext = 'png';
 
         // Get image data POST with ci4 : getFile(name)
         $img_file = $this->request->getFile('image');
@@ -101,9 +103,9 @@ class Property extends BaseController
         $type_name = $this->request->getVar('type_name');
 
         // Generate New Img Name
-        $newImageName = imgGenerateName($img_file->getRandomName(), 'properti', $img_ext);
+        $newImageName = imgGenerateName($img_file->getRandomName(), 'properti_'.url_title($type_name), $img_ext);
         // Generate New Denah Img Name
-        $newDenahImageName = imgGenerateName($denah_file->getRandomName(), 'properti_Denah '. url_title($type_name) .' ', $img_ext);
+        $newDenahImageName = imgGenerateName($denah_file->getRandomName(), 'properti_denah_'.url_title($type_name), $img_ext);
     
         // dd($newDenahImageName['nameWithOldExt']);
 
@@ -111,6 +113,7 @@ class Property extends BaseController
         if (!$insert) {
             // Set the validation rules to be used (Rules to edit form)
             $validation_rules = 'propertyEdit';
+            $resized = true;
             
             // Get POST id data with ci4 : getVar(name) and save to $data
             $data = [
@@ -188,19 +191,52 @@ class Property extends BaseController
 
                 // Move file to server
                 if ( $img_file->move('assets/img/property/', $newImageName['nameWithOldExt'])) {
+        
                     // Convert Image to $img_ext value
-                    $convert = imgConvert($newImageName['nameWithOldExt'], $newImageName['nameOnly'], 'assets/img/property', $img_ext);
-     
+                    imgConvert($newImageName['nameWithOldExt'], $newImageName['nameOnly'], 'assets/img/property', $img_ext);
+                    
                     // Crop and Resize image
-                    // $fit = imgFit($newImageName['nameWithNewExt'], 'assets/img/property/');
-                    $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
+                    $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/property/',580, 580, true);
+                    
+                    // try {
+                    //     \Tinify\setKey("dp2V008T2SVxk8TXLsf0YvfMJ3b0DSfH");
+                    //     $source = \Tinify\fromFile("assets/img/property/".$newImageName['nameWithOldExt']);
+                    //     $converted = $source->convert(array("type" => ["image/png"]));
+                    //     $extension = $converted->result()->extension();
+                    //     $resized = $converted->resize(array(
+                    //         "method" => "fit",
+                    //         "width" => 650,
+                    //         "height" => 650
+                    //     ));
+                        
+                    //     $resized->toFile("assets/img/property/".$newImageName['nameWithNewExt']);
+                    // }
+                    // catch (\Tinify\AccountException $th) {
+                    //     return new \CodeIgniter\Exceptions\PageNotFoundException('Error: '.$th->getMessage());
+                    // }
+                    // catch (\Tinify\ClientException  $th) {
+                    //     return new \CodeIgniter\Exceptions\PageNotFoundException('Error: '.$th->getMessage());
+                    // }
+                    // catch (\Tinify\ServerException  $th) {
+                    //     return new \CodeIgniter\Exceptions\PageNotFoundException('Error: '.$th->getMessage());
+                    // }
+                    // catch (\Tinify\ConnectionException  $th) {
+                    //     return new \CodeIgniter\Exceptions\PageNotFoundException('Error: '.$th->getMessage());
+                    // }
+                    // catch (Exception $th) {
+                    //     return new \CodeIgniter\Exceptions\PageNotFoundException('Error: '.$th->getMessage());
+                    // }
 
+                   
+                    // $resized = true;
                 }
 
                 // Check if the upload and image manipulation process is success
-                if ($img_file && $convert && $fit) {
+                if ($fit) {
+                    // unlink("assets/img/property/".'0-'.$newImageName['nameWithOldExt']);
                     if ($id) {
-                        unlink('assets/img/property/' . $old_img);
+                        if (file_exists('assets/img/property/' . $old_img))
+                        {unlink('assets/img/property/' . $old_img);}
                     }
                 } else {
                     return new \CodeIgniter\Exceptions\PageNotFoundException('Gambar Gagal Disimpan!');
@@ -218,15 +254,26 @@ class Property extends BaseController
                     $convert = imgConvert($newDenahImageName['nameWithOldExt'], $newDenahImageName['nameOnly'], 'assets/img/property', $img_ext);
      
                     // Crop and Resize image
-                    // $fit = imgFit($newDenahImageName['nameWithNewExt'], 'assets/img/property/');
-                    $fit = imgResize($newDenahImageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
+                    $fitDenah = imgResize($newDenahImageName['nameWithNewExt'], 'assets/img/property/',580, 580, true);
 
+                    // \Tinify\setKey("dp2V008T2SVxk8TXLsf0YvfMJ3b0DSfH");
+
+                    // $source = \Tinify\fromFile("assets/img/property/0-".$newDenahImageName['nameWithOldExt']);
+                    // $resized = $source->resize(array(
+                    //     "method" => "fit",
+                    //     "width" => 650,
+                    //     "height" => 650
+                    // ));
+                    // $resized->toFile("assets/img/property/".$newDenahImageName['nameWithNewExt']);
+                    // $resized = true;
                 }
 
                 // Check if the upload and image manipulation process is success
-                if ($denah_file && $convert && $fit) {
+                if ($fitDenah) {
+                    // unlink("assets/img/property/".'0-'.$newDenahImageName['nameWithOldExt']);
                     if ($id) {
-                        unlink('assets/img/property/' . $old_denah);
+                        if (file_exists('assets/img/property/' . $old_denah))
+                        {unlink('assets/img/property/' . $old_denah);}
                     }
                 } else {
                     return new \CodeIgniter\Exceptions\PageNotFoundException('Gambar Gagal Disimpan!');
@@ -246,8 +293,10 @@ class Property extends BaseController
             $data = array_map('htmlspecialchars', $data);
 
             // Insert or change records to table with functions provided by codeigniter Model : save($data)
-            if (!$this->propertyModels->save($data)) {
-                return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
+            if ($fitDenah && $fit) {
+                if (!$this->propertyModels->save($data)) {
+                    return new \CodeIgniter\Exceptions\PageNotFoundException('Query Or Databases Error');
+                }
             }
             
             $id_property = $this->propertyModels->getLastid();
@@ -270,7 +319,7 @@ class Property extends BaseController
 
             //         // Crop and Resize image
             //         // $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
-            //         $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
+            //         $fit = imgResize($newImageName['nameWithNewExt'], 'assets/img/property/',400, 400, true);
 
 
             //         // Check if the upload and image manipulation process is success

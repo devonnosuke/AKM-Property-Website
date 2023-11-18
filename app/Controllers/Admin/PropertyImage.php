@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use Tinify;
 
 class PropertyImage extends BaseController
 {
@@ -42,7 +43,7 @@ class PropertyImage extends BaseController
         // Run validation with the rules set in App/Config/Validation.php
         if ($this->validation->run($data, "property_images")) {
             // Uplaod images
-            if (!$images = imgUploadBatch($img_files, $img_ext, 'Properti Gallery')) {
+            if (!$images = imgUploadBatch($img_files, $img_ext, 'Properti-Gallery')) {
                 return new \CodeIgniter\Exceptions\PageNotFoundException('imgUploadBatch() Error');
             }
 
@@ -52,15 +53,25 @@ class PropertyImage extends BaseController
                 foreach ($images as $imageName) {
                     // dd($imageName);
                     // Convert Image to $img_ext value
-                    $convert = imgConvert( $imageName['nameWithOldExt'], $imageName['nameOnly'], 'assets/img/property', $img_ext, 78);
+                    $convert = imgConvert( $imageName['nameWithOldExt'], $imageName['nameOnly'], 'assets/img/property', $img_ext, 40);
 
                     // Crop and Resize image
-                    // $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
-                    $fit = imgResize($imageName['nameWithNewExt'], 'assets/img/property/',1080, 1080, true);
+                    $fit = imgFit($imageName['nameWithNewExt'], 'assets/img/property');
+                    $fit = imgResize($imageName['nameWithNewExt'], 'assets/img/property/',450, 600, true);
+
+                    // \Tinify\setKey("dp2V008T2SVxk8TXLsf0YvfMJ3b0DSfH");
+
+                    // $source = \Tinify\fromFile("assets/img/property/".$imageName['nameWithOldExt']);
+                    // $resized = $source->resize(array(
+                    //     "method" => "fit",
+                    //     "width" => 650,
+                    //     "height" => 650
+                    // ));
+                    // $resized->toFile("assets/img/property/".$imageName['nameWithOldExt']);
 
 
                     // Check if the upload and image manipulation process is success
-                    if ($img_files && $convert && $fit) {
+                    if ($img_files && $fit) {
 
                         $dataImages = [
                             'image_name'=>$imageName['nameWithNewExt'],
@@ -98,7 +109,10 @@ class PropertyImage extends BaseController
     // This method is used to delete records from the table
     public function drop($imageName)
     {
-        unlink('assets/img/property/' . $imageName);
+        // Delete picture in server
+        if (file_exists('assets/img/property/' . $imageName)) {
+            unlink('assets/img/property/' . $imageName);
+        }
 
         // Delete data in table with Some functions
         // which have been provided in codeigniter : delete($id)
@@ -107,8 +121,6 @@ class PropertyImage extends BaseController
             setAlert($imageName);
             // Return to previous controller
             return redirect()->back();
-        } else {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Image Name:' . $imageName . 'Not Found!');
         }
     }
 }
