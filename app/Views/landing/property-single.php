@@ -28,9 +28,19 @@ return array_merge(array($a),$b);
         <div class="row">
             <div class="col s12 z-depth-1">
                 <ul class="tabs tabs-fixed-width">
+                    <?php if($property['type_name'] == 'Type 36/104'): ?>
+                        <li class="tab col s3"><a href="#video">Video</a></li>
+                    <?php endif;?>
                     <li class="tab col s3"><a class="active" href="#detail">Detail</a></li>
                     <li class="tab col s3"><a href="#gallery">Gallery Foto</a></li>
                 </ul>
+            </div>
+            <div id="video" class="col s12 tabs-property">
+                <div class="card-panel" style="width: fit-content;">
+                    <video class="responsive-video" controls>
+                        <source src="<?= base_url(); ?>/video/Type36.mp4" type="video/mp4">
+                    </video>                
+                </div>
             </div>
             <div id="detail" class="col s12 tabs-property">
                 <div class="row">
